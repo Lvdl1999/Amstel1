@@ -14,28 +14,51 @@ class Amstel():
     attributes and methods to build and optimize a neighbourhood.
     """
 
-    def __init__(self, verh_eengezinswoning, verh_bungalow, verh_maison, verh_wateropp )
+    # def __init__(self, verh_eengezinswoning, verh_bungalow, verh_maison, verh_wateropp )
+    #
+    #     self.verh_eengezinswoning = verh_eengezinswoning
+    #     self.verh_bungalow = verh_bungalow
+    #     self.verh_maison = verh_maison
+    #     self.verh_wateropp = verh_wateropp
+    #
+    #     # Making the grid
+    #     border_ID = int(1)
+    #     grid = np.array([[0]* 321] * 361)
+    #     grid[0] = border_ID
+    #     grid[360] = border_ID
+    #     grid[0:361,0:1] = border_ID
+    #     grid[0:361,320:321] = border_ID
+    #
+    #     # Making a border
 
-        self.verh_eengezinswoning = verh_eengezinswoning
-        self.verh_bungalow = verh_bungalow
-        self.verh_maison = verh_maison
-        self.verh_wateropp = verh_wateropp
+    def __init__(self, aantal_huizen, aantal_eengezinswoning, aantal_bungalow, aantal_maison, totaal_wateropp, aantal_sloten)
 
-        # Making the grid
-        border_ID = int(1)
-        grid = np.array([[0]* 321] * 361)
-        grid[0] = border_ID
-        grid[360] = border_ID
-        grid[0:361,0:1] = border_ID
-        grid[0:361,320:321] = border_ID
+        self.aantal_huizen = get_int("Aantal huizen: ")
+        self.aantal_eengezinswoning = int(aantal_huizen * 0,6)
+        self.aantal_bungalow = int(aantal_huizen * 0,25)
+        self.aantal_maison = int(aantal_huizen * 0,15)
+        self.aantal_sloten = get_int("Aantal sloten:  ") # dit doen we voorlopig om zelf water in te richten
 
-        # Making a border
+
+        if self.aantal_huizen != 20 or != 40 or !=60:
+            print("Alleen keuze uit 20, 40 of 60 huizen")
+            return self.aantal_huizen
+        if aantal_eengezinswoning + aantal_bungalow + aantal_maison !=  aantal_huizen:
+            print ("Verhoudingen kloppen niet")
+
+        self.huizen_lijst= []
+        eengezinswoning.id = 0
+
+        for huis in len(aantal_huizen):
+            id = eengezinswoning.id +1
+            huizen_lijst.append(eengezinswoning)
 
 
 
 class eengezinswoning():
-    def __init__(self, oppervlakte, min_vrijstand, prijs, prijsverbetering)
+    def __init__(self, id, oppervlakte, min_vrijstand, prijs, prijsverbetering)
 
+        self.id= int(id)
         self.oppervlakte = int(8*8)
         self.min_vrijstand = int(2)
         self.prijs = int(285.000)
