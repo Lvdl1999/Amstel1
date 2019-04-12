@@ -42,39 +42,57 @@ class Amstel():
 
         if self.aantal_huizen != 20 or != 40 or !=60:
             print("Alleen keuze uit 20, 40 of 60 huizen")
+            # Kan dit zo? we willen dat er opnieuw om een aantal huizen als input wordt gevraagd
             return self.aantal_huizen
+        if 
+
         if aantal_eengezinswoning + aantal_bungalow + aantal_maison !=  aantal_huizen:
             print ("Verhoudingen kloppen niet")
 
+
+        # aanmaken lijst met alle huis objecten
         self.huizen_lijst= []
         eengezinswoning.id = 0
 
-        for huis in len(aantal_huizen):
+        # elk huis object toevoegen aan lijst en daarbij behorend id elke keer met 1 verhogen.
+        # je wilt dat elk huis een ander id heeft
+        for huis in len(aantal_eengezinswoning):
             id = eengezinswoning.id +1
             huizen_lijst.append(eengezinswoning)
+
+
+        for huis in len(aantal_bungalow):
+            id = bungalow.id +1
+            huizen_lijst.append(bungalow)
+
+        for huis in len(aantal_maison):
+            id = maison.id +1
+            huizen_lijst.append(maison)
 
 
 
 class eengezinswoning():
     def __init__(self, id, oppervlakte, min_vrijstand, prijs, prijsverbetering)
 
-        self.id= int(id)
+        self.id= int(id) # hoe elke eengezinswoning met een ander id?
         self.oppervlakte = int(8*8)
         self.min_vrijstand = int(2)
         self.prijs = int(285.000)
         self.prijsverbetering = float(0.03)
 
 class bungalow():
-    def __init__(self, oppervlakte, min_vrijstand, prijs, prijsverbetering)
+    def __init__(self, id, oppervlakte, min_vrijstand, prijs, prijsverbetering)
 
+        self.id= id
         self.oppervlakte = int(10*7,5)
         self.min_vrijstand = int(3)
         self.prijs = int(399.000)
         self.prijsverbetering = float(0.06)
 
 class maison():
-    def __init__(self, oppervlakte, min_vrijstand, prijs, prijsverbetering)
+    def __init__(self, id,  oppervlakte, min_vrijstand, prijs, prijsverbetering)
 
+        self.id= id
         self.oppervlakte = int(11*10,5)
         self.min_vrijstand = int(6)
         self.prijs = int(610.000)
