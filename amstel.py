@@ -39,16 +39,15 @@ class Amstel():
         self.aantal_maison = int(aantal_huizen * 0,15)
         self.aantal_sloten = get_int("Aantal sloten:  ") # dit doen we voorlopig om zelf water in te richten
 
-
         if self.aantal_huizen != 20 or != 40 or !=60:
             print("Alleen keuze uit 20, 40 of 60 huizen")
             # Kan dit zo? we willen dat er opnieuw om een aantal huizen als input wordt gevraagd
             return self.aantal_huizen
-        if 
+        # andere optie
+        #if len(self.huizen_lijst) != 20 or !=40 or !=60 :
 
         if aantal_eengezinswoning + aantal_bungalow + aantal_maison !=  aantal_huizen:
             print ("Verhoudingen kloppen niet")
-
 
         # aanmaken lijst met alle huis objecten
         self.huizen_lijst= []
@@ -60,7 +59,6 @@ class Amstel():
             id = eengezinswoning.id +1
             huizen_lijst.append(eengezinswoning)
 
-
         for huis in len(aantal_bungalow):
             id = bungalow.id +1
             huizen_lijst.append(bungalow)
@@ -68,7 +66,6 @@ class Amstel():
         for huis in len(aantal_maison):
             id = maison.id +1
             huizen_lijst.append(maison)
-
 
 
 class eengezinswoning():
@@ -107,4 +104,4 @@ class water():
 
 def vrijstandscalc(eengezingswoning, bungalow, maison):
 
-            eengezinswoning.vrijstand
+        eengezinswoning.vrijstand
