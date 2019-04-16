@@ -7,7 +7,7 @@ Build and optimize our neighbourhood.
 
 
 import random
-import matplotlib.pyplot
+import matplotlib.pyplot as plt
 
 class Amstel():
     """
@@ -28,7 +28,6 @@ class Amstel():
         self.aantal_eengezinswoning = int(self.aantal_huizen * 0.6)
         self.aantal_bungalow = int(self.aantal_huizen * 0.25)
         self.aantal_maison = int(self.aantal_huizen * 0.15)
-         # dit doen we voorlopig om zelf water in te richten
 
         while True:
             self.aantal_sloten = int(input("Aantal sloten:  "))
@@ -129,7 +128,6 @@ class Plattegrond():
         for j in range(self.hoogte):
             self.y_as_punten.append(j)
 
-
         # make scatterplot van plattegrond
         for k in range(aantal_coordinaten):
             plt.scatter(x_as_lijst[k], y_as_lijst[k])
@@ -141,10 +139,7 @@ class Plattegrond():
         plt.xticks(self.x_as_punten)
         plt.show()
 
-
         #random.self.plaats_huis
-
-
 
 
 def plaats_huis():
@@ -154,7 +149,7 @@ def plaats_huis():
     y = 160
 
     for i in range(amstel.huizen_lijst):
-        if 0 <= x <= 180 and 0 <= y <= 160:
+        if 0 <= x <= self.breedte and 0 <= y <= self.hoogte:
             huis = amstel.huizen_lijst[i]
             huis.linksboven = (x, y)
             self.x_as_lijst.append(x)
