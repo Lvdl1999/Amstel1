@@ -1,5 +1,3 @@
-import numpy as np
-
 """
 Amstel1
 Heuristieken
@@ -15,24 +13,19 @@ class Amstel():
     """
 
 
-    def __init__(self, aantal_huizen, aantal_eengezinswoning, aantal_bungalow, aantal_maison, totaal_wateropp, aantal_sloten):
-
-        self.aantal_huizen = input("Aantal huizen: ")
-        self.aantal_eengezinswoning = int(aantal_huizen * 0.6)
-        self.aantal_bungalow = int(aantal_huizen * 0.25)
-        self.aantal_maison = int(aantal_huizen * 0.15)
-        self.aantal_sloten = input("Aantal sloten:  ") # dit doen we voorlopig om zelf water in te richten
-
+    def __init__(self):
 
         while True:
-            if self.aantal_huizen != 20 or != 40 or !=60:
+            self.aantal_huizen = int(input("Aantal huizen: "))
+            if self.aantal_huizen not in [20, 40, 60]:
                 print("Alleen keuze uit 20, 40 of 60 huizen")
+            else:
+                break
 
-        # andere optie
-        #if len(self.huizen_lijst) != 20 or !=40 or !=60 :
-
-        if aantal_eengezinswoning + aantal_bungalow + aantal_maison !=  aantal_huizen:
-            print ("Verhoudingen kloppen niet")
+        self.aantal_eengezinswoning = int(self.aantal_huizen * 0.6)
+        self.aantal_bungalow = int(self.aantal_huizen * 0.25)
+        self.aantal_maison = int(self.aantal_huizen * 0.15)
+        self.aantal_sloten = input("Aantal sloten:  ") # dit doen we voorlopig om zelf water in te richten
 
         # aanmaken lijst met alle huis objecten
         self.huizen_lijst = []
@@ -40,22 +33,22 @@ class Amstel():
         # elk huis object toevoegen aan lijst en daarbij behorend id elke keer met 1 verhogen.
         # je wilt dat elk huis een ander id heeft
         counter = 0
-        for i in range(aantal_eengezinswoning):
-            huis = Huis(counter, 2, 285000, 0.03)
+        for i in range(self.aantal_eengezinswoning):
+            huis = Huis(counter, 2, 285000, 0.03, 8, 8)
             counter += 1
-            huizen_lijst.append(huis)
+            self.huizen_lijst.append(huis)
 
         counter = 100
-        for i in range(aantal_bungalow):
-            huis = Huis(counter, 3, 399000, 0.06)
+        for i in range(self.aantal_bungalow):
+            huis = Huis(counter, 3, 399000, 0.06, 10, 7.5)
             counter += 1
-            huizen_lijst.append(huis)
+            self.huizen_lijst.append(huis)
 
         counter = 200
-        for i in range(aantal_maison):
-            huis = Huis(counter, 6, 610000, 0.12)
+        for i in range(self.aantal_maison):
+            huis = Huis(counter, 6, 610000, 0.12, 11, 10.5)
             counter += 1
-            huizen_lijst.append(huis)
+            self.huizen_lijst.append(huis)
 
 
     def ondergrens(self):
@@ -64,28 +57,30 @@ class Amstel():
         self.aantal_eengezinswoning * self.huizen_lijst["prijs"]
 
     def bovengrens(self):
-
+        pass
 
     def totale_nieuwe_huiswaarde(self, Huis):
-
+        pass
 
 
 class Huis():
-    def __init__(self, id, min_vrijstand, prijs, prijsverbetering, linksboven, rechtsboven, linksonder, rechtsonder):
+    def __init__(self, id, min_vrijstand, prijs, prijsverbetering, breedte, hoogte):
 
         self.id= int(id)
         self.min_vrijstand = int(min_vrijstand)
         self.prijs = int(prijs)
         self.prijsverbetering = float(prijsverbetering)
-        self.linksboven= linksboven
-        self.rechtsboven= rechtsboven
-        self.linksonder= linksonder
-        self.rechtsonder= rechtsonder
+        self.breedte= breedte
+        self.hoogte = hoogte
+        self.linksboven= None
+        self.rechtsboven= None
+        self.linksonder= None
+        self.rechtsonder= None
 
 
     def vrijstandscalc(self):
         # extra vrijstand per huis
-
+        pass
 
     def nieuwe_huiswaarde(self, amstel):
 
@@ -100,20 +95,41 @@ class Huis():
             nieuwe_huiswaarde =oude_huisprijs + waardevermeerdering*vrijstandscalc
             nieuwe_huiswaarde_lijst.append(nieuwe_huiswaarde)
 
+    def __str__(self):
+        return f"id = {self.id},min_vrijstand = {self.min_vrijstand}, prijs = {self.prijs}, prijsverbetering = {self.prijsverbetering}"
 
 
-
-
-class Grid():
+class Plattegrond():
     def __init__(self, breedte, hoogte):
 
         self.breedte= int(180)
         self.hoogte= int(160)
 
+def plaats_huis():
+
+     #huizen op de plattegrond plaatsen met 4 punten (x en y)  en soort huis
+     for i in range range(amstel.huizen_lijst):    
+         huis = amstel.huizen_lijst[i]
 
 
-class water():
+class Water():
     def __init__(self, oppervlakte, aantal_sloten):
 
         self.oppervlakte= oppervlakte
         self.aantal_sloten = aantal_sloten
+
+if __name__ == '__main__':
+    amster = Amstel()
+    print(amster.huizen_lijst[13])
+    huis = amster.huizen_lijst[0]
+    huis.linksboven = (0, 160)
+    huis.rechtsboven =
+
+
+#voor donderdag:
+
+#methode om te plaatsen
+#methode/functie die huizen random indeeld zonder rekening te houden met overlap (algoritme)
+#kleine structuur voor het kijken naar overlap
+#begin aan visualisatie met matplotlip
+#scatterplot met rectangles
