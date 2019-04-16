@@ -58,12 +58,12 @@ class Amstel():
             huizen_lijst.append(huis)
 
 
-    def lowerbound(self):
+    def ondergrens(self):
         # Geen waarde vermeerderingen door extra vrijstand. Onder voorbehoudt dat alle huizen kunnen worden geplaats.
         # In huizen_lijst opzoeken prijs per soort woning * aantal dat soort woning
         self.aantal_eengezinswoning * self.huizen_lijst["prijs"]
 
-    def upperbound(self):
+    def bovengrens(self):
 
 
     def totale_nieuwe_huiswaarde(self, Huis):
@@ -71,29 +71,44 @@ class Amstel():
 
 
 class Huis():
-    def __init__(self, id, min_vrijstand, prijs, prijsverbetering, upperleft, upperright, bottomleft, bottomright):
+    def __init__(self, id, min_vrijstand, prijs, prijsverbetering, linksboven, rechtsboven, linksonder, rechtsonder):
 
         self.id= int(id)
         self.min_vrijstand = int(min_vrijstand)
         self.prijs = int(prijs)
         self.prijsverbetering = float(prijsverbetering)
-        self.upperleft= upperleft
-        self.upperright= upperright
-        self.bottomleft= bottomleft
-        self.bottomright= bottomright
+        self.linksboven= linksboven
+        self.rechtsboven= rechtsboven
+        self.linksonder= linksonder
+        self.rechtsonder= rechtsonder
 
 
     def vrijstandscalc(self):
+        # extra vrijstand per huis
 
+
+    def nieuwe_huiswaarde(self, amstel):
+
+        # itereer over lijst met huizen . zoek per huis prijs op
+        # en tel daarbij vrijstandscalc* waardevermeerdering per huis op
+        # om nieuwe waarde te krijgen
         nieuwe_huiswaarde_lijst = []
-        for i in range(aantal_huizen):
+
+        for i in range(amstel.huizen_lijst):
+            oude_huisprijs= amstel.huizen_lijst["prijs"]
+            waardevermeerdering = amstel.huizen_lijst["prijsverbetering"]
+            nieuwe_huiswaarde =oude_huisprijs + waardevermeerdering*vrijstandscalc
+            nieuwe_huiswaarde_lijst.append(nieuwe_huiswaarde)
+
+
+
 
 
 class Grid():
-    def __init__(self, width, height):
+    def __init__(self, breedte, hoogte):
 
-        self.width= int(180)
-        self.height= int(160)
+        self.breedte= int(180)
+        self.hoogte= int(160)
 
 
 
