@@ -102,13 +102,26 @@ class Huis():
 class Plattegrond():
     def __init__(self, breedte, hoogte):
 
-        self.breedte= int(180)
-        self.hoogte= int(160)
+        X = int(180)
+        Y = int(160)
+
+        self.breedte= int(X)
+        self.hoogte= int(Y)
+
+
+    # Structuur om te kijken naar overlap
+    # X en Y van twee huizen mogen niet hetzelfde zijn
+    # &
+    # 4 punten moeten minimale vrijstand van elkaar verwijderd zijn
+
+
+
+
 
 def plaats_huis():
 
      #huizen op de plattegrond plaatsen met 4 punten (x en y)  en soort huis
-     for i in range range(amstel.huizen_lijst):    
+     for i in range range(amstel.huizen_lijst):
          huis = amstel.huizen_lijst[i]
 
 
