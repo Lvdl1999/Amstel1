@@ -14,35 +14,20 @@ class Amstel():
     attributes and methods to build and optimize a neighbourhood.
     """
 
-    # def __init__(self, verh_eengezinswoning, verh_bungalow, verh_maison, verh_wateropp )
-    #
-    #     self.verh_eengezinswoning = verh_eengezinswoning
-    #     self.verh_bungalow = verh_bungalow
-    #     self.verh_maison = verh_maison
-    #     self.verh_wateropp = verh_wateropp
-    #
-    #     # Making the grid
-    #     border_ID = int(1)
-    #     grid = np.array([[0]* 321] * 361)
-    #     grid[0] = border_ID
-    #     grid[360] = border_ID
-    #     grid[0:361,0:1] = border_ID
-    #     grid[0:361,320:321] = border_ID
-    #
-    #     # Making a border
 
-    def __init__(self, aantal_huizen, aantal_eengezinswoning, aantal_bungalow, aantal_maison, totaal_wateropp, aantal_sloten)
+    def __init__(self, aantal_huizen, aantal_eengezinswoning, aantal_bungalow, aantal_maison, totaal_wateropp, aantal_sloten):
 
-        self.aantal_huizen = get_int("Aantal huizen: ")
-        self.aantal_eengezinswoning = int(aantal_huizen * 0,6)
-        self.aantal_bungalow = int(aantal_huizen * 0,25)
-        self.aantal_maison = int(aantal_huizen * 0,15)
-        self.aantal_sloten = get_int("Aantal sloten:  ") # dit doen we voorlopig om zelf water in te richten
+        self.aantal_huizen = input("Aantal huizen: ")
+        self.aantal_eengezinswoning = int(aantal_huizen * 0.6)
+        self.aantal_bungalow = int(aantal_huizen * 0.25)
+        self.aantal_maison = int(aantal_huizen * 0.15)
+        self.aantal_sloten = input("Aantal sloten:  ") # dit doen we voorlopig om zelf water in te richten
 
-        if self.aantal_huizen != 20 or != 40 or !=60:
-            print("Alleen keuze uit 20, 40 of 60 huizen")
-            # Kan dit zo? we willen dat er opnieuw om een aantal huizen als input wordt gevraagd
-            return self.aantal_huizen
+
+        while True:
+            if self.aantal_huizen != 20 or != 40 or !=60:
+                print("Alleen keuze uit 20, 40 of 60 huizen")
+
         # andere optie
         #if len(self.huizen_lijst) != 20 or !=40 or !=60 :
 
@@ -50,58 +35,70 @@ class Amstel():
             print ("Verhoudingen kloppen niet")
 
         # aanmaken lijst met alle huis objecten
-        self.huizen_lijst= []
-        eengezinswoning.id = 0
+        self.huizen_lijst = []
 
         # elk huis object toevoegen aan lijst en daarbij behorend id elke keer met 1 verhogen.
         # je wilt dat elk huis een ander id heeft
-        for huis in len(aantal_eengezinswoning):
-            id = eengezinswoning.id +1
-            huizen_lijst.append(eengezinswoning)
+        counter = 0
+        for i in range(aantal_eengezinswoning):
+            huis = Huis(counter, 2, 285000, 0.03)
+            counter += 1
+            huizen_lijst.append(huis)
 
-        for huis in len(aantal_bungalow):
-            id = bungalow.id +1
-            huizen_lijst.append(bungalow)
+        counter = 100
+        for i in range(aantal_bungalow):
+            huis = Huis(counter, 3, 399000, 0.06)
+            counter += 1
+            huizen_lijst.append(huis)
 
-        for huis in len(aantal_maison):
-            id = maison.id +1
-            huizen_lijst.append(maison)
+        counter = 200
+        for i in range(aantal_maison):
+            huis = Huis(counter, 6, 610000, 0.12)
+            counter += 1
+            huizen_lijst.append(huis)
 
 
-class eengezinswoning():
-    def __init__(self, id, oppervlakte, min_vrijstand, prijs, prijsverbetering)
+    def lowerbound(self):
+        # Geen waarde vermeerderingen door extra vrijstand. Onder voorbehoudt dat alle huizen kunnen worden geplaats.
+        # In huizen_lijst opzoeken prijs per soort woning * aantal dat soort woning
+        self.aantal_eengezinswoning * self.huizen_lijst["prijs"]
 
-        self.id= int(id) # hoe elke eengezinswoning met een ander id?
-        self.oppervlakte = int(8*8)
-        self.min_vrijstand = int(2)
-        self.prijs = int(285.000)
-        self.prijsverbetering = float(0.03)
+    def upperbound(self):
 
-class bungalow():
-    def __init__(self, id, oppervlakte, min_vrijstand, prijs, prijsverbetering)
 
-        self.id= id
-        self.oppervlakte = int(10*7,5)
-        self.min_vrijstand = int(3)
-        self.prijs = int(399.000)
-        self.prijsverbetering = float(0.06)
+    def totale_nieuwe_huiswaarde(self, Huis):
 
-class maison():
-    def __init__(self, id,  oppervlakte, min_vrijstand, prijs, prijsverbetering)
 
-        self.id= id
-        self.oppervlakte = int(11*10,5)
-        self.min_vrijstand = int(6)
-        self.prijs = int(610.000)
-        self.prijsverbetering = float(0.012)
+
+class Huis():
+    def __init__(self, id, min_vrijstand, prijs, prijsverbetering, upperleft, upperright, bottomleft, bottomright):
+
+        self.id= int(id)
+        self.min_vrijstand = int(min_vrijstand)
+        self.prijs = int(prijs)
+        self.prijsverbetering = float(prijsverbetering)
+        self.upperleft= upperleft
+        self.upperright= upperright
+        self.bottomleft= bottomleft
+        self.bottomright= bottomright
+
+
+    def vrijstandscalc(self):
+
+        nieuwe_huiswaarde_lijst = []
+        for i in range(aantal_huizen):
+
+
+class Grid():
+    def __init__(self, width, height):
+
+        self.width= int(180)
+        self.height= int(160)
+
+
 
 class water():
-    def __init__(self, oppervlakte, aantal_sloten)
+    def __init__(self, oppervlakte, aantal_sloten):
 
         self.oppervlakte= oppervlakte
         self.aantal_sloten = aantal_sloten
-
-
-def vrijstandscalc(eengezingswoning, bungalow, maison):
-
-        eengezinswoning.vrijstand
