@@ -8,6 +8,7 @@ Build and optimize our neighbourhood.
 
 import random
 import matplotlib.pyplot as plt
+import matplotlib.patches as patches
 
 class Amstel():
     """
@@ -57,6 +58,36 @@ class Amstel():
             huis = Huis(counter, 6, 610000, 0.12, 11, 10.5)
             counter += 1
             self.huizen_lijst.append(huis)
+
+    def plaats_huis(self, huis, x, y):
+
+        huis.linksboven = (x, y)
+
+        x = x + huis.breedte
+        huis.rechtsboven = (x, y)
+
+        y = y - huis.hoogte
+        huis.rechtsonder= (x, y)
+
+        x = x - huis.breedte
+        huis.linksonder = (x,y)
+
+    def visualisatie(self):
+        fig, ax = plt.subplots()
+
+        for huis in self.huizen_lijst:
+            rect = patches.Rectangle(huis.linksonder, huis.breedte,
+                huis.hoogte, linewidth=1,edgecolor='r',facecolor='none')
+            ax.add_patch(rect)
+
+        ax.set_xlim([0, 180])
+        ax.set_ylim([0, 160])
+
+        plt.xlabel('Breedte in meters')
+        plt.ylabel('Hoogte in meters ')
+        plt.title('Plattegrond AmstelHaege')
+
+        plt.show()
 
 
     def ondergrens(self):
@@ -113,63 +144,15 @@ class Plattegrond():
         self.breedte= 180
         self.hoogte= 160
 
-        # Xs en de Y as lijst zijn even lang. want elk punt heeft een x en y waarde
-        self.x_as_lijst = []
-        aantal_coordinaten = len(self.x_as_lijst)
-        self.y_as_lijst = []
+    def huis_check(self, huis, x, y):
+        if 
 
-        # waardes op de x as
-        self.x_as_punten= []
-        for i in range(self.breedte):
-            self.x_as_punten.append(i)
-
-        # waardes op de y as
-        self.y_as_punten= []
-        for j in range(self.hoogte):
-            self.y_as_punten.append(j)
-
-        # make scatterplot van plattegrond
-        for k in range(aantal_coordinaten):
-            plt.scatter(x_as_lijst[k], y_as_lijst[k])
-
-        plt.xlabel('Breedte in meters')
-        plt.ylabel('Hoogte in meters ')
-        plt.title('Plattegrond AmstelHaege')
-        plt.yticks(self.y_as_punten)
-        plt.xticks(self.x_as_punten)
-        plt.show()
-
-        #random.self.plaats_huis
-
-
-def plaats_huis():
-
-     #huizen op de plattegrond plaatsen met 4 punten (x en y)  en soort huis
-    x = 0
-    y = 160
-
-    for i in range(amstel.huizen_lijst):
-        if 0 <= x <= self.breedte and 0 <= y <= self.hoogte:
-            huis = amstel.huizen_lijst[i]
-            huis.linksboven = (x, y)
-            self.x_as_lijst.append(x)
-            self.y_as_lijst.append(y)
-            x = x + huis["breedte"]
-            huis.rechtsboven = (x, y)
-            self.x_as_lijst.append(x)
-            self.y_as_lijst.append(y)
-            y = y - huis["hoogte"]
-            huis.rechtsonder= (x, y)
-            self.x_as_lijst.append(x)
-            self.y_as_lijst.append(y)
-            x = x - huis["breedte"]
-            huis.linksonder = (x,y)
-            self.x_as_lijst.append(x)
-            self.y_as_lijst.append(y)
-        else:
-            break
-
-
+    def grens_check(self, x, y):
+        if x < 0 or x > self.breedte:
+            return False
+        if y < 0 or y > self.hoogte:
+            return False
+        return True
 
 class Water():
     def __init__(self, oppervlakte, aantal_sloten):
@@ -177,11 +160,24 @@ class Water():
         self.oppervlakte= oppervlakte
         self.aantal_sloten = aantal_sloten
 
+def plaats_huizen(amstel, plattegrond):
+
+     #huizen op de plattegrond plaatsen met 4 punten (x en y)  en soort huis
+
+    for huis in amstel.huizen_lijst:
+        x = random.randint(0, plattegrond.breedte)
+        y = random.randint(0, plattegrond.hoogte)
+        if plattegrond.grens_check(x, y):
+            amstel.plaats_huis(huis, x, y)
+
+
+
 if __name__ == '__main__':
     amster = Amstel()
     print(amster.huizen_lijst[13])
     plattegrond = Plattegrond(160, 180)
-    plt.show()
+    plaats_huizen(amster, plattegrond)
+    amster.visualisatie()
 
     #huis = amster.huizen_lijst[0]
     #huis.linksboven = (0, 160)
@@ -195,3 +191,14 @@ if __name__ == '__main__':
 #kleine structuur voor het kijken naar overlap
 #begin aan visualisatie met matplotlip
 #scatterplot met rectangles
+
+
+
+
+#voor volgende week
+#plattegrond en amstel linken
+# huis grens linksboven en rechtsonder check vooor het plaatsen
+#oplossingen genereren op een willekeurige manier
+#plaats_huizen moet werken. ook zonder overlap
+# vrijstand berekenen
+# waarde bepalen van de wijk die we op dat moment hebben
