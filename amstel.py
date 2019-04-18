@@ -110,21 +110,8 @@ class Huis():
 class Plattegrond():
     def __init__(self, breedte, hoogte):
 
-        X = int(180)
-        Y = int(160)
-
-        self.breedte= int(X)
-        self.hoogte= int(Y)
-
-
-    # Structuur om te kijken naar overlap
-    # X en Y van twee huizen mogen niet hetzelfde zijn
-    # &
-    # 4 punten moeten minimale vrijstand van elkaar verwijderd zijn
-
-
-
-
+        self.breedte= 180
+        self.hoogte= 160
 
         # Xs en de Y as lijst zijn even lang. want elk punt heeft een x en y waarde
         self.x_as_lijst = []
