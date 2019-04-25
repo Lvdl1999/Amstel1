@@ -62,12 +62,24 @@ class Amstel():
     def plaats_huis(self, huis, x, y):
 
         huis.linksboven = (x, y)
+        # huis.linksboven moet in het kader liggen
+        if x < 0 or x > huis.breedte:
+            return False
+        if y < 0 or y > huis.hoogte:
+            return False
+        return True
 
         x = x + huis.breedte
         huis.rechtsboven = (x, y)
 
         y = y - huis.hoogte
         huis.rechtsonder= (x, y)
+        # huis.rechtsonder moet in het kader liggen
+        if x < 0 or x > huis.breedte:
+            return False
+        if y < 0 or y > huis.hoogte:
+            return False
+        return True
 
         x = x - huis.breedte
         huis.linksonder = (x,y)
@@ -144,8 +156,6 @@ class Plattegrond():
         self.breedte= 180
         self.hoogte= 160
 
-    def huis_check(self, huis, x, y):
-        if 
 
     def grens_check(self, x, y):
         if x < 0 or x > self.breedte:
@@ -198,7 +208,7 @@ if __name__ == '__main__':
 #voor volgende week
 #plattegrond en amstel linken
 # huis grens linksboven en rechtsonder check vooor het plaatsen
-#oplossingen genereren op een willekeurige manier
-#plaats_huizen moet werken. ook zonder overlap
+# oplossingen genereren op een willekeurige manier
+# plaats_huizen moet werken. ook zonder overlap
 # vrijstand berekenen
 # waarde bepalen van de wijk die we op dat moment hebben
