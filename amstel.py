@@ -59,36 +59,39 @@ class Amstel():
             counter += 1
             self.huizen_lijst.append(huis)
 
-    def plaats_huis(self, huis, x, y):
 
-        huis.linksboven = (x, y)
-        # huis.linksboven moet in het kader liggen
+    def huis_check(self, huis, x, y):
+
+        # rechtonder punt binnen de grid?
+        # overlap checken
+
         if x < 0 or x > huis.breedte:
             return False
         if y < 0 or y > huis.hoogte:
             return False
         return True
+
+    def plaats_huis(self, huis, coord):
+
+        x = coord.x
+        y = coord.y
+
+        huis.linksboven = Coord(x, y)
 
         x = x + huis.breedte
-        huis.rechtsboven = (x, y)
+        huis.rechtsboven = Coord(x, y)
 
         y = y - huis.hoogte
-        huis.rechtsonder= (x, y)
-        # huis.rechtsonder moet in het kader liggen
-        if x < 0 or x > huis.breedte:
-            return False
-        if y < 0 or y > huis.hoogte:
-            return False
-        return True
+        huis.rechtsonder= Coord(x, y)
 
         x = x - huis.breedte
-        huis.linksonder = (x,y)
+        huis.linksonder = Coord(x,y)
 
     def visualisatie(self):
         fig, ax = plt.subplots()
 
         for huis in self.huizen_lijst:
-            rect = patches.Rectangle(huis.linksonder, huis.breedte,
+            rect = patches.Rectangle(huis.linksonder.coords(), huis.breedte,
                 huis.hoogte, linewidth=1,edgecolor='r',facecolor='none')
             ax.add_patch(rect)
 
@@ -114,6 +117,16 @@ class Amstel():
         pass
 
 
+class Coord():
+    def __init__(self, x, y):
+
+        self.x = x
+        self.y = y
+
+    def coords(self):
+        return (self.x, self.y)
+
+
 class Huis():
     def __init__(self, id, min_vrijstand, prijs, prijsverbetering, breedte, hoogte):
 
@@ -123,15 +136,20 @@ class Huis():
         self.prijsverbetering = float(prijsverbetering)
         self.breedte= breedte
         self.hoogte = hoogte
-        self.linksboven= None
-        self.rechtsboven= None
-        self.linksonder= None
-        self.rechtsonder= None
+        self.linksboven = Coord(None, None)
+        self.rechtsboven = Coord(None, None)
+        self.linksonder = Coord(None, None)
+        self.rechtsonder = Coord(None, None)
+
+    def coords(self):
+        return (self.linksboven, self.rechtsboven, self.linksonder, self.rechtsonder)
 
 
     def vrijstandscalc(self):
-        # extra vrijstand per huis
-        pass
+        # per huis kijken welk coordinaat is het dichtsbijzijnd
+        # niet met jezelf vergelijken!
+        
+
 
     def nieuwe_huiswaarde(self, amstel):
 
@@ -143,8 +161,16 @@ class Huis():
         for i in range(amstel.huizen_lijst):
             oude_huisprijs= amstel.huizen_lijst["prijs"]
             waardevermeerdering = amstel.huizen_lijst["prijsverbetering"]
-            nieuwe_huiswaarde =oude_huisprijs + waardevermeerdering*vrijstandscalc
+            nieuwe_huiswaarde = oude_huisprijs + waardevermeerdering*vrijstandscalc
             nieuwe_huiswaarde_lijst.append(nieuwe_huiswaarde)
+
+    def reset_huis(self):
+
+        self.linksboven = Coord(None, None)
+        self.rechtsboven = Coord(None, None)
+        self.linksonder = Coord(None, None)
+        self.rechtsonder = Coord(None, None)
+
 
     def __str__(self):
         return f"id = {self.id},min_vrijstand = {self.min_vrijstand}, prijs = {self.prijs}, prijsverbetering = {self.prijsverbetering}"
@@ -157,12 +183,29 @@ class Plattegrond():
         self.hoogte= 160
 
 
-    def grens_check(self, x, y):
-        if x < 0 or x > self.breedte:
+    def grens_check(self, coord):
+        if coord.x < 0 or coord.x > self.breedte:
             return False
-        if y < 0 or y > self.hoogte:
+        if coord.y < 0 or coord.y > self.hoogte:
             return False
         return True
+
+
+    def overlap_check(self, huis, huizen_lijst):
+    # hoe gaan we dit vergelijken met alle eerder geplaatste huizen?
+    # forloop in een forloop??
+        for ander_huis in huizen_lijst:
+            # kijken of de huizen die je vergelijkt al coordinaten hebben
+            if ander_huis.linksboven.x != None and huis is not ander_huis:
+                # if one rectangle is on the left side of the other:
+                if (huis.linksboven.x >= ander_huis.rechtsonder.x or ander_huis.linksboven.x >= huis.rechtsonder.x ):
+                    continue
+                # if one rectangle is above the other:
+                if (huis.linksboven.y <= ander_huis.rechtsonder.y or ander_huis.linksboven.y <= huis.rechtsonder.y ):
+                    continue
+                return True
+        return False
+
 
 class Water():
     def __init__(self, oppervlakte, aantal_sloten):
@@ -175,11 +218,14 @@ def plaats_huizen(amstel, plattegrond):
      #huizen op de plattegrond plaatsen met 4 punten (x en y)  en soort huis
 
     for huis in amstel.huizen_lijst:
-        x = random.randint(0, plattegrond.breedte)
-        y = random.randint(0, plattegrond.hoogte)
-        if plattegrond.grens_check(x, y):
-            amstel.plaats_huis(huis, x, y)
-
+        # Als een huis niet geplaatst is heeft het geen x waarde
+        while huis.linksboven.x == None:
+            x = random.randint(0, plattegrond.breedte)
+            y = random.randint(0, plattegrond.hoogte)
+            coordinaat = Coord(x, y)
+            amstel.plaats_huis(huis, coordinaat)
+            if not plattegrond.grens_check(huis.rechtsonder) or plattegrond.overlap_check(huis, amstel.huizen_lijst):
+                huis.reset_huis()
 
 
 if __name__ == '__main__':
@@ -202,12 +248,9 @@ if __name__ == '__main__':
 #begin aan visualisatie met matplotlip
 #scatterplot met rectangles
 
-
-
-
 #voor volgende week
 #plattegrond en amstel linken
-# huis grens linksboven en rechtsonder check vooor het plaatsen
+# huis grens linksboven en rechtsonder check voor het plaatsen
 # oplossingen genereren op een willekeurige manier
 # plaats_huizen moet werken. ook zonder overlap
 # vrijstand berekenen
