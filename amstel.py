@@ -154,7 +154,7 @@ class Plattegrond():
     def __init__(self, breedte, hoogte):
 
         self.breedte= 180
-        self.hoogte= 160
+        self.hoogte= 160x
 
 
     def grens_check(self, x, y):
