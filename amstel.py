@@ -148,7 +148,7 @@ class Huis():
     def vrijstandscalc(self):
         # per huis kijken welk coordinaat is het dichtsbijzijnd
         # niet met jezelf vergelijken!
-        
+
 
 
     def nieuwe_huiswaarde(self, amstel):
