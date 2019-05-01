@@ -146,8 +146,46 @@ class Huis():
 
 
     def vrijstandscalc(self):
+        pass
         # per huis kijken welk coordinaat is het dichtsbijzijnd
         # niet met jezelf vergelijken!
+        # elk punt van een huis met elk punt van ander huis vergelijken
+        # de korste afstand opslaan
+        # alle korste afstanden tussen huizen vergelijken
+        # vind optimala korste afstand van hoekpunten
+        # dan horizontaal en verticaal pas
+        #
+        # for ander_huis in huizen_lijst:
+        #     if huis is not ander_huis:
+        #         afst_lblb = math.sqrt(((ander_huis.linksboven.x - huis.linksboven.x)**2) -((ander_huis.linksboven.y - huis.linksboven.y)**2))
+        #         afst_lbrb = math.sqrt(((ander_huis.linksboven.x - huis.rechtsboven.x)**2) -((ander_huis.linksboven.y - huis.rechtsboven.y)**2))
+        #         afst_lbro = math.sqrt(((ander_huis.linksboven.x - huis.rechtsonder.x)**2) -((ander_huis.linksboven.y - huis.rechtsonder.y)**2))
+        #         afst_lblo = math.sqrt(((ander_huis.linksboven.x - huis.linksonder.x)**2) -((ander_huis.linksboven.y - huis.linksonder.y)**2))
+        #         kortste_afstand_lb = min(float(afst_lblb), float(afst_lbrb), float(afst_lbro), float(afst_lblo))
+        #
+        #         afst_rblb = math.sqrt(((ander_huis.rechtsboven.x - huis.linksboven.x)**2) -((ander_huis.rechtsboven.y - huis.linksboven.y)**2))
+        #         afst_rbrb = math.sqrt(((ander_huis.rechtsboven.x - huis.rechtsboven.x)**2) -((ander_huis.rechtsboven.y - huis.rechtsboven.y)**2))
+        #         afst_rbro = math.sqrt(((ander_huis.rechtsboven.x - huis.rechtsonder.x)**2) -((ander_huis.rechtsboven.y - huis.rechtsonder.y)**2))
+        #         afst_rblo = math.sqrt(((ander_huis.rechtsboven.x - huis.linksonder.x)**2) -((ander_huis.rechtsboven.y - huis.linksonder.y)**2))
+        #         kortste_afstand_rb = min(float(afst_rblb), float(afst_rbrb), float(afst_rbro), float(afst_rblo))
+        #
+        #
+        #         afst_lolb = math.sqrt(((ander_huis.linksonder.x - huis.linksboven.x)**2) -((ander_huis.linksonder.y - huis.linksboven.y)**2))
+        #         afst_lorb = math.sqrt(((ander_huis.linksonder.x - huis.rechtsboven.x)**2) -((ander_huis.linksonder.y - huis.rechtsboven.y)**2))
+        #         afst_loro = math.sqrt(((ander_huis.linksonder.x - huis.rechtsonder.x)**2) -((ander_huis.linksonder.y - huis.rechtsonder.y)**2))
+        #         afst_lolo = math.sqrt(((ander_huis.linksonder.x - huis.linksonder.x)**2) -((ander_huis.linksonder.y - huis.linksonder.y)**2))
+        #         kortste_afstand_lo = min(float(afst_lolb), float(afst_lorb), float(afst_loro), float(afst_lolo))
+        #
+        #
+        #         afst_rolb = math.sqrt(((ander_huis.rechtsonder.x - huis.linksboven.x)**2) -((ander_huis.rechtsonder.y - huis.linksboven.y)**2))
+        #         afst_rorb = math.sqrt(((ander_huis.rechtsonder.x - huis.rechtsboven.x)**2) -((ander_huis.rechtsonder.y - huis.rechtsboven.y)**2))
+        #         afst_roro = math.sqrt(((ander_huis.rechtsonder.x - huis.rechtsonder.x)**2) -((ander_huis.rechtsonder.y - huis.rechtsonder.y)**2))
+        #         afst_rolo = math.sqrt(((ander_huis.rechtsonder.x - huis.linksonder.x)**2) -((ander_huis.rechtsonder.y - huis.linksonder.y)**2))
+        #         kortste_afstand_ro = min(float(afst_rolb), float(afst_rorb), float(afst_roro), float(afst_rolo))
+        #
+        #         korste_afstand = min(kortste_afstand_lb, kortste_afstand_rb, kortste_afstand_lo, kortste_afstand_ro)
+        #
+        #
 
 
 
@@ -180,7 +218,7 @@ class Plattegrond():
     def __init__(self, breedte, hoogte):
 
         self.breedte= 180
-        self.hoogte= 160x
+        self.hoogte= 160
 
 
     def grens_check(self, coord):
