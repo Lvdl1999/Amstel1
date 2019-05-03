@@ -145,7 +145,7 @@ class Huis():
         return (self.linksboven, self.rechtsboven, self.linksonder, self.rechtsonder)
 
 
-    def vrijstandscalc(self):
+    def vrijstandscalc1(self):
         pass
         # per huis kijken welk coordinaat is het dichtsbijzijnd
         # niet met jezelf vergelijken!
@@ -155,38 +155,78 @@ class Huis():
         # vind optimala korste afstand van hoekpunten
         # dan horizontaal en verticaal pas
         #
-        # for ander_huis in huizen_lijst:
-        #     if huis is not ander_huis:
-        #         afst_lblb = math.sqrt(((ander_huis.linksboven.x - huis.linksboven.x)**2) -((ander_huis.linksboven.y - huis.linksboven.y)**2))
-        #         afst_lbrb = math.sqrt(((ander_huis.linksboven.x - huis.rechtsboven.x)**2) -((ander_huis.linksboven.y - huis.rechtsboven.y)**2))
-        #         afst_lbro = math.sqrt(((ander_huis.linksboven.x - huis.rechtsonder.x)**2) -((ander_huis.linksboven.y - huis.rechtsonder.y)**2))
-        #         afst_lblo = math.sqrt(((ander_huis.linksboven.x - huis.linksonder.x)**2) -((ander_huis.linksboven.y - huis.linksonder.y)**2))
-        #         kortste_afstand_lb = min(float(afst_lblb), float(afst_lbrb), float(afst_lbro), float(afst_lblo))
-        #
-        #         afst_rblb = math.sqrt(((ander_huis.rechtsboven.x - huis.linksboven.x)**2) -((ander_huis.rechtsboven.y - huis.linksboven.y)**2))
-        #         afst_rbrb = math.sqrt(((ander_huis.rechtsboven.x - huis.rechtsboven.x)**2) -((ander_huis.rechtsboven.y - huis.rechtsboven.y)**2))
-        #         afst_rbro = math.sqrt(((ander_huis.rechtsboven.x - huis.rechtsonder.x)**2) -((ander_huis.rechtsboven.y - huis.rechtsonder.y)**2))
-        #         afst_rblo = math.sqrt(((ander_huis.rechtsboven.x - huis.linksonder.x)**2) -((ander_huis.rechtsboven.y - huis.linksonder.y)**2))
-        #         kortste_afstand_rb = min(float(afst_rblb), float(afst_rbrb), float(afst_rbro), float(afst_rblo))
-        #
-        #
-        #         afst_lolb = math.sqrt(((ander_huis.linksonder.x - huis.linksboven.x)**2) -((ander_huis.linksonder.y - huis.linksboven.y)**2))
-        #         afst_lorb = math.sqrt(((ander_huis.linksonder.x - huis.rechtsboven.x)**2) -((ander_huis.linksonder.y - huis.rechtsboven.y)**2))
-        #         afst_loro = math.sqrt(((ander_huis.linksonder.x - huis.rechtsonder.x)**2) -((ander_huis.linksonder.y - huis.rechtsonder.y)**2))
-        #         afst_lolo = math.sqrt(((ander_huis.linksonder.x - huis.linksonder.x)**2) -((ander_huis.linksonder.y - huis.linksonder.y)**2))
-        #         kortste_afstand_lo = min(float(afst_lolb), float(afst_lorb), float(afst_loro), float(afst_lolo))
-        #
-        #
-        #         afst_rolb = math.sqrt(((ander_huis.rechtsonder.x - huis.linksboven.x)**2) -((ander_huis.rechtsonder.y - huis.linksboven.y)**2))
-        #         afst_rorb = math.sqrt(((ander_huis.rechtsonder.x - huis.rechtsboven.x)**2) -((ander_huis.rechtsonder.y - huis.rechtsboven.y)**2))
-        #         afst_roro = math.sqrt(((ander_huis.rechtsonder.x - huis.rechtsonder.x)**2) -((ander_huis.rechtsonder.y - huis.rechtsonder.y)**2))
-        #         afst_rolo = math.sqrt(((ander_huis.rechtsonder.x - huis.linksonder.x)**2) -((ander_huis.rechtsonder.y - huis.linksonder.y)**2))
-        #         kortste_afstand_ro = min(float(afst_rolb), float(afst_rorb), float(afst_roro), float(afst_rolo))
-        #
-        #         korste_afstand = min(kortste_afstand_lb, kortste_afstand_rb, kortste_afstand_lo, kortste_afstand_ro)
-        #
-        #
+        for ander_huis in huizen_lijst:
+            if huis is not ander_huis:
+                afst_lblb = math.sqrt(((ander_huis.linksboven.x - huis.linksboven.x)**2) -((ander_huis.linksboven.y - huis.linksboven.y)**2))
+                afst_lbrb = math.sqrt(((ander_huis.linksboven.x - huis.rechtsboven.x)**2) -((ander_huis.linksboven.y - huis.rechtsboven.y)**2))
+                afst_lbro = math.sqrt(((ander_huis.linksboven.x - huis.rechtsonder.x)**2) -((ander_huis.linksboven.y - huis.rechtsonder.y)**2))
+                afst_lblo = math.sqrt(((ander_huis.linksboven.x - huis.linksonder.x)**2) -((ander_huis.linksboven.y - huis.linksonder.y)**2))
+                kortste_afstand_lb = min(float(afst_lblb), float(afst_lbrb), float(afst_lbro), float(afst_lblo))
 
+                afst_rblb = math.sqrt(((ander_huis.rechtsboven.x - huis.linksboven.x)**2) -((ander_huis.rechtsboven.y - huis.linksboven.y)**2))
+                afst_rbrb = math.sqrt(((ander_huis.rechtsboven.x - huis.rechtsboven.x)**2) -((ander_huis.rechtsboven.y - huis.rechtsboven.y)**2))
+                afst_rbro = math.sqrt(((ander_huis.rechtsboven.x - huis.rechtsonder.x)**2) -((ander_huis.rechtsboven.y - huis.rechtsonder.y)**2))
+                afst_rblo = math.sqrt(((ander_huis.rechtsboven.x - huis.linksonder.x)**2) -((ander_huis.rechtsboven.y - huis.linksonder.y)**2))
+                kortste_afstand_rb = min(float(afst_rblb), float(afst_rbrb), float(afst_rbro), float(afst_rblo))
+
+
+                afst_lolb = math.sqrt(((ander_huis.linksonder.x - huis.linksboven.x)**2) -((ander_huis.linksonder.y - huis.linksboven.y)**2))
+                afst_lorb = math.sqrt(((ander_huis.linksonder.x - huis.rechtsboven.x)**2) -((ander_huis.linksonder.y - huis.rechtsboven.y)**2))
+                afst_loro = math.sqrt(((ander_huis.linksonder.x - huis.rechtsonder.x)**2) -((ander_huis.linksonder.y - huis.rechtsonder.y)**2))
+                afst_lolo = math.sqrt(((ander_huis.linksonder.x - huis.linksonder.x)**2) -((ander_huis.linksonder.y - huis.linksonder.y)**2))
+                kortste_afstand_lo = min(float(afst_lolb), float(afst_lorb), float(afst_loro), float(afst_lolo))
+
+
+                afst_rolb = math.sqrt(((ander_huis.rechtsonder.x - huis.linksboven.x)**2) -((ander_huis.rechtsonder.y - huis.linksboven.y)**2))
+                afst_rorb = math.sqrt(((ander_huis.rechtsonder.x - huis.rechtsboven.x)**2) -((ander_huis.rechtsonder.y - huis.rechtsboven.y)**2))
+                afst_roro = math.sqrt(((ander_huis.rechtsonder.x - huis.rechtsonder.x)**2) -((ander_huis.rechtsonder.y - huis.rechtsonder.y)**2))
+                afst_rolo = math.sqrt(((ander_huis.rechtsonder.x - huis.linksonder.x)**2) -((ander_huis.rechtsonder.y - huis.linksonder.y)**2))
+                kortste_afstand_ro = min(float(afst_rolb), float(afst_rorb), float(afst_roro), float(afst_rolo))
+
+                korste_afstand = min(kortste_afstand_lb, kortste_afstand_rb, kortste_afstand_lo, kortste_afstand_ro)
+
+
+    # Voor dinsdag (07-04-19)
+    #
+    # Functie vrijstandsberekening maken
+    #
+    # Constraints wijk (incl minimale vrijstand elk huis)
+    # —> valide oplossing
+    #
+    # Waarde wijk berekenen
+    # Random
+    #
+    #
+    # Optioneel
+    # Visualitie verbetering met vrijstand
+    # Nadenken over Algoritmes
+
+    def vrijstandscalc(self):
+
+
+        ander_huis.linksboven.x = A1
+        ander_huis.rechtsboven.x = A2
+        ander_huis.rechtsonder.x = A3
+        ander_huis.linksonder.x = A4
+
+        ander_huis.linksboven.y = A5
+        ander_huis.rechtsboven.y = A6
+        ander_huis.rechtsonder.y = A7
+        ander_huis.linksonder.y = A8
+
+
+        # VOOR LINKSBOVEN A1 en A5
+        # (en vervolgens ook A2, A3, A4 A6, A7 en A8)
+        afst_lblb = math.sqrt(((A1 - huis.linksboven.x)**2) -((A5 - huis.linksboven.y)**2))
+        afst_lbrb = math.sqrt(((A1 - huis.rechtsboven.x)**2) -((A5 - huis.rechtsboven.y)**2))
+        afst_lbro = math.sqrt(((A1 - huis.rechtsonder.x)**2) -((A5 - huis.rechtsonder.y)**2))
+        afst_lblo = math.sqrt(((A1 - huis.linksonder.x)**2) -((A5 - huis.linksonder.y)**2))
+        kortste_afstand_lb = min(float(afst_lblb), float(afst_lbrb), float(afst_lbro), float(afst_lblo))
+
+
+        # Voor elk hoekpunt de formule aanroepen
+        # Variabele meegeven en telkens aanpassen?
+        # Uiteindelijk kleinste afstand returnen (dat is de vrijstand)
 
 
     def nieuwe_huiswaarde(self, amstel):
@@ -264,6 +304,7 @@ def plaats_huizen(amstel, plattegrond):
             amstel.plaats_huis(huis, coordinaat)
             if not plattegrond.grens_check(huis.rechtsonder) or plattegrond.overlap_check(huis, amstel.huizen_lijst):
                 huis.reset_huis()
+
 
 
 if __name__ == '__main__':
