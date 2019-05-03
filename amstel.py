@@ -148,7 +148,9 @@ class Huis():
     def vrijstandscalc(self):
         # per huis kijken welk coordinaat is het dichtsbijzijnd
         # niet met jezelf vergelijken!
-
+        # eerst loop met alle hoekpunten
+        # daarna kijken of de horizontale en verticale as
+        pass
 
 
     def nieuwe_huiswaarde(self, amstel):
@@ -180,7 +182,7 @@ class Plattegrond():
     def __init__(self, breedte, hoogte):
 
         self.breedte= 180
-        self.hoogte= 160x
+        self.hoogte= 160
 
 
     def grens_check(self, coord):
