@@ -224,6 +224,58 @@ class Huis():
         # Variabele meegeven en telkens aanpassen?
         # Uiteindelijk kleinste afstand returnen (dat is de vrijstand)
 
+        def vrijstandscalc3(self):
+        # berekenen van de afstand tussen huizen
+        #ik kijk naar de lijnen ! ipv de hoekpunten
+
+        #     x1    x2
+        # y1__|_____|
+        #     |     |
+        # y2__|_____|
+
+            for ander_huis in huizen_lijst:
+                if huis is not ander_huis:
+                        # afstand berekenen in richting x
+                    if ander_huis.rechtsboven.x < huis.linksboven.x or huis.rechtsboven.x < ander_huis.linksboven.x:
+                        dx = min([abs(huis.linksboven.x - ander_huis.rechtsboven.x), abs(huis.rechtsboven.x - ander_huis.linksboven.x)])
+                    else:
+                        # anders is er overlap
+                        dx = 0
+                    # afstand berekenen in richting y
+                    if ander_huis.linksonder.y < huis.linksboven.y or huis.linksonder.y < ander_huis.linksboven.y:
+                        dy = min([abs(huis.linksboven.y - ander_huis.linksonder.y), abs(huis.linksonder.y - ander_huis.linksboven.y)])
+                    else:
+                        # anders is er overlap
+                        dy = 0
+                    # afstand berekenen met pythagoras
+                    return math.sqrt(dx**2 + dy**2)
+
+
+    # zoekt de dichtstbijzijnde buurman door met alle huizen te vergelijken uit de huizen_lijst
+    def dichtsbijzijnde_huis(self):
+        dichtstbij = None
+        kortste_afstand = None
+        # afstand alleen berekenen voor andere huizen en niet de zelfde
+        for ander_huis in huizen_lijst:
+            if huis is ander_huis:
+                continue
+            else:
+                afstand = vrijstandscalc3(self)
+                # save if closest yet
+                if not dichtstbij and not kortste_afstand:
+                    dichtstbij = ander_huis
+                    korste_afstand = afstand
+                # als de afstand korter is dan de korste_afstand zal de kortste_afstand moeten worden aangepast
+                elif afstand < korste_afstand:
+                    dichtstbij = ander_huis
+                    korste_afstand = afstand
+        return dichtstbij, korste_afstand
+
+    # Loop over de huizen_lijst om het dichtstbijzijnde buurhuis te vinden
+    for huis in huizen_lijst:
+        dichtstbij, korste_afstand = dichtsbijzijnde_huis(self)
+        print("Het dichtstbijzijnde buurhuis is huis.id", huis, "is house.id", dichtsbij,
+            "op afstand", kortste_afstand)
 
     def nieuwe_huiswaarde(self, amstel):
 
