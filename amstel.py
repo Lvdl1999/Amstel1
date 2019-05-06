@@ -169,13 +169,11 @@ class Huis():
                 afst_rblo = math.sqrt(((ander_huis.rechtsboven.x - huis.linksonder.x)**2) -((ander_huis.rechtsboven.y - huis.linksonder.y)**2))
                 kortste_afstand_rb = min(float(afst_rblb), float(afst_rbrb), float(afst_rbro), float(afst_rblo))
 
-
                 afst_lolb = math.sqrt(((ander_huis.linksonder.x - huis.linksboven.x)**2) -((ander_huis.linksonder.y - huis.linksboven.y)**2))
                 afst_lorb = math.sqrt(((ander_huis.linksonder.x - huis.rechtsboven.x)**2) -((ander_huis.linksonder.y - huis.rechtsboven.y)**2))
                 afst_loro = math.sqrt(((ander_huis.linksonder.x - huis.rechtsonder.x)**2) -((ander_huis.linksonder.y - huis.rechtsonder.y)**2))
                 afst_lolo = math.sqrt(((ander_huis.linksonder.x - huis.linksonder.x)**2) -((ander_huis.linksonder.y - huis.linksonder.y)**2))
                 kortste_afstand_lo = min(float(afst_lolb), float(afst_lorb), float(afst_loro), float(afst_lolo))
-
 
                 afst_rolb = math.sqrt(((ander_huis.rechtsonder.x - huis.linksboven.x)**2) -((ander_huis.rechtsonder.y - huis.linksboven.y)**2))
                 afst_rorb = math.sqrt(((ander_huis.rechtsonder.x - huis.rechtsboven.x)**2) -((ander_huis.rechtsonder.y - huis.rechtsboven.y)**2))
@@ -201,30 +199,28 @@ class Huis():
     # Visualitie verbetering met vrijstand
     # Nadenken over Algoritmes
 
-    def vrijstandscalc(self):
+    # def vrijstandscalc(self):
+    #
+    #
+    #     ander_huis.linksboven.x = A1
+    #     ander_huis.rechtsboven.x = A2
+    #     ander_huis.rechtsonder.x = A3
+    #     ander_huis.linksonder.x = A4
+    #
+    #     ander_huis.linksboven.y = A5
+    #     ander_huis.rechtsboven.y = A6
+    #     ander_huis.rechtsonder.y = A7
+    #     ander_huis.linksonder.y = A8
+    #
+    #     # VOOR LINKSBOVEN A1 en A5
+    #     # (en vervolgens ook A2, A3, A4 A6, A7 en A8)
+    #     afst_lblb = math.sqrt(((A1 - huis.linksboven.x)**2) -((A5 - huis.linksboven.y)**2))
+    #     afst_lbrb = math.sqrt(((A1 - huis.rechtsboven.x)**2) -((A5 - huis.rechtsboven.y)**2))
+    #     afst_lbro = math.sqrt(((A1 - huis.rechtsonder.x)**2) -((A5 - huis.rechtsonder.y)**2))
+    #     afst_lblo = math.sqrt(((A1 - huis.linksonder.x)**2) -((A5 - huis.linksonder.y)**2))
+    #     kortste_afstand_lb = min(float(afst_lblb), float(afst_lbrb), float(afst_lbro), float(afst_lblo))
 
-
-        ander_huis.linksboven.x = A1
-        ander_huis.rechtsboven.x = A2
-        ander_huis.rechtsonder.x = A3
-        ander_huis.linksonder.x = A4
-
-        ander_huis.linksboven.y = A5
-        ander_huis.rechtsboven.y = A6
-        ander_huis.rechtsonder.y = A7
-        ander_huis.linksonder.y = A8
-
-
-        # VOOR LINKSBOVEN A1 en A5
-        # (en vervolgens ook A2, A3, A4 A6, A7 en A8)
-        afst_lblb = math.sqrt(((A1 - huis.linksboven.x)**2) -((A5 - huis.linksboven.y)**2))
-        afst_lbrb = math.sqrt(((A1 - huis.rechtsboven.x)**2) -((A5 - huis.rechtsboven.y)**2))
-        afst_lbro = math.sqrt(((A1 - huis.rechtsonder.x)**2) -((A5 - huis.rechtsonder.y)**2))
-        afst_lblo = math.sqrt(((A1 - huis.linksonder.x)**2) -((A5 - huis.linksonder.y)**2))
-        kortste_afstand_lb = min(float(afst_lblb), float(afst_lbrb), float(afst_lbro), float(afst_lblo))
-
-
-        # Voor elk hoekpunt de formule aanroepen
+        # Voor elk hoekpunt de formule aanroepen dus A1, A2, A3, A4 en A5, A6, A7, A8
         # Variabele meegeven en telkens aanpassen?
         # Uiteindelijk kleinste afstand returnen (dat is de vrijstand)
 
@@ -304,7 +300,6 @@ def plaats_huizen(amstel, plattegrond):
             amstel.plaats_huis(huis, coordinaat)
             if not plattegrond.grens_check(huis.rechtsonder) or plattegrond.overlap_check(huis, amstel.huizen_lijst):
                 huis.reset_huis()
-
 
 
 if __name__ == '__main__':
