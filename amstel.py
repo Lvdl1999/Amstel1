@@ -31,6 +31,7 @@ class Amstel():
         self.aantal_bungalow = int(self.aantal_huizen * 0.25)
         self.aantal_maison = int(self.aantal_huizen * 0.15)
 
+
         while True:
             self.aantal_sloten = int(input("Aantal sloten:  "))
             if self.aantal_sloten not in [1, 2, 3, 4]:
@@ -39,6 +40,7 @@ class Amstel():
                 break
         # aanmaken lijst met alle huis objecten
         self.huizen_lijst = []
+        self.sloten_lijst = []
 
         # elk huis object toevoegen aan lijst en daarbij behorend id elke keer met 1 verhogen.
         # je wilt dat elk huis een ander id heeft
@@ -60,8 +62,15 @@ class Amstel():
             counter += 1
             self.huizen_lijst.append(huis)
 
+        counter = 300
+        for i in range(self.aantal_sloten):
+            sloot = Water(counter, self.aantal_sloten, 10)
+            counter += 1
+            self.sloten_lijst.append(sloot)
+
 
     def huis_check(self, huis, x, y):
+
 
         # rechtonder punt binnen de grid?
         # overlap checken
@@ -88,19 +97,52 @@ class Amstel():
         x = x - huis.breedte
         huis.linksonder = Coord(x,y)
 
+    def plaats_sloot(self, sloot, coord):
+
+        x = coord.x
+        y = coord.y
+
+        sloot.linksboven = Coord(x, y)
+
+        x = x + sloot.breedte
+        sloot.rechtsboven = Coord(x, y)
+
+        y = y - sloot.hoogte
+        sloot.rechtsonder= Coord(x, y)
+
+        x = x - sloot.breedte
+        sloot.linksonder = Coord(x,y)
+
     def visualisatie(self):
         fig, ax = plt.subplots()
 
         for huis in self.huizen_lijst:
-            rect = patches.Rectangle(huis.linksonder.coords(), huis.breedte,
-                huis.hoogte, linewidth=1,edgecolor='r',facecolor='none')
+            if huis.id < 300:
+                rect = patches.Rectangle(huis.linksonder.coords(), huis.breedte,
+                huis.hoogte, linewidth=1,edgecolor='black',facecolor='none')
+            else:
+                rect = patches.Rectangle(huis.linksonder.coords(), huis.breedte,
+                huis.hoogte, linewidth=1,edgecolor='blue',facecolor='none')
+
             ax.add_patch(rect)
             rx, ry = rect.get_xy()
             cx = rx + rect.get_width()/2.0
             cy = ry + rect.get_height()/2.0
 
-            ax.annotate(huis.id, (cx, cy), color='pink', weight='bold',
-                fontsize=6, ha='center', va='center')
+            if huis.id < 100:
+                ax.annotate(huis.id, (cx, cy), color='red', weight='bold',
+                    fontsize=6, ha='center', va='center')
+            elif 100 < huis.id < 200:
+                ax.annotate(huis.id, (cx, cy), color='black', weight='bold',
+                    fontsize=6, ha='center', va='center')
+            elif 200 < huis.id < 300:
+                ax.annotate(huis.id, (cx, cy), color='green', weight='bold',
+                    fontsize=6, ha='center', va='center')
+            # Voor water blauw!
+            else:
+                ax.annotate(huis.id, (cx, cy), color='blue', weight='bold',
+                    fontsize=6, ha='center', va='center')
+
 
         ax.set_xlim([0, 180])
         ax.set_ylim([0, 160])
@@ -141,12 +183,13 @@ class Huis():
         self.min_vrijstand = int(min_vrijstand)
         self.prijs = int(prijs)
         self.prijsverbetering = float(prijsverbetering)
-        self.breedte= breedte
+        self.breedte = breedte
         self.hoogte = hoogte
         self.linksboven = Coord(None, None)
         self.rechtsboven = Coord(None, None)
         self.linksonder = Coord(None, None)
         self.rechtsonder = Coord(None, None)
+
 
     def coords(self):
         return (self.linksboven, self.rechtsboven, self.linksonder, self.rechtsonder)
@@ -217,7 +260,7 @@ class Huis():
             nieuwe_huiswaarde = oude_huisprijs + waardevermeerdering*(vrijstandscalc - amstel.huizen_lijst["min_vrijstand"])
             nieuwe_huiswaarde_lijst.append(nieuwe_huiswaarde)
 
-    def reset_huis(self):
+    def reset(self):
 
         self.linksboven = Coord(None, None)
         self.rechtsboven = Coord(None, None)
@@ -234,6 +277,7 @@ class Plattegrond():
 
         self.breedte= 180
         self.hoogte= 160
+        self.oppervlakte = 160*180
 
 
     def grens_check(self, coord):
@@ -242,6 +286,13 @@ class Plattegrond():
         if coord.y < 0 or coord.y > self.hoogte:
             return False
         return True
+
+    def sloot_verhouding_check(self, coord):
+
+        if sloot.breedte > 4 * sloot.hoogte:
+            return False
+        else:
+            return True
 
 
     def overlap_check(self, huis, huizen_lijst):
@@ -260,10 +311,19 @@ class Plattegrond():
 
 
 class Water():
-    def __init__(self, oppervlakte, aantal_sloten):
+    def __init__(self, id, aantal_sloten, slootopp):
 
-        self.oppervlakte= oppervlakte
+        self.id = int(id)
+        self.linksboven = Coord(None, None)
+        self.rechtsboven = Coord(None, None)
+        self.linksonder = Coord(None, None)
+        self.rechtsonder = Coord(None, None)
         self.aantal_sloten = aantal_sloten
+        self.slootopp = float(plattegrond.oppervlakte * 0.2)
+
+        self.hoogte = hoogte
+        self.breedte <= 4 * self.hoogte
+
 
 def plaats_huizen(amstel, plattegrond):
 
@@ -277,7 +337,18 @@ def plaats_huizen(amstel, plattegrond):
             coordinaat = Coord(x, y)
             amstel.plaats_huis(huis, coordinaat)
             if not plattegrond.grens_check(huis.rechtsonder) or plattegrond.overlap_check(huis, amstel.huizen_lijst):
-                huis.reset_huis()
+                huis.reset()
+
+def plaats_sloten(amstel, plattegrond):
+
+    while sloot.linksboven.x == None:
+        x = random.randint(0, plattegrond.breedte)
+        y = random.randint(0, plattegrond.hoogte)
+        coordinaat = Coord(x, y)
+        amstel.plaats_sloot(sloot, coordinaat)
+
+        if not sloot.grens_check(sloot.rechtsonder) or not sloot.sloot_verhouding_check:
+            sloot.reset()
 
 
 if __name__ == '__main__':
