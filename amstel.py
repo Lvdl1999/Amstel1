@@ -288,10 +288,10 @@ class Huis():
         # om nieuwe waarde te krijgen
         nieuwe_huiswaarde_lijst = []
 
-        for i in range(amstel.huizen_lijst):
+        for huis in amstel.huizen_lijst:
             oude_huisprijs= amstel.huizen_lijst["prijs"]
             waardevermeerdering = amstel.huizen_lijst["prijsverbetering"]
-            nieuwe_huiswaarde = oude_huisprijs + waardevermeerdering*vrijstandscalc
+            nieuwe_huiswaarde = oude_huisprijs + waardevermeerdering*(vrijstandscalc3 - amstel.huizen_lijst["min_vrijstand"])
             nieuwe_huiswaarde_lijst.append(nieuwe_huiswaarde)
 
     def reset_huis(self):
