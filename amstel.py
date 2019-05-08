@@ -40,6 +40,8 @@ class Amstel():
                 break
         # aanmaken lijst met alle huis objecten
         self.huizen_lijst = []
+        self.totaalwaarde = 0
+
         # self.sloten_lijst = []
 
         # elk huis object toevoegen aan lijst en daarbij behorend id elke keer met 1 verhogen.
@@ -67,7 +69,6 @@ class Amstel():
         #     sloot = Water(counter, self.aantal_sloten, 10)
         #     counter += 1
         #     self.sloten_lijst.append(sloot)
-
 
     def huis_check(self, huis, x, y):
 
@@ -162,8 +163,12 @@ class Amstel():
     def bovengrens(self):
         pass
 
+
     def totale_nieuwe_huiswaarde(self, Huis):
-        pass
+
+        for waarde in huis.nieuwe_huiswaarde_lijst:
+            totaalwaarde += float(waarde)
+            return self.totaalwaarde
 
 
 class Coord():
@@ -189,6 +194,8 @@ class Huis():
         self.rechtsboven = Coord(None, None)
         self.linksonder = Coord(None, None)
         self.rechtsonder = Coord(None, None)
+        self.nieuwe_huiswaarde_lijst = []
+        self.nieuwe_huiswaarde = 0
 
 
     def coords(self):
@@ -252,13 +259,17 @@ class Huis():
         # itereer over lijst met huizen . zoek per huis prijs op
         # en tel daarbij vrijstandscalc* waardevermeerdering per huis op
         # om nieuwe waarde te krijgen
-        nieuwe_huiswaarde_lijst = []
+
 
         for huis in amstel.huizen_lijst:
-            oude_huisprijs= amstel.huizen_lijst["prijs"]
-            waardevermeerdering = amstel.huizen_lijst["prijsverbetering"]
-            nieuwe_huiswaarde = oude_huisprijs + waardevermeerdering*(vrijstandscalc - amstel.huizen_lijst["min_vrijstand"])
-            nieuwe_huiswaarde_lijst.append(nieuwe_huiswaarde)
+            oude_huisprijs = float(amstel.huizen_lijst["prijs"])
+            waardevermeerdering = float(amstel.huizen_lijst["prijsverbetering"])
+            min_vrijstand = float(amstel.huizen_lijst["min_vrijstand"])
+            nieuwe_huiswaarde = (((oude_huisprijs + waardevermeerdering) * huis.kortste_afstand) - min_vrijstand)
+            self.nieuwe_huiswaarde_lijst.append(self.nieuwe_huiswaarde)
+
+            return self.nieuwe_huiswaarde_lijst
+
 
     def reset(self):
 
@@ -286,7 +297,7 @@ class Plattegrond():
         if coord.y < 0 or coord.y > self.hoogte:
             return False
         return True
-    #
+
     # def sloot_verhouding_check(self, coord):
     #
     #     if sloot.breedte > 4 * sloot.hoogte:
@@ -310,12 +321,12 @@ class Plattegrond():
         return False
 
 
-def herplaats_huizen(self, amstel):
-
-    for huis in amstel.huizen_lijst:
-        huis.reset()
-
-    plaats_huizen(amstel, plattegrond)
+# def herplaats_huizen(amstel):
+#
+#     for huis in amstel.huizen_lijst:
+#         huis.reset()
+#
+#     plaats_huizen(amstel, plattegrond)
 
 
 class Water():
@@ -370,16 +381,18 @@ if __name__ == '__main__':
         dichtstbij, kortste_afstand = huis.dichtsbijzijnde_huis(amster.huizen_lijst)
         print(f"Voor {huis.id} is het dichtstbijzijnde huis {dichtstbij.id}. Met afstand van {kortste_afstand}m.")
 
+    print(f"Totale wijk waarde is: {amster.totale_nieuwe_huiswaarde(amster.totaalwaarde)} euro")
+
     amster.visualisatie()
 
-    while True:
-        antwoord = input("Wil je de huizen verplaatsen?:  ")
-        if antwoord not in ["ja", "nee"]:
-            print("Beantwoord vraag met ja of nee")
-        elif antwoord == "ja":
-            herplaats_huizen(amster)
-        else:
-            break
+    # while True:
+    #     antwoord = input("Wil je de huizen verplaatsen?:  ")
+    #     if antwoord not in ["ja", "nee"]:
+    #         print("Beantwoord vraag met ja of nee")
+    #     elif antwoord == "ja":
+    #         herplaats_huizen(amster)
+    #     else:
+    #         break
 
     #huis = amster.huizen_lijst[0]
     #huis.linksboven = (0, 160)
