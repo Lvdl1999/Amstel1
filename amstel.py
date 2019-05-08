@@ -40,7 +40,7 @@ class Amstel():
                 break
         # aanmaken lijst met alle huis objecten
         self.huizen_lijst = []
-        self.sloten_lijst = []
+        # self.sloten_lijst = []
 
         # elk huis object toevoegen aan lijst en daarbij behorend id elke keer met 1 verhogen.
         # je wilt dat elk huis een ander id heeft
@@ -62,11 +62,11 @@ class Amstel():
             counter += 1
             self.huizen_lijst.append(huis)
 
-        counter = 300
-        for i in range(self.aantal_sloten):
-            sloot = Water(counter, self.aantal_sloten, 10)
-            counter += 1
-            self.sloten_lijst.append(sloot)
+        # counter = 300
+        # for i in range(self.aantal_sloten):
+        #     sloot = Water(counter, self.aantal_sloten, 10)
+        #     counter += 1
+        #     self.sloten_lijst.append(sloot)
 
 
     def huis_check(self, huis, x, y):
@@ -97,21 +97,21 @@ class Amstel():
         x = x - huis.breedte
         huis.linksonder = Coord(x,y)
 
-    def plaats_sloot(self, sloot, coord):
-
-        x = coord.x
-        y = coord.y
-
-        sloot.linksboven = Coord(x, y)
-
-        x = x + sloot.breedte
-        sloot.rechtsboven = Coord(x, y)
-
-        y = y - sloot.hoogte
-        sloot.rechtsonder= Coord(x, y)
-
-        x = x - sloot.breedte
-        sloot.linksonder = Coord(x,y)
+    # def plaats_sloot(self, sloot, coord):
+    #
+    #     x = coord.x
+    #     y = coord.y
+    #
+    #     sloot.linksboven = Coord(x, y)
+    #
+    #     x = x + sloot.breedte
+    #     sloot.rechtsboven = Coord(x, y)
+    #
+    #     y = y - sloot.hoogte
+    #     sloot.rechtsonder= Coord(x, y)
+    #
+    #     x = x - sloot.breedte
+    #     sloot.linksonder = Coord(x,y)
 
     def visualisatie(self):
         fig, ax = plt.subplots()
@@ -286,13 +286,13 @@ class Plattegrond():
         if coord.y < 0 or coord.y > self.hoogte:
             return False
         return True
-
-    def sloot_verhouding_check(self, coord):
-
-        if sloot.breedte > 4 * sloot.hoogte:
-            return False
-        else:
-            return True
+    #
+    # def sloot_verhouding_check(self, coord):
+    #
+    #     if sloot.breedte > 4 * sloot.hoogte:
+    #         return False
+    #     else:
+    #         return True
 
 
     def overlap_check(self, huis, huizen_lijst):
@@ -308,6 +308,14 @@ class Plattegrond():
 
                 return True
         return False
+
+
+def herplaats_huizen(self, amstel):
+
+    for huis in amstel.huizen_lijst:
+        huis.reset()
+
+    plaats_huizen(amstel, plattegrond)
 
 
 class Water():
@@ -339,16 +347,16 @@ def plaats_huizen(amstel, plattegrond):
             if not plattegrond.grens_check(huis.rechtsonder) or plattegrond.overlap_check(huis, amstel.huizen_lijst):
                 huis.reset()
 
-def plaats_sloten(amstel, plattegrond):
-
-    while sloot.linksboven.x == None:
-        x = random.randint(0, plattegrond.breedte)
-        y = random.randint(0, plattegrond.hoogte)
-        coordinaat = Coord(x, y)
-        amstel.plaats_sloot(sloot, coordinaat)
-
-        if not sloot.grens_check(sloot.rechtsonder) or not sloot.sloot_verhouding_check:
-            sloot.reset()
+# def plaats_sloten(amstel, plattegrond):
+#
+#     while sloot.linksboven.x == None:
+#         x = random.randint(0, plattegrond.breedte)
+#         y = random.randint(0, plattegrond.hoogte)
+#         coordinaat = Coord(x, y)
+#         amstel.plaats_sloot(sloot, coordinaat)
+#
+#         if not sloot.grens_check(sloot.rechtsonder) or not sloot.sloot_verhouding_check:
+#             sloot.reset()
 
 
 if __name__ == '__main__':
@@ -363,6 +371,15 @@ if __name__ == '__main__':
         print(f"Voor {huis.id} is het dichtstbijzijnde huis {dichtstbij.id}. Met afstand van {kortste_afstand}m.")
 
     amster.visualisatie()
+
+    while True:
+        antwoord = input("Wil je de huizen verplaatsen?:  ")
+        if antwoord not in ["ja", "nee"]:
+            print("Beantwoord vraag met ja of nee")
+        elif antwoord == "ja":
+            herplaats_huizen(amster)
+        else:
+            break
 
     #huis = amster.huizen_lijst[0]
     #huis.linksboven = (0, 160)
