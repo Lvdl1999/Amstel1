@@ -164,11 +164,19 @@ class Amstel():
         pass
 
 
-    def totale_nieuwe_huiswaarde(self, Huis):
+    def totale_nieuwe_huiswaarde(self):
 
-        for waarde in huis.nieuwe_huiswaarde_lijst:
-            totaalwaarde += float(waarde)
-            return self.totaalwaarde
+        self.totaalwaarde = 0
+
+        # elk huis heeft nu zn eigen waarde die die kan berekenen
+        # dus we lopen over de huizenlijst en vragen van elk huis zn waarde en tel bij elkaar op
+        for huis in self.huizen_lijst:
+            # voor we de nieuwe huiswaarde aanroepen eerst zekerweten dat
+            # dichtstbijzijnde afstand is berekend en opgeslagen in self.korststeafstand
+            ander, afstand = huis.dichtsbijzijnde_huis(self.huizen_lijst)
+            self.totaalwaarde += huis.nieuwe_huiswaarde_calc(afstand)
+
+        return self.totaalwaarde
 
 
 class Coord():
@@ -194,7 +202,6 @@ class Huis():
         self.rechtsboven = Coord(None, None)
         self.linksonder = Coord(None, None)
         self.rechtsonder = Coord(None, None)
-        self.nieuwe_huiswaarde_lijst = []
         self.nieuwe_huiswaarde = 0
 
 
@@ -254,21 +261,18 @@ class Huis():
 
         return dichtstbij, kortste_afstand
 
-    def nieuwe_huiswaarde(self, amstel):
+    def nieuwe_huiswaarde_calc(self, kortste_afstand):
 
         # itereer over lijst met huizen . zoek per huis prijs op
         # en tel daarbij vrijstandscalc* waardevermeerdering per huis op
         # om nieuwe waarde te krijgen
 
+        oude_huisprijs = float(self.prijs)
+        waardevermeerdering = float(self.prijsverbetering)
+        min_vrijstand = float(self.min_vrijstand)
+        self.nieuwe_huiswaarde = (((oude_huisprijs + waardevermeerdering) * kortste_afstand) - min_vrijstand)
 
-        for huis in amstel.huizen_lijst:
-            oude_huisprijs = float(amstel.huizen_lijst["prijs"])
-            waardevermeerdering = float(amstel.huizen_lijst["prijsverbetering"])
-            min_vrijstand = float(amstel.huizen_lijst["min_vrijstand"])
-            nieuwe_huiswaarde = (((oude_huisprijs + waardevermeerdering) * huis.kortste_afstand) - min_vrijstand)
-            self.nieuwe_huiswaarde_lijst.append(self.nieuwe_huiswaarde)
-
-            return self.nieuwe_huiswaarde_lijst
+        return self.nieuwe_huiswaarde
 
 
     def reset(self):
@@ -381,7 +385,7 @@ if __name__ == '__main__':
         dichtstbij, kortste_afstand = huis.dichtsbijzijnde_huis(amster.huizen_lijst)
         print(f"Voor {huis.id} is het dichtstbijzijnde huis {dichtstbij.id}. Met afstand van {kortste_afstand}m.")
 
-    print(f"Totale wijk waarde is: {amster.totale_nieuwe_huiswaarde(amster.totaalwaarde)} euro")
+    print(f"Totale wijk waarde is: {int(amster.totale_nieuwe_huiswaarde())} euro")
 
     amster.visualisatie()
 
