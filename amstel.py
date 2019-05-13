@@ -98,6 +98,31 @@ class Amstel():
         x = x - huis.breedte
         huis.linksonder = Coord(x,y)
 
+    #
+    # def herplaats_huis(self, huis, coord):
+    #
+    #     print(random.self.huizen_lijst([0]))
+    #
+    #
+    #     # random.huis.id()
+    #
+    #     x = coord.x + 2
+    #     y = coord.y + 3
+    #
+    #     huis.linksboven = Coord(x, y)
+    #
+    #     x = x + huis.breedte
+    #     huis.rechtsboven = Coord(x, y)
+    #
+    #     y = y - huis.hoogte
+    #     huis.rechtsonder= Coord(x, y)
+    #
+    #     x = x - huis.breedte
+    #     huis.linksonder = Coord(x,y)
+
+
+
+
     # def plaats_sloot(self, sloot, coord):
     #
     #     x = coord.x
@@ -362,6 +387,24 @@ def plaats_huizen(amstel, plattegrond):
             if not plattegrond.grens_check(huis.rechtsonder) or plattegrond.overlap_check(huis, amstel.huizen_lijst):
                 huis.reset()
 
+def herplaats_huis(amstel, plattegrond, huizen_lijst):
+
+    huis.id = random.huizen_lijst([0])
+    while huis.id != None:
+        huis.reset()
+
+    # Als een huis niet geplaatst is heeft het geen x waarde
+    while huis.linksboven.x == None:
+        x = random.randint(0, plattegrond.breedte)
+        y = random.randint(0, plattegrond.hoogte)
+        coordinaat = Coord(x + 5, y + 5)
+        amstel.plaats_huis(huis, coordinaat)
+        if not plattegrond.grens_check(huis.rechtsonder) or plattegrond.overlap_check(huis, amstel.huizen_lijst):
+            huis.reset()
+
+
+
+
 # def plaats_sloten(amstel, plattegrond):
 #
 #     while sloot.linksboven.x == None:
@@ -389,14 +432,15 @@ if __name__ == '__main__':
 
     amster.visualisatie()
 
-    # while True:
-    #     antwoord = input("Wil je de huizen verplaatsen?:  ")
-    #     if antwoord not in ["ja", "nee"]:
-    #         print("Beantwoord vraag met ja of nee")
-    #     elif antwoord == "ja":
-    #         herplaats_huizen(amster)
-    #     else:
-    #         break
+    while True:
+        antwoord = input("Wil je random een huis verplaatsen?:  ")
+        if antwoord not in ["ja", "nee"]:
+            print("Beantwoord vraag met ja of nee")
+        elif antwoord == "ja":
+            herplaats_huis(amster, plattegrond)
+            print(f"Totale wijk waarde is: {int(amster.totale_nieuwe_huiswaarde())} euro")
+        else:
+            break
 
     #huis = amster.huizen_lijst[0]
     #huis.linksboven = (0, 160)
