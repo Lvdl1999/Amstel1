@@ -133,16 +133,16 @@ class Amstel():
             if huis.id < 100:
                 ax.annotate(huis.id, (cx, cy), color='red', weight='bold',
                     fontsize=6, ha='center', va='center')
-            elif 100 < huis.id < 200:
+            elif 100 <= huis.id < 200:
                 ax.annotate(huis.id, (cx, cy), color='black', weight='bold',
                     fontsize=6, ha='center', va='center')
-            elif 200 < huis.id < 300:
+            elif 200 <= huis.id < 300:
                 ax.annotate(huis.id, (cx, cy), color='green', weight='bold',
                     fontsize=6, ha='center', va='center')
             # Voor water blauw!
-            else:
-                ax.annotate(huis.id, (cx, cy), color='blue', weight='bold',
-                    fontsize=6, ha='center', va='center')
+            # else:
+            #     ax.annotate(huis.id, (cx, cy), color='blue', weight='bold',
+            #         fontsize=6, ha='center', va='center')
 
 
         ax.set_xlim([0, 180])
