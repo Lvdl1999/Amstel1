@@ -98,31 +98,6 @@ class Amstel():
         x = x - huis.breedte
         huis.linksonder = Coord(x,y)
 
-    #
-    # def herplaats_huis(self, huis, coord):
-    #
-    #     print(random.self.huizen_lijst([0]))
-    #
-    #
-    #     # random.huis.id()
-    #
-    #     x = coord.x + 2
-    #     y = coord.y + 3
-    #
-    #     huis.linksboven = Coord(x, y)
-    #
-    #     x = x + huis.breedte
-    #     huis.rechtsboven = Coord(x, y)
-    #
-    #     y = y - huis.hoogte
-    #     huis.rechtsonder= Coord(x, y)
-    #
-    #     x = x - huis.breedte
-    #     huis.linksonder = Coord(x,y)
-
-
-
-
     # def plaats_sloot(self, sloot, coord):
     #
     #     x = coord.x
@@ -214,102 +189,6 @@ class Coord():
         return (self.x, self.y)
 
 
-class Huis():
-    def __init__(self, id, min_vrijstand, prijs, prijsverbetering, breedte, hoogte):
-
-        self.id = int(id)
-        self.min_vrijstand = int(min_vrijstand)
-        self.prijs = int(prijs)
-        self.prijsverbetering = float(prijsverbetering)
-        self.breedte = breedte
-        self.hoogte = hoogte
-        self.linksboven = Coord(None, None)
-        self.rechtsboven = Coord(None, None)
-        self.linksonder = Coord(None, None)
-        self.rechtsonder = Coord(None, None)
-        self.nieuwe_huiswaarde = 0
-
-
-    def coords(self):
-        return (self.linksboven, self.rechtsboven, self.linksonder, self.rechtsonder)
-
-
-    def vrijstandscalc(self, ander):
-        # berekenen van de afstand tussen huizen
-        #ik kijk naar de lijnen ! ipv de hoekpunten
-
-        #     x1    x2
-        # y1__|_____|
-        #     |     |
-        # y2__|_____|
-
-        dx = 0
-        dy = 0
-
-        links = self.linksboven.x
-        rechts = self.rechtsboven.x
-
-        ander_links = ander.linksboven.x
-        ander_rechts = ander.rechtsboven.x
-
-        boven = self.linksboven.y
-        onder = self.linksonder.y
-
-        ander_boven = ander.linksboven.y
-        ander_onder = ander.linksonder.y
-
-        if links > ander_rechts or rechts < ander_links:
-            dx = min([abs(links - ander_rechts), abs(rechts - ander_links)])
-
-        if boven < ander_onder or onder > ander_boven:
-            dy = min([abs(boven - ander_onder), abs(onder - ander_boven)])
-
-        return math.sqrt(dx**2 + dy**2)
-
-
-
-    # zoekt de dichtstbijzijnde buurman door met alle huizen te vergelijken uit de huizen_lijst
-    def dichtsbijzijnde_huis(self, huizen_lijst):
-        dichtstbij = None
-        kortste_afstand = float('inf')
-        # afstand alleen berekenen voor andere huizen en niet de zelfde
-        for ander_huis in huizen_lijst:
-            if self is ander_huis:
-                continue
-            else:
-                afstand = self.vrijstandscalc(ander_huis)
-
-                # als de afstand korter is dan de kortste_afstand zal de kortste_afstand moeten worden aangepast
-                if afstand < kortste_afstand:
-                    dichtstbij = ander_huis
-                    kortste_afstand = afstand
-
-        return dichtstbij, kortste_afstand
-
-    def nieuwe_huiswaarde_calc(self, kortste_afstand):
-
-        # itereer over lijst met huizen . zoek per huis prijs op
-        # en tel daarbij vrijstandscalc* waardevermeerdering per huis op
-        # om nieuwe waarde te krijgen
-
-        oude_huisprijs = float(self.prijs)
-        waardevermeerdering = float(self.prijsverbetering)
-        min_vrijstand = float(self.min_vrijstand)
-        self.nieuwe_huiswaarde = (((oude_huisprijs + waardevermeerdering) * kortste_afstand) - min_vrijstand)
-
-        return self.nieuwe_huiswaarde
-
-
-    def reset(self):
-
-        self.linksboven = Coord(None, None)
-        self.rechtsboven = Coord(None, None)
-        self.linksonder = Coord(None, None)
-        self.rechtsonder = Coord(None, None)
-
-
-    def __str__(self):
-        return f"id = {self.id},min_vrijstand = {self.min_vrijstand}, prijs = {self.prijs}, prijsverbetering = {self.prijsverbetering}"
 
 
 class Plattegrond():
@@ -387,24 +266,6 @@ def plaats_huizen(amstel, plattegrond):
             if not plattegrond.grens_check(huis.rechtsonder) or plattegrond.overlap_check(huis, amstel.huizen_lijst):
                 huis.reset()
 
-def herplaats_huis(amstel, plattegrond, huizen_lijst):
-
-    huis.id = random.huizen_lijst([0])
-    while huis.id != None:
-        huis.reset()
-
-    # Als een huis niet geplaatst is heeft het geen x waarde
-    while huis.linksboven.x == None:
-        x = random.randint(0, plattegrond.breedte)
-        y = random.randint(0, plattegrond.hoogte)
-        coordinaat = Coord(x + 5, y + 5)
-        amstel.plaats_huis(huis, coordinaat)
-        if not plattegrond.grens_check(huis.rechtsonder) or plattegrond.overlap_check(huis, amstel.huizen_lijst):
-            huis.reset()
-
-
-
-
 # def plaats_sloten(amstel, plattegrond):
 #
 #     while sloot.linksboven.x == None:
@@ -432,15 +293,14 @@ if __name__ == '__main__':
 
     amster.visualisatie()
 
-    while True:
-        antwoord = input("Wil je random een huis verplaatsen?:  ")
-        if antwoord not in ["ja", "nee"]:
-            print("Beantwoord vraag met ja of nee")
-        elif antwoord == "ja":
-            herplaats_huis(amster, plattegrond)
-            print(f"Totale wijk waarde is: {int(amster.totale_nieuwe_huiswaarde())} euro")
-        else:
-            break
+    # while True:
+    #     antwoord = input("Wil je de huizen verplaatsen?:  ")
+    #     if antwoord not in ["ja", "nee"]:
+    #         print("Beantwoord vraag met ja of nee")
+    #     elif antwoord == "ja":
+    #         herplaats_huizen(amster)
+    #     else:
+    #         break
 
     #huis = amster.huizen_lijst[0]
     #huis.linksboven = (0, 160)
