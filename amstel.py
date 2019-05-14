@@ -45,6 +45,7 @@ class Amstel():
                 break
         # aanmaken lijst met alle huis objecten
         self.huizen_lijst = []
+        self.waardes_random = []
         self.totaalwaarde = 0
 
         # self.sloten_lijst = []
@@ -196,7 +197,6 @@ class Amstel():
     def plaats_huizen(self, plattegrond):
 
          #huizen op de plattegrond plaatsen met 4 punten (x en y)  en soort huis
-
         for huis in self.huizen_lijst:
             self.plaats_random(huis, plattegrond)
 
@@ -210,8 +210,20 @@ class Amstel():
 
         return huis, linksboven
 
+    def schuif_huis(self, huis, coord):
+        huis = random.choice(self.huizen_lijst)
+        linksboven_oud = huis.linksboven
 
+        huis.linksboven = Coord(x + 5, y + 2)
 
+        x = x + huis.breedte
+        huis.rechtsboven = Coord(x, y)
+
+        y = y - huis.hoogte
+        huis.rechtsonder= Coord(x, y)
+
+        x = x - huis.breedte
+        huis.linksonder = Coord(x,y)
 
 
 
@@ -226,9 +238,6 @@ class Amstel():
 #
 #         if not sloot.grens_check(sloot.rechtsonder) or not sloot.sloot_verhouding_check:
 #             sloot.reset()
-
-
-
 
 
 #voor donderdag:

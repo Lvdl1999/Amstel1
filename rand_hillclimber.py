@@ -2,7 +2,7 @@ from amstel import Amstel
 from plattegrond import Plattegrond
 
 
-def hillclimber():
+def rand_hillclimber():
     amstel = Amstel()
     print(amstel.huizen_lijst[13])
     plattegrond = Plattegrond(160, 180)
@@ -18,11 +18,11 @@ def hillclimber():
     amstel.visualisatie()
 
     for i in range(1000):
-        huis, linksboven = amstel.schuif_huis(huis, coord)
+        huis, linksboven = amstel.herplaats_huis(plattegrond)
         nieuwe_waarde = int(amstel.totale_nieuwe_huiswaarde())
 
         if oude_waarde > nieuwe_waarde:
-            amstel.plaats_huis(huis, linksboven_oud)
+            amstel.plaats_huis(huis, linksboven)
         else:
             oude_waarde = nieuwe_waarde
             print(f"Totale wijk waarde is: {oude_waarde} euro")
