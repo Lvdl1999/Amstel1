@@ -1,3 +1,6 @@
+from coord import Coord
+import math
+
 class Huis():
     def __init__(self, id, min_vrijstand, prijs, prijsverbetering, breedte, hoogte):
 

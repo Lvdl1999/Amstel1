@@ -34,11 +34,3 @@ class Plattegrond():
 
                 return True
         return False
-
-
-# def herplaats_huizen(amstel):
-#
-#     for huis in amstel.huizen_lijst:
-#         huis.reset()
-#
-#     plaats_huizen(amstel, plattegrond)

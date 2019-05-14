@@ -11,6 +11,11 @@ import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 import math
 
+from coord import Coord
+from huis import Huis
+from plattegrond import Plattegrond
+from water import Water
+
 class Amstel():
     """
     This is the Amstel neighbourhood class. It contains necessary
@@ -178,22 +183,38 @@ class Amstel():
 
         return self.totaalwaarde
 
-
-
-
-def plaats_huizen(amstel, plattegrond):
-
-     #huizen op de plattegrond plaatsen met 4 punten (x en y)  en soort huis
-
-    for huis in amstel.huizen_lijst:
+    def plaats_random(self, huis, plattegrond):
         # Als een huis niet geplaatst is heeft het geen x waarde
         while huis.linksboven.x == None:
             x = random.randint(0, plattegrond.breedte)
             y = random.randint(0, plattegrond.hoogte)
             coordinaat = Coord(x, y)
-            amstel.plaats_huis(huis, coordinaat)
-            if not plattegrond.grens_check(huis.rechtsonder) or plattegrond.overlap_check(huis, amstel.huizen_lijst):
+            self.plaats_huis(huis, coordinaat)
+            if not plattegrond.grens_check(huis.rechtsonder) or plattegrond.overlap_check(huis, self.huizen_lijst):
                 huis.reset()
+
+    def plaats_huizen(self, plattegrond):
+
+         #huizen op de plattegrond plaatsen met 4 punten (x en y)  en soort huis
+
+        for huis in self.huizen_lijst:
+            self.plaats_random(huis, plattegrond)
+
+
+    def herplaats_huis(self, plattegrond):
+
+        huis = random.choice(self.huizen_lijst)
+        linksboven = huis.linksboven
+        huis.reset()
+        self.plaats_random(huis, plattegrond)
+
+        return huis, linksboven
+
+
+
+
+
+
 
 # def plaats_sloten(amstel, plattegrond):
 #
@@ -207,33 +228,7 @@ def plaats_huizen(amstel, plattegrond):
 #             sloot.reset()
 
 
-if __name__ == '__main__':
-    amster = Amstel()
-    print(amster.huizen_lijst[13])
-    plattegrond = Plattegrond(160, 180)
-    plaats_huizen(amster, plattegrond)
 
-    # Loop over de huizen_lijst om het dichtstbijzijnde buurhuis te vinden
-    for huis in amster.huizen_lijst:
-        dichtstbij, kortste_afstand = huis.dichtsbijzijnde_huis(amster.huizen_lijst)
-        print(f"Voor {huis.id} is het dichtstbijzijnde huis {dichtstbij.id}. Met afstand van {kortste_afstand}m.")
-
-    print(f"Totale wijk waarde is: {int(amster.totale_nieuwe_huiswaarde())} euro")
-
-    amster.visualisatie()
-
-    # while True:
-    #     antwoord = input("Wil je de huizen verplaatsen?:  ")
-    #     if antwoord not in ["ja", "nee"]:
-    #         print("Beantwoord vraag met ja of nee")
-    #     elif antwoord == "ja":
-    #         herplaats_huizen(amster)
-    #     else:
-    #         break
-
-    #huis = amster.huizen_lijst[0]
-    #huis.linksboven = (0, 160)
-    #huis.rechtsboven =
 
 
 #voor donderdag:
