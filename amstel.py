@@ -178,21 +178,6 @@ class Amstel():
 
         return self.totaalwaarde
 
-
-class Coord():
-    def __init__(self, x, y):
-
-        self.x = x
-        self.y = y
-
-    def coords(self):
-        return (self.x, self.y)
-
-
-
-
-
-
 class Water():
     def __init__(self, id, aantal_sloten, slootopp):
 
