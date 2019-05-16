@@ -18,7 +18,8 @@ def hillclimber():
     amstel.visualisatie()
 
     for i in range(1000):
-        huis, linksboven = amstel.schuif_huis(huis, coord)
+        # geen coord nodig want huis weet zn eigen coords
+        huis, linksboven_oud = amstel.schuif_huis()
         nieuwe_waarde = int(amstel.totale_nieuwe_huiswaarde())
 
         if oude_waarde > nieuwe_waarde:

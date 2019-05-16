@@ -210,22 +210,21 @@ class Amstel():
 
         return huis, linksboven
 
-    def schuif_huis(self, huis, coord):
+
+    def schuif_huis(self):
+        # we halen een huis op en onthouden zn oude coords
         huis = random.choice(self.huizen_lijst)
         linksboven_oud = huis.linksboven
 
-        huis.linksboven = Coord(x + 5, y + 2)
+        schuifx = random.randint(-10, 10)
+        schuify = random.randint(-10, 10)
 
-        x = x + huis.breedte
-        huis.rechtsboven = Coord(x, y)
+        linksboven_nieuw = Coord(linksboven_oud.x + schuifx, linksboven_oud.y + schuify)
+        self.plaats_huis(huis, linksboven_nieuw)
 
-        y = y - huis.hoogte
-        huis.rechtsonder= Coord(x, y)
+        #grens_check en overlap_check nog maken voor deze functie
 
-        x = x - huis.breedte
-        huis.linksonder = Coord(x,y)
-
-
+        return huis, linksboven_oud
 
 
 # def plaats_sloten(amstel, plattegrond):
