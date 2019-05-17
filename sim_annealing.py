@@ -4,7 +4,6 @@ from plattegrond import Plattegrond
 
 def annealing():
     amstel = Amstel()
-    print(amstel.huizen_lijst[13])
     plattegrond = Plattegrond(160, 180)
     amstel.plaats_huizen(plattegrond)
 
