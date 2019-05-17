@@ -24,6 +24,8 @@ def hillclimber():
 
         if oude_waarde > nieuwe_waarde:
             amstel.plaats_huis(huis, linksboven_oud)
+        elif not plattegrond.grens_check(huis.rechtsonder) or plattegrond.overlap_check(huis, amstel.huizen_lijst):
+            amstel.plaats_huis(huis, linksboven_oud)
         else:
             oude_waarde = nieuwe_waarde
             print(f"Totale wijk waarde is: {oude_waarde} euro")
