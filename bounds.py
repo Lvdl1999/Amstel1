@@ -18,12 +18,8 @@ def upperbound_calc():
         waardevermeerdering = float(huis.prijsverbetering)
         min_vrijstand = float(huis.min_vrijstand)
         max_vrije_afstand = ((plattegrond.hoogte / 2) - (huis.hoogte /2)) - min_vrijstand
-<<<<<<< HEAD
-        nieuwe_huiswaarde = (((oude_huisprijs + (waardevermeerdering * max_vrije_afstand))
-=======
         nieuwe_huiswaarde = oude_huisprijs + (oude_huisprijs *(waardevermeerdering * max_vrije_afstand))
 
->>>>>>> ae9844b3abe7881b420442dc37bdf9d509ddbab9
         upperbound += nieuwe_huiswaarde
 
     return upperbound
@@ -37,11 +33,7 @@ def lowerbound():
         totale_waarde += prijs
 
 
-# TODO afhankelijk van wat eentje returnt moet ie dat printen zodat 
+# TODO afhankelijk van wat eentje returnt moet ie dat printen zodat
 # docent niet print statement hoeft te veranderen
 if __name__ == '__main__':
-<<<<<<< HEAD
-    print(upperbound())
-=======
     print(upperbound_calc())
->>>>>>> ae9844b3abe7881b420442dc37bdf9d509ddbab9
