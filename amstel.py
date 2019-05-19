@@ -18,10 +18,10 @@ from water import Water
 
 class Amstel():
     """
-    Dit is de Amstel class. Het bevat alle nodige attributen en methodes
+    Dit is de 'Amstel' class. Het bevat alle nodige attributen en methodes
     om onze wijk te bouwen en optimalizeren.
     """
-# TODO  elke functie : wat doet het, welke input en welke output krijg je.
+
 
     def __init__(self):
 
@@ -91,15 +91,13 @@ class Amstel():
 
     def plaats_huis(self, huis, coord):
         """
-            Elk huis begint met een linksboven coordinaat. Vanuit daar word per huis
-            gekeken naar de breedte en de hoogte en zo worden de andere coordinaten
-            berekend.
+            Elk huis begint met een linksboven-coordinaat. Vanuit daar wordt per
+            huis gekeken naar de breedte en de hoogte en zo worden de andere
+            coordinaten berekend.
         """
         x = coord.x
         y = coord.y
 
-        #  logica uitleggen van startpunt linksboven en
-        # vanuit daar naar andere hoekpunten vormt huis
         huis.linksboven = Coord(x, y)
 
         x = x + huis.breedte
@@ -241,7 +239,8 @@ class Amstel():
         schuifx = random.randint(-10, 10)
         schuify = random.randint(-10, 10)
 
-        linksboven_nieuw = Coord(linksboven_oud.x + schuifx, linksboven_oud.y + schuify)
+        linksboven_nieuw = Coord(linksboven_oud.x + schuifx, linksboven_oud.y
+                            + schuify)
         self.plaats_huis(huis, linksboven_nieuw)
 
         #grens_check en overlap_check nog maken voor deze functie

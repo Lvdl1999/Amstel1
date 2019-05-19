@@ -11,9 +11,9 @@ from plattegrond import Plattegrond
 
 def annealing():
     """
-        Eerst word 1000 keer de random_walk gedaan. Aan het eind wordt gekeken
-        of de hoogtste waarde daarvan. Mocht deze waarde beter zijn dan de begin
-        waarde dan wordt dit de nieuwe waarde en zo gaat dit door.
+        Bij de functie 'annealing'wordt 1000 keer de random_walk gedaan en de
+        hoogste waarde opgeslagen. Mocht deze waarde beter zijn dan de begin
+        waarde, wordt dit de nieuwe waarde en zo gaat dit door.
     """
 
     amstel = Amstel()
