@@ -2,7 +2,7 @@
 Amstel1
 Heuristieken
 amstel.py
-Build and optimize our neighbourhood.
+bouw en optimalizeer de wijk
 """
 
 
@@ -18,8 +18,8 @@ from water import Water
 
 class Amstel():
     """
-    This is the Amstel neighbourhood class. It contains necessary
-    attributes and methods to build and optimize a neighbourhood.
+    Dit is de Amstel class. Het bevat alle nodige attributen en methodes
+    om onze wijk te bouwen en optimalizeren.
     """
 # TODO  elke functie : wat doet het, welke input en welke output krijg je.
 
@@ -43,18 +43,18 @@ class Amstel():
                 print("Minimaal 1 sloot en maximaal 4")
             else:
                 break
-        # aanmaken lijst met alle huis objecten
+        # Aanmaken lijst met alle huis objecten.
         self.huizen_lijst = []
         self.waardes_random = []
         self.totaalwaarde = 0
 
         # self.sloten_lijst = []
 
-        # elk huis object toevoegen aan lijst en daarbij behorend id elke keer met 1 verhogen.
-        # je wilt dat elk huis een ander id heeft
-
         """
-            TODO  toelichten wat hieronder gebeurd en magic numbers weghalen of toelichten
+            Elk huis heeft een verschillende attributen :(id, minimale vrijstand
+            , prijs, prijvermeerdering, breedte, hoogte) en deze worden
+            opgeslagen in de huizen_lijst
+            Elk ander huis dat wordt toegevoegd aan de lijst krijgt een eigen id.
         """
         counter = 0
         for i in range(self.aantal_eengezinswoning):
@@ -90,7 +90,11 @@ class Amstel():
         return True
 
     def plaats_huis(self, huis, coord):
-
+        """
+            Elk huis begint met een linksboven coordinaat. Vanuit daar word per huis
+            gekeken naar de breedte en de hoogte en zo worden de andere coordinaten
+            berekend.
+        """
         x = coord.x
         y = coord.y
 
@@ -131,6 +135,8 @@ class Amstel():
                 rect = patches.Rectangle(huis.linksonder.coords(), huis.breedte,
                 huis.hoogte, linewidth=1,edgecolor='black',facecolor='none')
             else:
+                # Id > 300 is bij ons water. Water heeft een blauwe omlijning
+                # om verschil aan te geven met huizen.
                 rect = patches.Rectangle(huis.linksonder.coords(), huis.breedte,
                 huis.hoogte, linewidth=1,edgecolor='blue',facecolor='none')
 
@@ -164,30 +170,28 @@ class Amstel():
         plt.show()
 
 
-    def ondergrens(self):
-        # Geen waarde vermeerderingen door extra vrijstand. Onder voorbehoudt dat alle huizen kunnen worden geplaats.
-        # In huizen_lijst opzoeken prijs per soort woning * aantal dat soort woning
-        self.aantal_eengezinswoning * self.huizen_lijst["prijs"]
-
-    def bovengrens(self):
-        pass
-
-
     def totale_nieuwe_huiswaarde(self):
+        """
+            Alle nieuwe prijzen per huis worden bij elkaar opgeteld om de totale
+            waarde van de wijk te krijgen.
+        """
 
         self.totaalwaarde = 0
 
-        # elk huis heeft nu zn eigen waarde die die kan berekenen
-        # dus we lopen over de huizenlijst en vragen van elk huis zn waarde en tel bij elkaar op
         for huis in self.huizen_lijst:
-            # voor we de nieuwe huiswaarde aanroepen eerst zekerweten dat
-            # dichtstbijzijnde afstand is berekend en opgeslagen in self.korststeafstand
             ander, afstand = huis.dichtsbijzijnde_huis(self.huizen_lijst)
             self.totaalwaarde += huis.nieuwe_huiswaarde_calc(afstand)
 
         return self.totaalwaarde
 
     def plaats_random(self, huis, plattegrond):
+        """
+            Elk huis krijgt een random linksboven coordinaat binnen de
+            plattegrond bij plaats huis word het huis door middel van de
+            coordinaat opgebouwd.
+            De huizen mogen elkaar niet overlappen.
+        """
+
         # Als een huis niet geplaatst is heeft het geen x waarde
         while huis.linksboven.x == None:
             x = random.randint(0, plattegrond.breedte)
@@ -198,17 +202,22 @@ class Amstel():
                 huis.reset()
 
     def plaats_huizen(self, plattegrond):
-        ''' plaats_huizen calls the function plaats_huis to place houses in the
-            grid. it takes in an argument called plattegrond wich describes the size\
-            of the neighbourhood.
-        '''
+        """
+            plaats_huizen roept de functie plaats_huis aan om huizen op de
+            plattegrond te zetten. Het maakt gebruik van de plattegrond welk de
+            oppervlakte van de wijk weergeeft.
+        """
 
-         #huizen op de plattegrond plaatsen met 4 punten (x en y)  en soort huis
         for huis in self.huizen_lijst:
             self.plaats_random(huis, plattegrond)
 
 
     def herplaats_huis(self, plattegrond):
+        """
+            Een random huis word gekozen uit de huizen_lijst om vervolgens op
+            een andere random plek te worden geplaatst.
+            Het huis met het linksboven coordinaat word gereturnd.
+        """
 
         huis = random.choice(self.huizen_lijst)
         linksboven = huis.linksboven
@@ -219,7 +228,13 @@ class Amstel():
 
 
     def schuif_huis(self):
-        # we halen een huis op en onthouden zn oude coords
+        """
+            Een huis word verschoven naar een nieuwe plek en het oude
+            linksboven coordinaat word opgeslagen. Wanneer het huis naar een plek
+            wordt verschoven dat niet binnen de grenzen ligt of voor overlap
+            zorgt wordt het terug geplaats.
+        """
+
         huis = random.choice(self.huizen_lijst)
         linksboven_oud = huis.linksboven
 
@@ -234,14 +249,22 @@ class Amstel():
         return huis, linksboven_oud
 
     def opslaan_wijk(self):
-        # we maken een dict aan en slaan voor elk huis zn coords erin op
-        # zodat die terug kan worden geplaatst
+        """
+            In een dictionary worden alle coordinaten van elk huis opgeslagen.
+            Deze dictionary wordt teruggeven.
+        """
+
         beginwijk_dict = {}
         for huiscoord in self.huizen_lijst:
             beginwijk_dict[huiscoord] = huiscoord.linksboven
         return beginwijk_dict
 
     def herplaats_wijk(self, beginwijk_dict):
+        """
+            Per huis in de huizen_lijst word een nieuw plekje gezocht. Mocht de
+            nieuwe plek niet voldoen aan de grens- en overlapcheck, dan zal het
+            huis wederom worden verplaatst.
+        """
 
         for huiscoord in beginwijk_dict.keys():
             linksboven = beginwijk_dict[huiscoord]

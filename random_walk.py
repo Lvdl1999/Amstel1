@@ -1,8 +1,8 @@
 """
 Amstel1
 Heuristieken
-sim_annealing.py
-The random walk algorithm.
+random_walk.py
+Het random walk algoritme.
 """
 
 import random
@@ -15,18 +15,20 @@ from plattegrond import Plattegrond
 
 
 def random_walk():
+    """
+        Een wijk word random geplaatst. Vervolgens word een random gekozen huis
+        ook weer random verschoven. Er wordt hierin niet gekeken naar verbetering
+        en verslechtering.
+    """
+
     amstel = Amstel()
     plattegrond = Plattegrond(160, 180)
     amstel.plaats_huizen(plattegrond)
 
-    # Loop over de huizen_lijst om het dichtstbijzijnde buurhuis te vinden
-    # for huis in amstel.huizen_lijst:
-    #     dichtstbij, kortste_afstand = huis.dichtsbijzijnde_huis(amstel.huizen_lijst)
-        # print(f"Voor {huis.id} is het dichtstbijzijnde huis {dichtstbij.id}. Met afstand van {kortste_afstand}m.")
     oude_waarde = int(amstel.totale_nieuwe_huiswaarde())
     print(f"Totale wijk waarde is: {oude_waarde} euro")
 
-    # amstel.visualisatie()
+    amstel.visualisatie()
 
     for i in range(1000):
         amstel.herplaats_huis(plattegrond)
@@ -37,6 +39,9 @@ def random_walk():
     return amstel
 
 def visualisatie_random_walk(amstel):
+    """
+        Plot een grafiek om een kijkje in het oplossingslandschap te geven.
+    """
     fig, ax = plt.subplots()
 
     x = [i for i in range(1000)]

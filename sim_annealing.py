@@ -2,7 +2,7 @@
 Amstel1
 Heuristieken
 sim_annealing.py
-The simulated annealing algorithm.
+Het simulated annealing algoritme.
 """
 
 from amstel import Amstel
@@ -10,18 +10,19 @@ from plattegrond import Plattegrond
 
 
 def annealing():
+    """
+        Eerst word 1000 keer de random_walk gedaan. Aan het eind wordt gekeken
+        of de hoogtste waarde daarvan. Mocht deze waarde beter zijn dan de begin
+        waarde dan wordt dit de nieuwe waarde en zo gaat dit door.
+    """
+
     amstel = Amstel()
     plattegrond = Plattegrond(160, 180)
     amstel.plaats_huizen(plattegrond)
 
-    # Loop over de huizen_lijst om het dichtstbijzijnde buurhuis te vinden
-    # for huis in amstel.huizen_lijst:
-    #     dichtstbij, kortste_afstand = huis.dichtsbijzijnde_huis(amstel.huizen_lijst)
-        # print(f"Voor {huis.id} is het dichtstbijzijnde huis {dichtstbij.id}. Met afstand van {kortste_afstand}m.")
     oude_waarde = int(amstel.totale_nieuwe_huiswaarde())
     print(f"Totale beginwaarde wijk is: {oude_waarde} euro")
     amstel.visualisatie()
-    # begin toestand van de wijk opslaan zodat ie altijd ernaar terug kan
 
     start_waarde = amstel.opslaan_wijk()
     top_waarde = (oude_waarde, start_waarde)
@@ -31,6 +32,8 @@ def annealing():
 
         nieuwe_waarde = int(amstel.totale_nieuwe_huiswaarde())
         if oude_waarde > nieuwe_waarde:
+            # Als de oude waarde hoger is dan de nieuwe waarde zal de oude wijk
+            # worden teruggeplaatst.
             amstel.herplaats_wijk(start_waarde)
         else:
             top_waarde = (nieuwe_waarde, amstel.opslaan_wijk())
@@ -38,8 +41,3 @@ def annealing():
     print(f"Uiteindelijke wijk waarde is: {top_waarde[0]} euro")
     amstel.visualisatie()
     amstel.herplaats_wijk(top_waarde[1])
-
-
-
-# lowerbound alle huizen aan elkaar
-# upperbound alle huizen alleen op de plattegrond

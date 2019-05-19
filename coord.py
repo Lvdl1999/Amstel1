@@ -1,3 +1,9 @@
+"""
+Amstel1
+Heuristieken
+coord.py
+Maakt coordinaten aan
+"""
 
 class Coord():
     def __init__(self, x, y):
