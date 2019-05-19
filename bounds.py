@@ -11,7 +11,7 @@ def upperbound():
         waardevermeerdering = float(huis.prijsverbetering)
         min_vrijstand = float(huis.min_vrijstand)
         max_vrije_afstand = ((plattegrond.hoogte / 2) - (huis.hoogte /2)) - min_vrijstand
-        nieuwe_huiswaarde = (((oude_huisprijs + waardevermeerdering) * max_vrije_afstand))
+        nieuwe_huiswaarde = (((oude_huisprijs + (waardevermeerdering * max_vrije_afstand))
         upperbound += nieuwe_huiswaarde
         return nieuwe_huiswaarde
 
@@ -24,4 +24,4 @@ def lowerbound():
         totale_waarde += prijs
 
 if __name__ == '__main__':
-    print(lowerbound())
+    print(upperbound())
