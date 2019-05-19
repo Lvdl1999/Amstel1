@@ -10,6 +10,11 @@ from plattegrond import Plattegrond
 
 
 def rand_hillclimber():
+    """
+            De 'rand_hillclimber' kiest een random huis uit de wijk en herplaatst
+            het op een random plek en kijkt of dit een betere oplossing
+            genereert. Zo niet dan wordt het huis weer teruggeplaatst.
+    """
     amstel = Amstel()
     plattegrond = Plattegrond(160, 180)
     amstel.plaats_huizen(plattegrond)

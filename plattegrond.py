@@ -1,16 +1,26 @@
 """
-...........
+Amstel1
+Heuristieken
+plattegrond.py
+Deze class bevat de instantie van de plattegrond en alle functies die de
+plattegrond zal uitvoeren met de huizen.
 """
 
 class Plattegrond():
     def __init__(self, breedte, hoogte):
-
+        """
+        De 'init' functie geeft weer welke afmetingen de plattegrond heeft.
+        """
         self.breedte= 180
         self.hoogte= 160
         self.oppervlakte = 160*180
-
+        
 
     def grens_check(self, coord):
+        """
+        De plattegrond berekent met behulp van de 'grens_check' of alle huizen
+        binnen de toegekende afmetingen liggen.
+        """
         if coord.x < 0 or coord.x > self.breedte:
             return False
         if coord.y < 0 or coord.y > self.hoogte:
@@ -26,12 +36,17 @@ class Plattegrond():
 
 
     def overlap_check(self, huis, huizen_lijst):
-    # hoe gaan we dit vergelijken met alle eerder geplaatste huizen?
-    # forloop in een forloop??
+        """
+        De plattegrond berekent met behulp van de 'overlap_check' of huizen
+        elkaar niet overlappen. Er wordt false gereturnt als dit het geval is
+        en dit betekent dat het huis niet goed is geplaatst.
+        """
+
         for ander_huis in huizen_lijst:
-            # kijken of de huizen die je vergelijkt al coordinaten hebben
+            # Check of huizen die de functie wil vergelijken al coordinaten
+            # hebben oftewel, zijn geplaatst.
             if ander_huis.linksboven.x != None and huis is not ander_huis:
-                # huizen op plattegrond inclusief hun minimale vrijstand
+                # Elk huis heeft op de plattegrond zijn minimale vrijstand.
                 afstand = huis.vrijstandscalc(ander_huis)
                 if afstand > huis.min_vrijstand:
                     continue
