@@ -7,9 +7,9 @@ from sim_annealing import annealing
 
 if __name__ == '__main__':
 
-    antwoord = input("Wil je werken met greedy of hillclimber of random_walk:  ")
+    antwoord = input("Werken met greedy, hillclimber, random_walk of annealing?:  ")
     if antwoord not in ["greedy", "hillclimber", "random_walk", "annealing"]:
-        print("Beantwoord vraag met greedy of hillclimber of random_walk")
+        print("Beantwoord vraag met greedy, hillclimber, random_walk of annealing")
     elif antwoord == "greedy":
         greedy.greedy()
         print(f"Totale wijk waarde is: {int(amstel.totale_nieuwe_huiswaarde())} euro")

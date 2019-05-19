@@ -1,3 +1,10 @@
+"""
+Amstel1
+Heuristieken
+sim_annealing.py
+Calculating the upper- and lowerbound of the case AmstelHaege.
+"""
+
 from amstel import Amstel
 from huis import Huis
 from plattegrond import Plattegrond
@@ -25,5 +32,8 @@ def lowerbound():
         prijs = huis.prijs
         totale_waarde += prijs
 
+
+# TODO afhankelijk van wat eentje returnt moet ie dat printen zodat 
+# docent niet print statement hoeft te veranderen
 if __name__ == '__main__':
     print(upperbound_calc())

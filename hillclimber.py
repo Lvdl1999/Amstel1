@@ -1,3 +1,10 @@
+"""
+Amstel1
+Heuristieken
+sim_annealing.py
+The hillclimber algorithm.
+"""
+
 from amstel import Amstel
 from plattegrond import Plattegrond
 

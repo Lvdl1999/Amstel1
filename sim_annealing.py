@@ -1,3 +1,10 @@
+"""
+Amstel1
+Heuristieken
+sim_annealing.py
+The simulated annealing algorithm.
+"""
+
 from amstel import Amstel
 from plattegrond import Plattegrond
 
@@ -13,6 +20,7 @@ def annealing():
         # print(f"Voor {huis.id} is het dichtstbijzijnde huis {dichtstbij.id}. Met afstand van {kortste_afstand}m.")
     oude_waarde = int(amstel.totale_nieuwe_huiswaarde())
     print(f"Totale beginwaarde wijk is: {oude_waarde} euro")
+    amstel.visualisatie()
     # begin toestand van de wijk opslaan zodat ie altijd ernaar terug kan
 
     start_waarde = amstel.opslaan_wijk()
@@ -28,6 +36,7 @@ def annealing():
             top_waarde = (nieuwe_waarde, amstel.opslaan_wijk())
 
     print(f"Uiteindelijke wijk waarde is: {top_waarde[0]} euro")
+    amstel.visualisatie()
     amstel.herplaats_wijk(top_waarde[1])
 
 

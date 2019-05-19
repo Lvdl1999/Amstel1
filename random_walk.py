@@ -1,3 +1,10 @@
+"""
+Amstel1
+Heuristieken
+sim_annealing.py
+The random walk algorithm.
+"""
+
 import random
 import matplotlib.pyplot as plt
 import matplotlib.patches as patches

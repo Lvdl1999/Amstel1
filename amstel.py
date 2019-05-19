@@ -21,7 +21,7 @@ class Amstel():
     This is the Amstel neighbourhood class. It contains necessary
     attributes and methods to build and optimize a neighbourhood.
     """
-# elke functie : wat doet het, welke input en welke output krijg je.
+# TODO  elke functie : wat doet het, welke input en welke output krijg je.
 
     def __init__(self):
 
@@ -52,6 +52,10 @@ class Amstel():
 
         # elk huis object toevoegen aan lijst en daarbij behorend id elke keer met 1 verhogen.
         # je wilt dat elk huis een ander id heeft
+
+        """
+            TODO  toelichten wat hieronder gebeurd en magic numbers weghalen of toelichten
+        """
         counter = 0
         for i in range(self.aantal_eengezinswoning):
             # magic numbers toelichten!!
@@ -243,6 +247,8 @@ class Amstel():
             linksboven = beginwijk_dict[huiscoord]
             for huis in self.huizen_lijst:
                 self.plaats_huis(huis, linksboven)
+                if not plattegrond.grens_check(huis.rechtsonder) or plattegrond.overlap_check(huis, self.huizen_lijst):
+                    huis.herplaats_huis()
 
 
 # def plaats_sloten(amstel, plattegrond):
