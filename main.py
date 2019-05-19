@@ -2,13 +2,14 @@ from hillclimber import hillclimber
 import greedy
 from random_walk import random_walk
 from random_walk import visualisatie_random_walk
+from sim_annealing import annealing
 
 
 if __name__ == '__main__':
 
-    antwoord = input("Wil je werken met greedy of hillclimber of random_walk:  ")
-    if antwoord not in ["greedy", "hillclimber", "random_walk"]:
-        print("Beantwoord vraag met greedy of hillclimber of random_walk")
+    antwoord = input("Werken met greedy, hillclimber, random_walk of annealing?:  ")
+    if antwoord not in ["greedy", "hillclimber", "random_walk", "annealing"]:
+        print("Beantwoord vraag met greedy, hillclimber, random_walk of annealing")
     elif antwoord == "greedy":
         greedy.greedy()
         print(f"Totale wijk waarde is: {int(amstel.totale_nieuwe_huiswaarde())} euro")
@@ -16,6 +17,8 @@ if __name__ == '__main__':
     elif antwoord == "random_walk":
         amstel = random_walk()
         visualisatie_random_walk(amstel)
+    elif antwoord == "annealing":
+        amstel = annealing()
     else:
         hillclimber()
 

@@ -21,7 +21,7 @@ class Amstel():
     This is the Amstel neighbourhood class. It contains necessary
     attributes and methods to build and optimize a neighbourhood.
     """
-
+# TODO  elke functie : wat doet het, welke input en welke output krijg je.
 
     def __init__(self):
 
@@ -52,8 +52,13 @@ class Amstel():
 
         # elk huis object toevoegen aan lijst en daarbij behorend id elke keer met 1 verhogen.
         # je wilt dat elk huis een ander id heeft
+
+        """
+            TODO  toelichten wat hieronder gebeurd en magic numbers weghalen of toelichten
+        """
         counter = 0
         for i in range(self.aantal_eengezinswoning):
+            # magic numbers toelichten!!
             huis = Huis(counter, 2, 285000, 0.03, 8, 8)
             counter += 1
             self.huizen_lijst.append(huis)
@@ -78,10 +83,6 @@ class Amstel():
 
     def huis_check(self, huis, x, y):
 
-
-        # rechtonder punt binnen de grid?
-        # overlap checken
-
         if x < 0 or x > huis.breedte:
             return False
         if y < 0 or y > huis.hoogte:
@@ -93,6 +94,8 @@ class Amstel():
         x = coord.x
         y = coord.y
 
+        #  logica uitleggen van startpunt linksboven en
+        # vanuit daar naar andere hoekpunten vormt huis
         huis.linksboven = Coord(x, y)
 
         x = x + huis.breedte
@@ -195,6 +198,10 @@ class Amstel():
                 huis.reset()
 
     def plaats_huizen(self, plattegrond):
+        ''' plaats_huizen calls the function plaats_huis to place houses in the
+            grid. it takes in an argument called plattegrond wich describes the size\
+            of the neighbourhood.
+        '''
 
          #huizen op de plattegrond plaatsen met 4 punten (x en y)  en soort huis
         for huis in self.huizen_lijst:
@@ -225,6 +232,23 @@ class Amstel():
         #grens_check en overlap_check nog maken voor deze functie
 
         return huis, linksboven_oud
+
+    def opslaan_wijk(self):
+        # we maken een dict aan en slaan voor elk huis zn coords erin op
+        # zodat die terug kan worden geplaatst
+        beginwijk_dict = {}
+        for huiscoord in self.huizen_lijst:
+            beginwijk_dict[huiscoord] = huiscoord.linksboven
+        return beginwijk_dict
+
+    def herplaats_wijk(self, beginwijk_dict):
+
+        for huiscoord in beginwijk_dict.keys():
+            linksboven = beginwijk_dict[huiscoord]
+            for huis in self.huizen_lijst:
+                self.plaats_huis(huis, linksboven)
+                if not plattegrond.grens_check(huis.rechtsonder) or plattegrond.overlap_check(huis, self.huizen_lijst):
+                    huis.herplaats_huis()
 
 
 # def plaats_sloten(amstel, plattegrond):

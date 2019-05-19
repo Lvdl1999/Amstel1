@@ -1,3 +1,7 @@
+"""
+...........
+"""
+
 class Plattegrond():
     def __init__(self, breedte, hoogte):
 

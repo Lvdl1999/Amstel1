@@ -82,7 +82,7 @@ class Huis():
         oude_huisprijs = float(self.prijs)
         waardevermeerdering = float(self.prijsverbetering)
         min_vrijstand = float(self.min_vrijstand)
-        self.nieuwe_huiswaarde = (((oude_huisprijs + waardevermeerdering) * kortste_afstand) - min_vrijstand)
+        self.nieuwe_huiswaarde = (oude_huisprijs + ((oude_huisprijs * waardevermeerdering) * (kortste_afstand - min_vrijstand)))
 
         return self.nieuwe_huiswaarde
 

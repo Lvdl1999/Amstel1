@@ -1,10 +1,16 @@
+"""
+Amstel1
+Heuristieken
+sim_annealing.py
+The hillclimber algorithm.
+"""
+
 from amstel import Amstel
 from plattegrond import Plattegrond
 
 
 def hillclimber():
     amstel = Amstel()
-    print(amstel.huizen_lijst[13])
     plattegrond = Plattegrond(160, 180)
     amstel.plaats_huizen(plattegrond)
 
@@ -23,6 +29,8 @@ def hillclimber():
         nieuwe_waarde = int(amstel.totale_nieuwe_huiswaarde())
 
         if oude_waarde > nieuwe_waarde:
+            amstel.plaats_huis(huis, linksboven_oud)
+        elif not plattegrond.grens_check(huis.rechtsonder) or plattegrond.overlap_check(huis, amstel.huizen_lijst):
             amstel.plaats_huis(huis, linksboven_oud)
         else:
             oude_waarde = nieuwe_waarde

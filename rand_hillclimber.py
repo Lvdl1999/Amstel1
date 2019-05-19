@@ -1,10 +1,16 @@
+"""
+Amstel1
+Heuristieken
+sim_annealing.py
+The random hillclimber algorithm.
+"""
+
 from amstel import Amstel
 from plattegrond import Plattegrond
 
 
 def rand_hillclimber():
     amstel = Amstel()
-    print(amstel.huizen_lijst[13])
     plattegrond = Plattegrond(160, 180)
     amstel.plaats_huizen(plattegrond)
 
