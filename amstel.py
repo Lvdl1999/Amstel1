@@ -25,6 +25,8 @@ class Amstel():
 
     def __init__(self):
 
+        # De wijk kan 20, 40 of 60 huizen bevatten afhankelijk van de
+        # gebruikers keuze.
         while True:
             self.aantal_huizen = int(input("Aantal huizen: "))
             if self.aantal_huizen not in [20, 40, 60]:
@@ -36,13 +38,15 @@ class Amstel():
         self.aantal_bungalow = int(self.aantal_huizen * 0.25)
         self.aantal_maison = int(self.aantal_huizen * 0.15)
 
-
+        # De wijk kan maximaal 4 sloten bevatten afhankelijk van de
+        # gebruikers keuze.
         while True:
             self.aantal_sloten = int(input("Aantal sloten:  "))
             if self.aantal_sloten not in [1, 2, 3, 4]:
                 print("Minimaal 1 sloot en maximaal 4")
             else:
                 break
+
         # Aanmaken lijst met alle huis objecten.
         self.huizen_lijst = []
         self.waardes_random = []
@@ -51,9 +55,9 @@ class Amstel():
         # self.sloten_lijst = []
 
         """
-            Elk huis heeft een verschillende attributen :(id, minimale vrijstand
-            , prijs, prijvermeerdering, breedte, hoogte) en deze worden
-            opgeslagen in de huizen_lijst
+            Elk huis heeft een verschillende attributen: (id, minimale vrijstand
+            , prijs, prijvermeerdering, breedte, hoogte). Deze worden
+            opgeslagen in de huizen_lijst.
             Elk ander huis dat wordt toegevoegd aan de lijst krijgt een eigen id.
         """
         counter = 0
@@ -82,7 +86,10 @@ class Amstel():
         #     self.sloten_lijst.append(sloot)
 
     def huis_check(self, huis, x, y):
-
+        """
+            De functie 'huis_check' zorgt ervoor dat elk huis voldoet aan z'n
+            eigen afmetingen.
+        """
         if x < 0 or x > huis.breedte:
             return False
         if y < 0 or y > huis.hoogte:
@@ -91,9 +98,9 @@ class Amstel():
 
     def plaats_huis(self, huis, coord):
         """
-            Elk huis begint met een linksboven-coordinaat. Vanuit daar wordt per
-            huis gekeken naar de breedte en de hoogte en zo worden de andere
-            coordinaten berekend.
+            De functie 'plaats_huis' begint voor elk huis met een
+            linksboven-coordinaat. Vanuit daar wordt per huis gekeken naar de
+            breedte en de hoogte en zo worden de andere 3 coordinaten berekend.
         """
         x = coord.x
         y = coord.y
@@ -133,7 +140,7 @@ class Amstel():
                 rect = patches.Rectangle(huis.linksonder.coords(), huis.breedte,
                 huis.hoogte, linewidth=1,edgecolor='black',facecolor='none')
             else:
-                # Id > 300 is bij ons water. Water heeft een blauwe omlijning
+                # Id > 300 staat voor water. Water heeft een blauwe omlijning
                 # om verschil aan te geven met huizen.
                 rect = patches.Rectangle(huis.linksonder.coords(), huis.breedte,
                 huis.hoogte, linewidth=1,edgecolor='blue',facecolor='none')
@@ -143,6 +150,8 @@ class Amstel():
             cx = rx + rect.get_width()/2.0
             cy = ry + rect.get_height()/2.0
 
+            # Afhankelijk van het soort huis krijgt ie een eigen kleur in de
+            # visualisatie.
             if huis.id < 100:
                 ax.annotate(huis.id, (cx, cy), color='red', weight='bold',
                     fontsize=6, ha='center', va='center')
@@ -157,7 +166,6 @@ class Amstel():
             #     ax.annotate(huis.id, (cx, cy), color='blue', weight='bold',
             #         fontsize=6, ha='center', va='center')
 
-
         ax.set_xlim([0, 180])
         ax.set_ylim([0, 160])
 
@@ -170,8 +178,9 @@ class Amstel():
 
     def totale_nieuwe_huiswaarde(self):
         """
-            Alle nieuwe prijzen per huis worden bij elkaar opgeteld om de totale
-            waarde van de wijk te krijgen.
+            Door de 'totale_nieuwe_huiswaarde' functie worden alle nieuwe
+            prijzen per huis ('nieuwe_huiswaarde_calc') worden bij elkaar
+            opgeteld om de totale waarde van de wijk te krijgen.
         """
 
         self.totaalwaarde = 0
@@ -201,7 +210,7 @@ class Amstel():
 
     def plaats_huizen(self, plattegrond):
         """
-            plaats_huizen roept de functie plaats_huis aan om huizen op de
+            'Plaats_huizen' roept de functie 'plaats_huis' aan om huizen op de
             plattegrond te zetten. Het maakt gebruik van de plattegrond welk de
             oppervlakte van de wijk weergeeft.
         """
@@ -214,7 +223,7 @@ class Amstel():
         """
             Een random huis word gekozen uit de huizen_lijst om vervolgens op
             een andere random plek te worden geplaatst.
-            Het huis met het linksboven coordinaat word gereturnd.
+            Het huis met het nieuwe linksboven coordinaat word gereturnd.
         """
 
         huis = random.choice(self.huizen_lijst)
@@ -243,14 +252,15 @@ class Amstel():
                             + schuify)
         self.plaats_huis(huis, linksboven_nieuw)
 
-        #grens_check en overlap_check nog maken voor deze functie
+        # TODO grens_check en overlap_check nog maken voor deze functie
 
         return huis, linksboven_oud
 
     def opslaan_wijk(self):
         """
-            In een dictionary worden alle coordinaten van elk huis opgeslagen.
-            Deze dictionary wordt teruggeven.
+            In een dictionary worden alle coordinaten van elk huis dat zich in
+            de huidige wijk bevindt opgeslagen.
+            Deze dictionary wordt vervolgens gereturnd.
         """
 
         beginwijk_dict = {}
@@ -260,15 +270,18 @@ class Amstel():
 
     def herplaats_wijk(self, beginwijk_dict):
         """
-            Per huis in de huizen_lijst word een nieuw plekje gezocht. Mocht de
-            nieuwe plek niet voldoen aan de grens- en overlapcheck, dan zal het
-            huis wederom worden verplaatst.
+            Met behulp van de opgeslagen beginwijk door 'opslaan_wijk' kan de
+            wijk indien nodig herplaatst worden naar die oplossing. De vorige
+            linksboven-coordinaat wordt namelijk gebruikt om het huis terug
+            te plaatsen.
         """
 
         for huiscoord in beginwijk_dict.keys():
             linksboven = beginwijk_dict[huiscoord]
             for huis in self.huizen_lijst:
                 self.plaats_huis(huis, linksboven)
+                # TODO waarom doen we hier een grenscheck want ieder huis krijgt zn eigen
+                # coordinaten weer terug en die waren als t goed is toch al gecheckt en geplaatst.
                 if not plattegrond.grens_check(huis.rechtsonder) or plattegrond.overlap_check(huis, self.huizen_lijst):
                     huis.herplaats_huis()
 
