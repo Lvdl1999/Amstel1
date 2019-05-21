@@ -77,11 +77,11 @@ class Huis():
 
     # zoekt de dichtstbijzijnde buurman door met alle huizen te vergelijken uit de huizen_lijst
     def dichtsbijzijnde_huis(self, huizen_lijst):
-    """
-        De functie 'dichtstbijzijnde_huis vergelijkt alle afstanden tussen
-        zichzelf en huizen eromheen en returnt het dichtstbijzijnde huis en
-        de kortste afstand ertussen'
-    """
+        """
+            De functie 'dichtstbijzijnde_huis vergelijkt alle afstanden tussen
+            zichzelf en huizen eromheen en returnt het dichtstbijzijnde huis en
+            de kortste afstand ertussen'
+        """
         # Zodra de functie begint zijn deze waardes nog onbekend.
         dichtstbij = None
         kortste_afstand = float('inf')

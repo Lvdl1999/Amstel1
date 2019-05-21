@@ -7,9 +7,10 @@ Het hillclimber algoritme.
 
 from amstel import Amstel
 from plattegrond import Plattegrond
+from annealing import annealing
 
 
-def hillclimber():
+def annealing_hillclimber():
     """
         De 'hillclimber' kiest een random huis uit de wijk en verschuift het met
         een random waarde tussen de -10 en 10 meter. Vervolgens wordt gekeken of
@@ -37,5 +38,9 @@ def hillclimber():
         else:
             oude_waarde = nieuwe_waarde
             print(f"Totale wijk waarde is: {oude_waarde} euro")
+
+    return oude_waarde
+    annealing()
+
 
     amstel.visualisatie()

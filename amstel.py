@@ -205,7 +205,7 @@ class Amstel():
             y = random.randint(0, plattegrond.hoogte)
             coordinaat = Coord(x, y)
             self.plaats_huis(huis, coordinaat)
-            if not plattegrond.grens_check(huis.rechtsonder) or plattegrond.overlap_check(huis, self.huizen_lijst):
+            if not plattegrond.grens_check(huis) or plattegrond.overlap_check(huis, self.huizen_lijst):
                 huis.reset()
 
     def plaats_huizen(self, plattegrond):
@@ -282,7 +282,7 @@ class Amstel():
                 self.plaats_huis(huis, linksboven)
                 # TODO waarom doen we hier een grenscheck want ieder huis krijgt zn eigen
                 # coordinaten weer terug en die waren als t goed is toch al gecheckt en geplaatst.
-                if not plattegrond.grens_check(huis.rechtsonder) or plattegrond.overlap_check(huis, self.huizen_lijst):
+                if not plattegrond.grens_check(huis) or plattegrond.overlap_check(huis, self.huizen_lijst):
                     huis.herplaats_huis()
 
 
@@ -294,7 +294,7 @@ class Amstel():
 #         coordinaat = Coord(x, y)
 #         amstel.plaats_sloot(sloot, coordinaat)
 #
-#         if not sloot.grens_check(sloot.rechtsonder) or not sloot.sloot_verhouding_check:
+#         if not sloot.grens_check(sloot) or not sloot.sloot_verhouding_check:
 #             sloot.reset()
 
 

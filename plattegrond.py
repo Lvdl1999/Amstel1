@@ -14,16 +14,16 @@ class Plattegrond():
         self.breedte= 180
         self.hoogte= 160
         self.oppervlakte = 160*180
-        
 
-    def grens_check(self, coord):
+
+    def grens_check(self, huis):
         """
         De plattegrond berekent met behulp van de 'grens_check' of alle huizen
         binnen de toegekende afmetingen liggen.
         """
-        if coord.x < 0 or coord.x > self.breedte:
+        if huis.linksboven.x < 0 or huis.rechtsboven.x > self.breedte:
             return False
-        if coord.y < 0 or coord.y > self.hoogte:
+        if huis.linksonder.y < 0 or huis.rechtsboven.y > self.hoogte:
             return False
         return True
 
