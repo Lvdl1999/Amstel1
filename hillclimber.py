@@ -5,20 +5,14 @@ hillclimber.py
 Het hillclimber algoritme.
 """
 
-from amstel import Amstel
-from plattegrond import Plattegrond
 
-
-def hillclimber():
+def hillclimber(amstel, plattegrond):
     """
         De 'hillclimber' kiest een random huis uit de wijk en verschuift het met
         een random waarde tussen de -10 en 10 meter. Vervolgens wordt gekeken of
         dit een betere oplossing genereert. Zo niet, dan wordt het huis
         teruggeplaatst.
     """
-    amstel = Amstel()
-    plattegrond = Plattegrond(160, 180)
-    amstel.plaats_huizen(plattegrond)
 
     oude_waarde = int(amstel.totale_nieuwe_huiswaarde())
     print(f"Totale wijk waarde is: {oude_waarde} euro")

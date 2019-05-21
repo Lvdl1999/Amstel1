@@ -1,22 +1,19 @@
 """
 Amstel1
 Heuristieken
-sim_annealing.py
+rand_hillclimber.py
 The random hillclimber algorithm.
 """
 
-from amstel import Amstel
-from plattegrond import Plattegrond
 
 
-def rand_hillclimber():
+def rand_hillclimber(amstel, plattegrond):
     """
             De 'rand_hillclimber' kiest een random huis uit de wijk en herplaatst
             het op een random plek en kijkt of dit een betere oplossing
             genereert. Zo niet dan wordt het huis weer teruggeplaatst.
     """
-    amstel = Amstel()
-    plattegrond = Plattegrond(160, 180)
+
     amstel.plaats_huizen(plattegrond)
 
     oude_waarde = int(amstel.totale_nieuwe_huiswaarde())
@@ -35,8 +32,3 @@ def rand_hillclimber():
             print(f"Totale wijk waarde is: {oude_waarde} euro")
 
             amstel.visualisatie()
-
-
-
-# lowerbound alle huizen aan elkaar
-# upperbound alle huizen alleen op de plattegrond

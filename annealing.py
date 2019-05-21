@@ -6,8 +6,6 @@ Het simulated annealing algoritme.
 """
 
 from hillclimber import hillclimber
-from amstel import Amstel
-from plattegrond import Plattegrond
 import math
 import random
 
@@ -21,17 +19,20 @@ def acceptatie_kans(nieuwe, oude, temperatuur):
     return acckans
 
 
-def linear_afkoeling(begin_temperatuur, temperatuur, iteraties):
+def linear_afkoeling(begin_temperatuur, temperatuur, iteraties, i):
 
     afname_temp = temperatuur/iteraties
 
     return afname_temp
 
-def log_afkoeling(begin_temperatuur, temperatuur, iteraties):
+def log_afkoeling(begin_temperatuur, temperatuur, iteraties, i):
 
-    pass
+    huidige_temperatuur = math.log(temperatuur/ begin_temperatuur)
 
-def expo_afkoeling(begin_temperatuur, temperatuur, iteraties):
+    afname_temp = temperatuur - huidige_temperatuur
+    return afname_temp
+
+def exp_afkoeling(begin_temperatuur, temperatuur, iteraties, i):
 
     eind_temperatuur = 1
 
@@ -42,15 +43,7 @@ def expo_afkoeling(begin_temperatuur, temperatuur, iteraties):
     return afname_temp
 
 
-def sig_afkoeling(begin_temperatuur, temperatuur, iteraties):
-
-
-    pass
-
-
-
-
-def annealing(afkoeling, begin_temperatuur):
+def annealing(amstel, plattegrond, afkoeling, begin_temperatuur):
     """
         Beginnend met de hillclimber om vervolgens met een bepaalde kans een
         verslechtering toe te laten. Bij een verslechtering moet de kans op
@@ -58,8 +51,7 @@ def annealing(afkoeling, begin_temperatuur):
         uit het optimale maximum te komen en een hoger optimaal maximum te
         vinden.
     """
-    amstel = Amstel()
-    plattegrond = Plattegrond(160, 180)
+
     amstel.plaats_huizen(plattegrond)
     temperatuur = begin_temperatuur
 
@@ -87,12 +79,14 @@ def annealing(afkoeling, begin_temperatuur):
             oude_waarde = nieuwe_waarde
             print(f"Totale wijk waarde is: {oude_waarde} euro")
         # De afkoeling moet doorgeven of het logaritmisch, exponentieel of linear is.
-        temperatuur -= afkoeling(begin_temperatuur, temperatuur, iteraties)
+        temperatuur -= afkoeling(begin_temperatuur, temperatuur, iteraties, i)
 
         if temperatuur < 1:
             temperatuur = 1
 
 
-    hillclimber()        
+    hillclimber(amstel, plattegrond)
 
     amstel.visualisatie()
+
+    return amstel
