@@ -45,14 +45,14 @@ pythonw main.py
 
 De lowerbound en upperbound zijn beide berekend voor de case AmstelHaege.
 
-- #### Lowerbound
+#### Lowerbound
 Onder de lowerbound wordt verstaan hoeveel de wijk waard is in de minst optimale situatie. Namelijk dat ieder huis alleen z'n minimale vrijstand in de wijk zou hebben.
         
 Voor de 20-huizenvariant is de lowerbound: 7245000 euro.
 Voor de 40-huizenvariant is de lowerbound: 14490000 euro.
 Voor de 60-huizenvariant is de lowerbound: 21735000 euro.     
 
-- #### Upperbound
+#### Upperbound
 De upperbound geeft aan hoeveel de wijk waard is in de meest optimale situatie. Namelijk dat ieder huis de maximale vrijstand in de wijk zou hebben.
 
 Voor de 20-huizenvariant is de upperbound: 38702925 euro.
