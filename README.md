@@ -33,7 +33,7 @@ python main.py
 
 ## Dankwoord
 
-Hierbij willen wij graag onze TechAssistent Quinten voor zijn behulpzaamheid en positiviteit.
+Hierbij willen wij graag onze TechAssistent Quinten bedanken voor zijn behulpzaamheid en positiviteit.
 Daarnaast Bram en Daan van den Berg voor de feedback op onze presentaties. 
 * minor programmeren van de UvA
 
