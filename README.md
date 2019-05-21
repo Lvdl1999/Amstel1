@@ -24,10 +24,7 @@ pip install -r requirements.txt
 | 1 | U kunt een wijk van '20', '40' of '60' huizen kiezen. |
 | 2 | Vervolgens kunt u minimaal '1' en maximaal '4' sloten in de wijk plaatsen.  |
 | 3 | Selecteer vervolgens welk algoritme u wilt runnen. U kunt kiezen tussen `random_hillclimber,    hillclimber, random_walk of annealing`. |
-| 4 | Wanneer is gekozen voor simulated annealing heeft u keuze uit verschillende koelsystemen.
-- Voor een lineair afkoelschema dient `linear_afkoeling` te worden ingevoerd.
-- Voor een logaritmisch afkoelschema dient `log_afkoeling` te worden ingevoerd.
-- Voor een exponentieel afkoelschema dient `exp_afkoeling` te worden ingevoerd.|
+| 4 | Wanneer is gekozen voor simulated annealing heeft u keuze uit verschillende koelsystemen. Voor een lineair afkoelschema dient `linear_afkoeling` te worden ingevoerd. Voor een logaritmisch afkoelschema dient `log_afkoeling` te worden ingevoerd. Voor een exponentieel afkoelschema dient `exp_afkoeling` te worden ingevoerd.
 | 5 | Zodra een algoritme heeft gerund kunt u deze beëindigen door het pop-up figuur van de visualisatie te sluiten. |
 
 
