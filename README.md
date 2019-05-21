@@ -24,7 +24,10 @@ pip install -r requirements.txt
 | 2 | Vervolgens kunt u minimaal '1' en maximaal '4' sloten in de wijk plaatsen.  |
 | 3 | Selecteer vervolgens welk algoritme u wilt runnen. U kunt kiezen tussen `random_hillclimber,    hillclimber, random_walk of annealing`. |
 | 4 | For more information regarding the algorithms type `info` |
-| 5 | Wanneer is gekozen voor simulated annealing heeft u de keuze uit de volgende koelsystemen: 'linear_afkoeling, log_afkoeling of exp_afkoeling'.|
+| 5 | Wanneer is gekozen voor simulated annealing heeft u keuze uit verschillende koelsystemen.
+- Voor een lineair afkoelschema dient `linear_afkoeling` te worden ingevoerd.
+- Voor een logaritmisch afkoelschema dient `log_afkoeling` te worden ingevoerd.
+- Voor een exponentieel afkoelschema dient `exp_afkoeling` te worden ingevoerd. |
 | 6 | Zodra een algoritme heeft gerund kunt u deze beeindigen door het figuur van de visualisatie te sluiten. |
 
 ### Structuur
@@ -32,7 +35,6 @@ pip install -r requirements.txt
 Alle Python scripts staan in de folder Code. In de map Data zitten alle input waardes en in de map resultaten worden alle resultaten opgeslagen door de code.
 
 ### Test 
-
 Om de code te draaien met de standaardconfiguratie (bv. brute-force en voorbeeld.csv) gebruik de instructie:
 
 ```
@@ -49,7 +51,7 @@ pythonw main.py
 
 ## Dankwoord
 
-Hierbij willen wij graag onze TechAssistent Quinten bedanken voor zijn behulpzaamheid en positiviteit.
-Daarnaast Bram en Daan van den Berg voor de feedback op onze presentaties. 
+Hierbij willen wij graag onze TechAssistent Quinten bedanken voor zijn behulpzaamheid en positiviteit. 
+Daarnaast Bram voor de feedback op onze presentaties en Daan van den Berg voor leerzame en vermakelijke colleges. 
 * minor programmeren van de UvA
 
