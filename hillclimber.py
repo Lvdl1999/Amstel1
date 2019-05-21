@@ -16,8 +16,8 @@ def hillclimber(amstel, plattegrond):
 
     oude_waarde = int(amstel.totale_nieuwe_huiswaarde())
     print(f"Totale wijk waarde is: {oude_waarde} euro")
-
-    amstel.visualisatie()
+    #
+    # amstel.visualisatie()
 
     for i in range(1000):
 
@@ -32,4 +32,4 @@ def hillclimber(amstel, plattegrond):
             oude_waarde = nieuwe_waarde
             print(f"Totale wijk waarde is: {oude_waarde} euro")
 
-    amstel.visualisatie()
+    # amstel.visualisatie()

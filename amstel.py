@@ -28,6 +28,7 @@ class Amstel():
         # De wijk kan 20, 40 of 60 huizen bevatten afhankelijk van de
         # gebruikers keuze.
         while True:
+            print("\nGeef aan hoeveel huizen en sloten er in de wijk worden geplaatst.\n")
             self.aantal_huizen = int(input("Aantal huizen: "))
             if self.aantal_huizen not in [20, 40, 60]:
                 print("Alleen keuze uit 20, 40 of 60 huizen")
@@ -51,6 +52,7 @@ class Amstel():
         self.huizen_lijst = []
         self.waardes_random = []
         self.totaalwaarde = 0
+        self.annealing_lijst = []
 
         # self.sloten_lijst = []
 

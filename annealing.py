@@ -8,6 +8,8 @@ Het simulated annealing algoritme.
 from hillclimber import hillclimber
 import math
 import random
+import matplotlib.pyplot as plt
+import matplotlib.patches as patches
 
 
 def acceptatie_kans(nieuwe, oude, temperatuur):
@@ -58,7 +60,7 @@ def annealing(amstel, plattegrond, afkoeling, begin_temperatuur):
     oude_waarde = int(amstel.totale_nieuwe_huiswaarde())
     print(f"Totale wijk waarde is: {oude_waarde} euro")
 
-    amstel.visualisatie()
+    # amstel.visualisatie()
     # Beginnen met random_hillclimber
     iteraties = 1000
     for i in range(iteraties):
@@ -77,6 +79,7 @@ def annealing(amstel, plattegrond, afkoeling, begin_temperatuur):
             amstel.plaats_huis(huis, linksboven_oud)
         else:
             oude_waarde = nieuwe_waarde
+            amstel.annealing_lijst.append(oude_waarde)
             print(f"Totale wijk waarde is: {oude_waarde} euro")
         # De afkoeling moet doorgeven of het logaritmisch, exponentieel of linear is.
         temperatuur -= afkoeling(begin_temperatuur, temperatuur, iteraties, i)
@@ -87,6 +90,23 @@ def annealing(amstel, plattegrond, afkoeling, begin_temperatuur):
 
     hillclimber(amstel, plattegrond)
 
-    amstel.visualisatie()
+    # amstel.visualisatie()
 
     return amstel
+
+
+def visualisatie_annealing(amstel):
+    """
+        Plot een grafiek om een kijkje in het oplossingslandschap te geven.
+    """
+    fig, ax = plt.subplots()
+
+    x = [i for i in range(1000)]
+    y = amstel.annealing_lijst
+
+    plt.xlabel('Iteratie')
+    plt.ylabel('Wijkwaarde ')
+    plt.title('Random waardes van de wijk')
+
+    plt.plot(x,y)
+    plt.show()

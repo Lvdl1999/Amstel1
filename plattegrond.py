@@ -11,8 +11,8 @@ class Plattegrond():
         """
         De 'init' functie geeft weer welke afmetingen de plattegrond heeft.
         """
-        self.breedte= 180
-        self.hoogte= 160
+        self.breedte = 180
+        self.hoogte = 160
         self.oppervlakte = 160*180
 
 

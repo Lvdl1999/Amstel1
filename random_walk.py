@@ -10,19 +10,15 @@ import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 import math
 
-from amstel import Amstel
-from plattegrond import Plattegrond
 
 
-def random_walk():
+def random_walk(amstel, plattegrond):
     """
         Een wijk word random geplaatst. Vervolgens word een random gekozen huis
         ook weer random verschoven. Er wordt hierin niet gekeken naar verbetering
         en verslechtering.
     """
 
-    amstel = Amstel()
-    plattegrond = Plattegrond(160, 180)
     amstel.plaats_huizen(plattegrond)
 
     oude_waarde = int(amstel.totale_nieuwe_huiswaarde())
