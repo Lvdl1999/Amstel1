@@ -17,18 +17,18 @@ pip install -r requirements.txt
 ```
 
 ### Gebruik
-| Step | Choice|
+| Stap | Keuze|
 |--------|------------------------------|
 | 0 | `pythonw main.py`
 | 1 | U kunt een wijk van '20', '40' of '60' huizen kiezen. |
 | 2 | Vervolgens kunt u minimaal '1' en maximaal '4' sloten in de wijk plaatsen.  |
 | 3 | Selecteer vervolgens welk algoritme u wilt runnen. U kunt kiezen tussen `random_hillclimber,    hillclimber, random_walk of annealing`. |
-| 4 | For more information regarding the algorithms type `info` |
-| 5 | Wanneer is gekozen voor simulated annealing heeft u keuze uit verschillende koelsystemen.
+| 4 | Wanneer is gekozen voor simulated annealing heeft u keuze uit verschillende koelsystemen.
 - Voor een lineair afkoelschema dient `linear_afkoeling` te worden ingevoerd.
 - Voor een logaritmisch afkoelschema dient `log_afkoeling` te worden ingevoerd.
-- Voor een exponentieel afkoelschema dient `exp_afkoeling` te worden ingevoerd. |
-| 6 | Zodra een algoritme heeft gerund kunt u deze beeindigen door het figuur van de visualisatie te sluiten. |
+- Voor een exponentieel afkoelschema dient `exp_afkoeling` te worden ingevoerd.|
+| 5 | Zodra een algoritme heeft gerund kunt u deze beëindigen door het pop-up figuur van de visualisatie te sluiten. |
+
 
 ### Structuur
 
@@ -42,6 +42,34 @@ pythonw main.py
 ```
 
 ### Bounds
+
+De lowerbound en upperbound zijn beide berekend voor de case AmstelHaege.
+
+- #### Lowerbound
+Onder de lowerbound wordt verstaan hoeveel de wijk waard is in de minst optimale situatie. Namelijk dat ieder huis alleen z'n minimale vrijstand in de wijk zou hebben.
+        
+Voor de 20-huizenvariant is de lowerbound: 7245000
+Voor de 40-huizenvariant is de lowerbound:
+Voor de 60-huizenvariant is de lowerbound:
+
+- #### Upperbound
+De upperbound geeft aan hoeveel de wijk waard is in de meest optimale situatie. Namelijk dat ieder huis de maximale vrijstand in de wijk zou hebben.
+
+Voor de 20-huizenvariant is de upperbound:
+Voor de 40-huizenvariant is de upperbound:
+Voor de 60-huizenvariant is de upperbound:
+
+De berekening hiervan in de map Code te vinden in file genaamd bounds.py. Met het volgende stappen plan kan deze code eventueel worden gerund bij interesse:
+
+| Stap | Keuze|
+|--------|------------------------------|
+| 0 | `pythonw bounds.py`
+| 1 | U kunt een wijk van '20', '40' of '60' huizen kiezen. |
+| 2 | Vervolgens kunt u minimaal '1' en maximaal '4' sloten in de wijk plaatsen.  |
+| 3 | In dit commando mag worden meegegeven of u de lowerbound, upperbound of beide wilt berekenen.
+- Voor de lowerbound dient `lowerbound` te worden ingevoerd.
+- Voor de upperbound dient `upperbound` te worden ingevoerd.
+- Om beide te berekenen mag `beide` worden ingevoerd. |
 
 
 ## Auteurs
