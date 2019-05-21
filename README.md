@@ -8,6 +8,7 @@ http://heuristieken.nl/wiki/index.php?title=Heuristieken
 #### Casus AmstelHaege
 In een ooit beschermd natuurgebied zal een nieuwe woonwijk worden geplaatst. De wijk, met een afmeting van 160 bij 180m, zal zo optimaal mogelijk worden ingedeeld rekening houdend met verscheidene restricties. De verhoudingen tussen de drie soorten huizen **(eengezinswoning, bungolow en maison)** zijn vastgesteld op 60%, 25% en 15%. Daarnaast hebben de huizen verschillende attributen. Zo zijn de prijzen, oppervlaktes, minimale verplichte vrijstand en prijsverbetering oplopend van eengezinswoning tot maison. In de wijk zullen ook (maximaal 4) sloten worden aangelegd, welke 20% van de wijk in beslag zullen nemen, en waarbij de sloten een uiterlijke verhouding van 1:4 hebben. Om zo veel mogelijk waarde te genereren moet er gekeken worden naar de vrijstand, **des te meer vrijstand, des te hoger de waarde** (niet cumulatief).
 
+
 ### Vereisten
 
 Deze codebase is volledig geschreven in [Python3.6.3](https://www.python.org/downloads/). In requirements.txt staan alle benodigde packages om de code succesvol te draaien. Deze zijn gemakkelijk te installeren via pip dmv. de volgende instructie:
@@ -42,22 +43,22 @@ pythonw main.py
 ```
 
 ### Bounds
-
 De lowerbound en upperbound zijn beide berekend voor de case AmstelHaege.
 
 #### Lowerbound
 Onder de lowerbound wordt verstaan hoeveel de wijk waard is in de minst optimale situatie. Namelijk dat ieder huis alleen z'n minimale vrijstand in de wijk zou hebben.
-        
-Voor de 20-huizenvariant is de lowerbound: 7245000 euro.
-Voor de 40-huizenvariant is de lowerbound: 14490000 euro.
-Voor de 60-huizenvariant is de lowerbound: 21735000 euro.     
+     
+- Voor de 20-huizenvariant is de lowerbound: 7245000 euro.
+- Voor de 40-huizenvariant is de lowerbound: 14490000 euro.
+- Voor de 60-huizenvariant is de lowerbound: 21735000 euro.     
 
 #### Upperbound
 De upperbound geeft aan hoeveel de wijk waard is in de meest optimale situatie. Namelijk dat ieder huis de maximale vrijstand in de wijk zou hebben.
 
-Voor de 20-huizenvariant is de upperbound: 38702925 euro.
-Voor de 40-huizenvariant is de upperbound: 77405850 euro.
-Voor de 60-huizenvariant is de upperbound: 116108775 euro
+- Voor de 20-huizenvariant is de upperbound: 38702925 euro.
+- Voor de 40-huizenvariant is de upperbound: 77405850 euro.
+- Voor de 60-huizenvariant is de upperbound: 116108775 euro
+
 
 De berekening hiervan in de map Amstel1 te vinden in een file genaamd bounds.py. Met het volgende stappen plan kan deze code eventueel worden gerund bij interesse:
 
