@@ -48,18 +48,18 @@ De lowerbound en upperbound zijn beide berekend voor de case AmstelHaege.
 - #### Lowerbound
 Onder de lowerbound wordt verstaan hoeveel de wijk waard is in de minst optimale situatie. Namelijk dat ieder huis alleen z'n minimale vrijstand in de wijk zou hebben.
         
-Voor de 20-huizenvariant is de lowerbound: 7245000
-Voor de 40-huizenvariant is de lowerbound:
-Voor de 60-huizenvariant is de lowerbound:
+Voor de 20-huizenvariant is de lowerbound: 7245000 euro.
+Voor de 40-huizenvariant is de lowerbound: 14490000 euro.
+Voor de 60-huizenvariant is de lowerbound: 21735000 euro.     
 
 - #### Upperbound
 De upperbound geeft aan hoeveel de wijk waard is in de meest optimale situatie. Namelijk dat ieder huis de maximale vrijstand in de wijk zou hebben.
 
-Voor de 20-huizenvariant is de upperbound:
-Voor de 40-huizenvariant is de upperbound:
-Voor de 60-huizenvariant is de upperbound:
+Voor de 20-huizenvariant is de upperbound: 38702925 euro.
+Voor de 40-huizenvariant is de upperbound: 77405850 euro.
+Voor de 60-huizenvariant is de upperbound: 116108775 euro
 
-De berekening hiervan in de map Code te vinden in file genaamd bounds.py. Met het volgende stappen plan kan deze code eventueel worden gerund bij interesse:
+De berekening hiervan in de map Amstel1 te vinden in een file genaamd bounds.py. Met het volgende stappen plan kan deze code eventueel worden gerund bij interesse:
 
 | Stap | Keuze|
 |--------|------------------------------|
@@ -69,8 +69,7 @@ De berekening hiervan in de map Code te vinden in file genaamd bounds.py. Met he
 | 3 | In dit commando mag worden meegegeven of u de lowerbound, upperbound of beide wilt berekenen.
 - Voor de lowerbound dient `lowerbound` te worden ingevoerd.
 - Voor de upperbound dient `upperbound` te worden ingevoerd.
-- Om beide te berekenen mag `beide` worden ingevoerd. |
-
+- Om beide te berekenen mag `beide` worden ingevoerd.|
 
 ## Auteurs
 
