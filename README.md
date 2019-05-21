@@ -2,7 +2,7 @@
 ## Door Levy van der Linde & Lisa Lansu
 ### Minor Programmeren
 
-<img width="294" alt="image" src="https://user-images.githubusercontent.com/47352487/58120398-75876900-7c05-11e9-8a51-82610d15c29d.png">
+<img width="200" alt="image" src="https://user-images.githubusercontent.com/47352487/58120398-75876900-7c05-11e9-8a51-82610d15c29d.png">
 http://heuristieken.nl/wiki/index.php?title=Heuristieken
 
 #### Casus AmstelHaege
