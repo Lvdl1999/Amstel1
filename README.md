@@ -32,13 +32,6 @@ pip install -r requirements.txt
 
 Alle Python scripts staan in de folder Code. In de map Data zitten alle input waardes en in de map resultaten worden alle resultaten opgeslagen door de code.
 
-### Test 
-Om de code te draaien met de standaardconfiguratie (bv. brute-force en voorbeeld.csv) gebruik de instructie:
-
-```
-pythonw main.py
-```
-
 ### Bounds
 De lowerbound en upperbound zijn beide berekend voor de case AmstelHaege.
 
@@ -64,10 +57,7 @@ De berekening hiervan in de map Amstel1 te vinden in een file genaamd bounds.py.
 | 0 | `pythonw bounds.py`
 | 1 | U kunt een wijk van '20', '40' of '60' huizen kiezen. |
 | 2 | Vervolgens kunt u minimaal '1' en maximaal '4' sloten in de wijk plaatsen.  |
-| 3 | In dit commando mag worden meegegeven of u de lowerbound, upperbound of beide wilt berekenen.
-- Voor de lowerbound dient `lowerbound` te worden ingevoerd.
-- Voor de upperbound dient `upperbound` te worden ingevoerd.
-- Om beide te berekenen mag `beide` worden ingevoerd.|
+| 3 | In dit commando mag worden meegegeven of u de lowerbound, upperbound of beide wilt berekenen. -Voor de lowerbound dient `lowerbound` te worden ingevoerd. -Voor de upperbound dient `upperbound` te worden ingevoerd. -Om beide te berekenen mag `beide` worden ingevoerd.|
 
 ## Auteurs
 
