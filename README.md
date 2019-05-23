@@ -33,12 +33,19 @@ pip install -r requirements.txt
 
 Alle Python scripts staan in de folder Code. In de map Data zitten alle input waardes en in de map resultaten worden alle resultaten opgeslagen door de code.
 
+### Test
+Om de code te draaien met de standaardconfiguratie (bv. brute-force en voorbeeld.csv) gebruik de instructie:
+
+```
+pythonw main.py
+```
+
 ### Bounds
 De lowerbound en upperbound zijn beide berekend voor de case AmstelHaege.
 
 #### Lowerbound
 Onder de lowerbound wordt verstaan hoeveel de wijk waard is in de minst optimale situatie. Namelijk dat ieder huis alleen z'n minimale vrijstand in de wijk zou hebben.
-     
+
 - Voor de 20-huizenvariant is de lowerbound: 7245000 euro.
 - Voor de 40-huizenvariant is de lowerbound: 14490000 euro.
 - Voor de 60-huizenvariant is de lowerbound: 21735000 euro.     
@@ -71,4 +78,3 @@ Hierbij willen wij graag onze TechAssistent Quinten bedanken voor zijn behulpzaa
 Daarnaast Bram voor de feedback op onze presentaties en Daan van den Berg voor leerzame en vermakelijke colleges. We zijn zeer blij met onze behaalde resultaten en het kiezen van de case AmstelHaege.
 
 * minor programmeren van de UvA
-
