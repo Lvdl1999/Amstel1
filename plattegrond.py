@@ -13,7 +13,7 @@ class Plattegrond():
         """
         self.breedte = 180
         self.hoogte = 160
-        self.oppervlakte = 160*180
+        self.oppervlakte = 160 * 180
 
 
     def grens_check(self, huis):

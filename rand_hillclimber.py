@@ -32,3 +32,20 @@ def rand_hillclimber(amstel, plattegrond):
             print(f"Totale wijk waarde is: {oude_waarde} euro")
 
             amstel.visualisatie()
+
+def visualisatie_rand_hillclimber(amstel):
+    """
+        Plot een grafiek om een kijkje in het oplossingslandschap te geven.
+    """
+    fig, ax = plt.subplots()
+
+    x = [i for i in range(len(amstel.waardes_lijst))]
+    y = amstel.waardes_lijst
+
+
+    plt.xlabel('Iteratie')
+    plt.ylabel('Wijkwaarde ')
+    plt.title('Random waardes van de wijk')
+
+    plt.plot(x,y)
+    plt.show()

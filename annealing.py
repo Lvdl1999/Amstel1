@@ -29,7 +29,7 @@ def linear_afkoeling(begin_temperatuur, temperatuur, iteraties, i):
 
 def log_afkoeling(begin_temperatuur, temperatuur, iteraties, i):
 
-    huidige_temperatuur = math.log(temperatuur/ begin_temperatuur)
+    huidige_temperatuur = begin_temperatuur/(math.log(i + 1) + 1)
 
     afname_temp = temperatuur - huidige_temperatuur
     return afname_temp
@@ -62,14 +62,17 @@ def annealing(amstel, plattegrond, afkoeling, begin_temperatuur):
 
     # amstel.visualisatie()
     # Beginnen met random_hillclimber
+
     iteraties = 1000
     for i in range(iteraties):
 
         huis, linksboven_oud = amstel.schuif_huis()
         nieuwe_waarde = int(amstel.totale_nieuwe_huiswaarde())
 
-        if oude_waarde > nieuwe_waarde:
-            if random.randrange(0,1) > acceptatie_kans(nieuwe_waarde, oude_waarde, temperatuur):
+        if nieuwe_waarde < 0.95 * amstel.hoogste_waarde:
+            amstel.plaats_huis(huis, linksboven_oud)
+        elif oude_waarde > nieuwe_waarde:
+            if random.random() > acceptatie_kans(nieuwe_waarde, oude_waarde, temperatuur):
                 amstel.plaats_huis(huis, linksboven_oud)
             elif not plattegrond.grens_check(huis) or plattegrond.overlap_check(huis, amstel.huizen_lijst):
                 amstel.plaats_huis(huis, linksboven_oud)
@@ -79,14 +82,14 @@ def annealing(amstel, plattegrond, afkoeling, begin_temperatuur):
             amstel.plaats_huis(huis, linksboven_oud)
         else:
             oude_waarde = nieuwe_waarde
-            amstel.annealing_lijst.append(oude_waarde)
-            print(f"Totale wijk waarde is: {oude_waarde} euro")
+            if oude_waarde > amstel.hoogste_waarde:
+                amstel.hoogste_waarde = oude_waarde
+            print(f"Totale wijk waarde is: {oude_waarde} euro, temperatuur: {temperatuur}")
         # De afkoeling moet doorgeven of het logaritmisch, exponentieel of linear is.
         temperatuur -= afkoeling(begin_temperatuur, temperatuur, iteraties, i)
-
+        amstel.waardes_lijst.append(oude_waarde)
         if temperatuur < 1:
             temperatuur = 1
-
 
     hillclimber(amstel, plattegrond)
 
@@ -101,8 +104,9 @@ def visualisatie_annealing(amstel):
     """
     fig, ax = plt.subplots()
 
-    x = [i for i in range(1000)]
-    y = amstel.annealing_lijst
+    x = [i for i in range(len(amstel.waardes_lijst))]
+    y = amstel.waardes_lijst
+
 
     plt.xlabel('Iteratie')
     plt.ylabel('Wijkwaarde ')

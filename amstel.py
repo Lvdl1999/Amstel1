@@ -35,6 +35,7 @@ class Amstel():
             else:
                 break
 
+        self.oppervlakte_wijk = int(160*180)
         self.aantal_eengezinswoning = int(self.aantal_huizen * 0.6)
         self.aantal_bungalow = int(self.aantal_huizen * 0.25)
         self.aantal_maison = int(self.aantal_huizen * 0.15)
@@ -52,7 +53,8 @@ class Amstel():
         self.huizen_lijst = []
         self.waardes_random = []
         self.totaalwaarde = 0
-        self.annealing_lijst = []
+        self.waardes_lijst = []
+        self.hoogste_waarde= 0
 
         # self.sloten_lijst = []
 
@@ -62,6 +64,17 @@ class Amstel():
             opgeslagen in de huizen_lijst.
             Elk ander huis dat wordt toegevoegd aan de lijst krijgt een eigen id.
         """
+
+        oppervlakte_per_sloot = int((self.oppervlakte_wijk * 0.2)/self.aantal_sloten)
+        self.breedte_sloot = math.sqrt(oppervlakte_per_sloot)
+        self.hoogte_sloot = math.sqrt(oppervlakte_per_sloot)
+
+        counter = 1000
+        for i in range(self.aantal_sloten):
+            huis = Huis(counter, 0, 0, 0, self.breedte_sloot, self.hoogte_sloot)
+            counter += 1
+            self.huizen_lijst.append(huis)
+
         counter = 0
         for i in range(self.aantal_eengezinswoning):
             # magic numbers toelichten!!
@@ -163,10 +176,10 @@ class Amstel():
             elif 200 <= huis.id < 300:
                 ax.annotate(huis.id, (cx, cy), color='green', weight='bold',
                     fontsize=6, ha='center', va='center')
-            # Voor water blauw!
-            # else:
-            #     ax.annotate(huis.id, (cx, cy), color='blue', weight='bold',
-            #         fontsize=6, ha='center', va='center')
+            elif huis.id >= 1000:
+                ax.annotate(huis.id, (cx, cy), color='blue', weight='bold',
+                    fontsize=6, ha='center', va='center')
+
 
         ax.set_xlim([0, 180])
         ax.set_ylim([0, 160])
