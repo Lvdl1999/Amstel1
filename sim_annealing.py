@@ -5,11 +5,9 @@ sim_annealing.py
 Het simulated annealing algoritme.
 """
 
-from amstel import Amstel
-from plattegrond import Plattegrond
 
 
-def simannealing():
+def simannealing(amstel, plattegrond):
     """
         Bij de functie 'annealing'wordt 1000 keer de random_walk gedaan en de
         hoogste waarde opgeslagen. Mocht deze waarde beter zijn dan de begin

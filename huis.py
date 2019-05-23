@@ -88,7 +88,7 @@ class Huis():
 
         # De afstand van een huis wordt niet met zichzelf berekent.
         for ander_huis in huizen_lijst:
-            if self is ander_huis:
+            if self is ander_huis or ander_huis.id >=1000:
                 continue
             else:
                 afstand = self.vrijstandscalc(ander_huis)

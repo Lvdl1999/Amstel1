@@ -28,6 +28,7 @@ class Amstel():
         # De wijk kan 20, 40 of 60 huizen bevatten afhankelijk van de
         # gebruikers keuze.
         while True:
+            print("\nGeef aan hoeveel huizen en sloten er in de wijk worden geplaatst.\n")
             self.aantal_huizen = int(input("Aantal huizen: "))
             if self.aantal_huizen not in [20, 40, 60]:
                 print("Alleen keuze uit 20, 40 of 60 huizen")
@@ -52,6 +53,8 @@ class Amstel():
         self.huizen_lijst = []
         self.waardes_random = []
         self.totaalwaarde = 0
+        self.waardes_lijst = []
+        self.hoogste_waarde= 0
 
         # self.sloten_lijst = []
 
@@ -173,10 +176,17 @@ class Amstel():
             elif 200 <= huis.id < 300:
                 ax.annotate(huis.id, (cx, cy), color='green', weight='bold',
                     fontsize=6, ha='center', va='center')
+<<<<<<< HEAD
             # Voor water blauw!
             elif huis.id >= 1000:
                 ax.annotate(huis.id, (cx, cy), color='blue', weight='bold',
                     fontsize=6, ha='center', va='center')
+=======
+            elif huis.id >= 1000:
+                ax.annotate(huis.id, (cx, cy), color='blue', weight='bold',
+                    fontsize=6, ha='center', va='center')
+
+>>>>>>> 0fb9a9e7741fe558235d3bc6b918af20eabd2494
 
         ax.set_xlim([0, 180])
         ax.set_ylim([0, 160])
