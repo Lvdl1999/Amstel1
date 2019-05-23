@@ -176,10 +176,17 @@ class Amstel():
             elif 200 <= huis.id < 300:
                 ax.annotate(huis.id, (cx, cy), color='green', weight='bold',
                     fontsize=6, ha='center', va='center')
+<<<<<<< HEAD
+            # Voor water blauw!
+            elif huis.id >= 1000:
+                ax.annotate(huis.id, (cx, cy), color='blue', weight='bold',
+                    fontsize=6, ha='center', va='center')
+=======
             elif huis.id >= 1000:
                 ax.annotate(huis.id, (cx, cy), color='blue', weight='bold',
                     fontsize=6, ha='center', va='center')
 
+>>>>>>> 0fb9a9e7741fe558235d3bc6b918af20eabd2494
 
         ax.set_xlim([0, 180])
         ax.set_ylim([0, 160])

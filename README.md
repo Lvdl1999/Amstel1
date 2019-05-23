@@ -20,12 +20,13 @@ pip install -r requirements.txt
 ### Gebruik
 | Stap | Keuze|
 |--------|------------------------------|
-| 0 | `pythonw main.py`
-| 1 | U kunt een wijk van '20', '40' of '60' huizen kiezen. |
-| 2 | Vervolgens kunt u minimaal '1' en maximaal '4' sloten in de wijk plaatsen.  |
-| 3 | Selecteer vervolgens welk algoritme u wilt runnen. U kunt kiezen tussen `random_hillclimber,    hillclimber, random_walk of annealing`. |
-| 4 | Wanneer is gekozen voor simulated annealing heeft u keuze uit verschillende koelsystemen. Voor een lineair afkoelschema dient `linear_afkoeling` te worden ingevoerd. Voor een logaritmisch afkoelschema dient `log_afkoeling` te worden ingevoerd. Voor een exponentieel afkoelschema dient `exp_afkoeling` te worden ingevoerd.
-| 5 | Zodra een algoritme heeft gerund kunt u deze beëindigen door het pop-up figuur van de visualisatie te sluiten. |
+| 0 | Dowlnoad or clone the 'Amstel1' GitHub repository.
+| 1 | `pythonw main.py`
+| 2 | U kunt een wijk van '20', '40' of '60' huizen kiezen. |
+| 3 | Vervolgens kunt u minimaal '1' en maximaal '4' sloten in de wijk plaatsen.  |
+| 4 | Selecteer vervolgens welk algoritme u wilt runnen. U kunt kiezen tussen `random_hillclimber,    hillclimber, random_walk of annealing`. |
+| 5 | Wanneer is gekozen voor simulated annealing heeft u keuze uit verschillende koelsystemen. Voor een lineair afkoelschema dient `linear_afkoeling` te worden ingevoerd. Voor een logaritmisch afkoelschema dient `log_afkoeling` te worden ingevoerd. Voor een exponentieel afkoelschema dient `exp_afkoeling` te worden ingevoerd.
+| 6 | Zodra een algoritme heeft gerund kunt u deze beëindigen door het pop-up figuur van de visualisatie te sluiten. |
 
 
 ### Structuur
@@ -64,10 +65,7 @@ De berekening hiervan in de map Amstel1 te vinden in een file genaamd bounds.py.
 | 0 | `pythonw bounds.py`
 | 1 | U kunt een wijk van '20', '40' of '60' huizen kiezen. |
 | 2 | Vervolgens kunt u minimaal '1' en maximaal '4' sloten in de wijk plaatsen.  |
-| 3 | In dit commando mag worden meegegeven of u de lowerbound, upperbound of beide wilt berekenen.
-- Voor de lowerbound dient `lowerbound` te worden ingevoerd.
-- Voor de upperbound dient `upperbound` te worden ingevoerd.
-- Om beide te berekenen mag `beide` worden ingevoerd.|
+| 3 | In dit commando mag worden meegegeven of u de lowerbound, upperbound of beide wilt berekenen. -Voor de lowerbound dient `lowerbound` te worden ingevoerd. -Voor de upperbound dient `upperbound` te worden ingevoerd. -Om beide te berekenen mag `beide` worden ingevoerd.|
 
 ## Auteurs
 
@@ -77,5 +75,6 @@ De berekening hiervan in de map Amstel1 te vinden in een file genaamd bounds.py.
 ## Dankwoord
 
 Hierbij willen wij graag onze TechAssistent Quinten bedanken voor zijn behulpzaamheid en positiviteit.
-Daarnaast Bram voor de feedback op onze presentaties en Daan van den Berg voor leerzame en vermakelijke colleges.
+Daarnaast Bram voor de feedback op onze presentaties en Daan van den Berg voor leerzame en vermakelijke colleges. We zijn zeer blij met onze behaalde resultaten en het kiezen van de case AmstelHaege.
+
 * minor programmeren van de UvA
