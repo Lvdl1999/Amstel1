@@ -14,7 +14,7 @@ import math
 from coord import Coord
 from huis import Huis
 from plattegrond import Plattegrond
-from water import Water
+
 
 class Amstel():
     """
@@ -40,8 +40,8 @@ class Amstel():
         self.aantal_bungalow = int(self.aantal_huizen * 0.25)
         self.aantal_maison = int(self.aantal_huizen * 0.15)
 
-        # De wijk kan maximaal 4 sloten bevatten afhankelijk van de
-        # gebruikers keuze.
+        # De wijk kan maximaal 4 sloten bevatten afhankelijk van de gebruikers
+        # keuze.
         while True:
             self.aantal_sloten = int(input("Aantal sloten:  "))
             if self.aantal_sloten not in [1, 2, 3, 4]:
@@ -49,14 +49,12 @@ class Amstel():
             else:
                 break
 
-        # Aanmaken lijst met alle huis objecten.
         self.huizen_lijst = []
         self.waardes_random = []
         self.totaalwaarde = 0
         self.waardes_lijst = []
         self.hoogste_waarde= 0
 
-        # self.sloten_lijst = []
 
         """
             Elk huis heeft een verschillende attributen: (id, minimale vrijstand
@@ -77,7 +75,6 @@ class Amstel():
 
         counter = 0
         for i in range(self.aantal_eengezinswoning):
-            # magic numbers toelichten!!
             huis = Huis(counter, 2, 285000, 0.03, 8, 8)
             counter += 1
             self.huizen_lijst.append(huis)
@@ -94,11 +91,6 @@ class Amstel():
             counter += 1
             self.huizen_lijst.append(huis)
 
-        # counter = 300
-        # for i in range(self.aantal_sloten):
-        #     sloot = Water(counter, self.aantal_sloten, 10)
-        #     counter += 1
-        #     self.sloten_lijst.append(sloot)
 
     def huis_check(self, huis, x, y):
         """
@@ -131,21 +123,6 @@ class Amstel():
         x = x - huis.breedte
         huis.linksonder = Coord(x,y)
 
-    # def plaats_sloot(self, sloot, coord):
-    #
-    #     x = coord.x
-    #     y = coord.y
-    #
-    #     sloot.linksboven = Coord(x, y)
-    #
-    #     x = x + sloot.breedte
-    #     sloot.rechtsboven = Coord(x, y)
-    #
-    #     y = y - sloot.hoogte
-    #     sloot.rechtsonder= Coord(x, y)
-    #
-    #     x = x - sloot.breedte
-    #     sloot.linksonder = Coord(x,y)
 
     def visualisatie(self):
         fig, ax = plt.subplots()
@@ -155,7 +132,7 @@ class Amstel():
                 rect = patches.Rectangle(huis.linksonder.coords(), huis.breedte,
                 huis.hoogte, linewidth=1,edgecolor='black',facecolor='none')
             else:
-                # Id > 300 staat voor water. Water heeft een blauwe omlijning
+                # Id >= 1000 staat voor water. Water heeft een blauwe omlijning
                 # om verschil aan te geven met huizen.
                 rect = patches.Rectangle(huis.linksonder.coords(), huis.breedte,
                 huis.hoogte, linewidth=1,edgecolor='blue',facecolor='none')
@@ -165,8 +142,8 @@ class Amstel():
             cx = rx + rect.get_width()/2.0
             cy = ry + rect.get_height()/2.0
 
-            # Afhankelijk van het soort huis krijgt ie een eigen kleur in de
-            # visualisatie.
+            # Afhankelijk van het soort huis en sloot krijgt ie een eigen kleur
+            # in de visualisatie.
             if huis.id < 100:
                 ax.annotate(huis.id, (cx, cy), color='red', weight='bold',
                     fontsize=6, ha='center', va='center')
@@ -176,17 +153,9 @@ class Amstel():
             elif 200 <= huis.id < 300:
                 ax.annotate(huis.id, (cx, cy), color='green', weight='bold',
                     fontsize=6, ha='center', va='center')
-<<<<<<< HEAD
-            # Voor water blauw!
             elif huis.id >= 1000:
                 ax.annotate(huis.id, (cx, cy), color='blue', weight='bold',
                     fontsize=6, ha='center', va='center')
-=======
-            elif huis.id >= 1000:
-                ax.annotate(huis.id, (cx, cy), color='blue', weight='bold',
-                    fontsize=6, ha='center', va='center')
-
->>>>>>> 0fb9a9e7741fe558235d3bc6b918af20eabd2494
 
         ax.set_xlim([0, 180])
         ax.set_ylim([0, 160])
@@ -274,9 +243,8 @@ class Amstel():
                             + schuify)
         self.plaats_huis(huis, linksboven_nieuw)
 
-        # TODO grens_check en overlap_check nog maken voor deze functie
-
         return huis, linksboven_oud
+
 
     def opslaan_wijk(self):
         """
@@ -290,6 +258,7 @@ class Amstel():
             beginwijk_dict[huiscoord] = huiscoord.linksboven
         return beginwijk_dict
 
+
     def herplaats_wijk(self, beginwijk_dict):
         """
             Met behulp van de opgeslagen beginwijk door 'opslaan_wijk' kan de
@@ -302,36 +271,5 @@ class Amstel():
             linksboven = beginwijk_dict[huiscoord]
             for huis in self.huizen_lijst:
                 self.plaats_huis(huis, linksboven)
-                # TODO waarom doen we hier een grenscheck want ieder huis krijgt zn eigen
-                # coordinaten weer terug en die waren als t goed is toch al gecheckt en geplaatst.
                 if not plattegrond.grens_check(huis) or plattegrond.overlap_check(huis, self.huizen_lijst):
                     huis.herplaats_huis()
-
-
-# def plaats_sloten(amstel, plattegrond):
-#
-#     while sloot.linksboven.x == None:
-#         x = random.randint(0, plattegrond.breedte)
-#         y = random.randint(0, plattegrond.hoogte)
-#         coordinaat = Coord(x, y)
-#         amstel.plaats_sloot(sloot, coordinaat)
-#
-#         if not sloot.grens_check(sloot) or not sloot.sloot_verhouding_check:
-#             sloot.reset()
-
-
-#voor donderdag:
-
-#methode om te plaatsen
-#methode/functie die huizen random indeeld zonder rekening te houden met overlap (algoritme)
-#kleine structuur voor het kijken naar overlap
-#begin aan visualisatie met matplotlip
-#scatterplot met rectangles
-
-#voor volgende week
-#plattegrond en amstel linken
-# huis grens linksboven en rechtsonder check voor het plaatsen
-# oplossingen genereren op een willekeurige manier
-# plaats_huizen moet werken. ook zonder overlap
-# vrijstand berekenen
-# waarde bepalen van de wijk die we op dat moment hebben

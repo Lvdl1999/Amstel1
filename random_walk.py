@@ -34,6 +34,7 @@ def random_walk(amstel, plattegrond):
 
     return amstel
 
+
 def visualisatie_random_walk(amstel):
     """
         Plot een grafiek om een kijkje in het oplossingslandschap te geven.
@@ -45,7 +46,7 @@ def visualisatie_random_walk(amstel):
 
     plt.xlabel('Iteratie')
     plt.ylabel('Wijkwaarde ')
-    plt.title('Random waardes van de wijk')
+    plt.title('Random walk')
 
     plt.plot(x,y)
     plt.show()

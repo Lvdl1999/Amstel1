@@ -27,12 +27,14 @@ def linear_afkoeling(begin_temperatuur, temperatuur, iteraties, i):
 
     return afname_temp
 
+
 def log_afkoeling(begin_temperatuur, temperatuur, iteraties, i):
 
     huidige_temperatuur = begin_temperatuur/(math.log(i + 1) + 1)
 
     afname_temp = temperatuur - huidige_temperatuur
     return afname_temp
+
 
 def exp_afkoeling(begin_temperatuur, temperatuur, iteraties, i):
 
@@ -110,7 +112,7 @@ def visualisatie_annealing(amstel):
 
     plt.xlabel('Iteratie')
     plt.ylabel('Wijkwaarde ')
-    plt.title('Random waardes van de wijk')
+    plt.title('Simulated annealing')
 
     plt.plot(x,y)
     plt.show()

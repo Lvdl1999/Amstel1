@@ -9,6 +9,7 @@ voor zichzelf kan uitrekenen.
 from coord import Coord
 import math
 
+
 class Huis():
     def __init__(self, id, min_vrijstand, prijs, prijsverbetering, breedte, hoogte):
 
@@ -74,7 +75,6 @@ class Huis():
         return math.sqrt(dx**2 + dy**2)
 
 
-
     # zoekt de dichtstbijzijnde buurman door met alle huizen te vergelijken uit de huizen_lijst
     def dichtsbijzijnde_huis(self, huizen_lijst):
         """
@@ -101,6 +101,7 @@ class Huis():
 
         return dichtstbij, kortste_afstand
 
+
     def nieuwe_huiswaarde_calc(self, kortste_afstand):
         """
             Bij de functie 'nieuwe_huiswaarde_calc' berekent en returnt een huis
@@ -114,6 +115,7 @@ class Huis():
                                 - min_vrijstand)))
 
         return self.nieuwe_huiswaarde
+
 
     def reset(self):
         """

@@ -4,8 +4,10 @@ Heuristieken
 hillclimber.py
 Het hillclimber algoritme.
 """
+
 import matplotlib.pyplot as plt
 import matplotlib.patches as patches
+
 
 def hillclimber(amstel, plattegrond):
     """
@@ -18,7 +20,7 @@ def hillclimber(amstel, plattegrond):
     oude_waarde = int(amstel.totale_nieuwe_huiswaarde())
     print(f"Totale wijk waarde is: {oude_waarde} euro")
 
-    amstel.visualisatie()
+    # amstel.visualisatie()
 
     for i in range(1000):
 
@@ -37,7 +39,8 @@ def hillclimber(amstel, plattegrond):
 
         amstel.waardes_lijst.append(oude_waarde)
 
-    amstel.visualisatie()
+    # amstel.visualisatie()
+
 
 def visualisatie_hillclimber(amstel):
     """
@@ -51,7 +54,7 @@ def visualisatie_hillclimber(amstel):
 
     plt.xlabel('Iteratie')
     plt.ylabel('Wijkwaarde ')
-    plt.title('Random waardes van de wijk')
+    plt.title('Hillclimber')
 
     plt.plot(x,y)
     plt.show()

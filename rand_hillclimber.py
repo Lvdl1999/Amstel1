@@ -5,7 +5,8 @@ rand_hillclimber.py
 The random hillclimber algorithm.
 """
 
-
+import matplotlib.pyplot as plt
+import matplotlib.patches as patches
 
 def rand_hillclimber(amstel, plattegrond):
     """
@@ -19,7 +20,7 @@ def rand_hillclimber(amstel, plattegrond):
     oude_waarde = int(amstel.totale_nieuwe_huiswaarde())
     print(f"Totale wijk waarde is: {oude_waarde} euro")
 
-    amstel.visualisatie()
+    # amstel.visualisatie()
 
     for i in range(1000):
         huis, linksboven = amstel.herplaats_huis(plattegrond)
@@ -31,7 +32,10 @@ def rand_hillclimber(amstel, plattegrond):
             oude_waarde = nieuwe_waarde
             print(f"Totale wijk waarde is: {oude_waarde} euro")
 
-            amstel.visualisatie()
+        amstel.waardes_lijst.append(oude_waarde)    
+
+            # amstel.visualisatie()
+
 
 def visualisatie_rand_hillclimber(amstel):
     """
@@ -45,7 +49,7 @@ def visualisatie_rand_hillclimber(amstel):
 
     plt.xlabel('Iteratie')
     plt.ylabel('Wijkwaarde ')
-    plt.title('Random waardes van de wijk')
+    plt.title('Random hillclimber')
 
     plt.plot(x,y)
     plt.show()
