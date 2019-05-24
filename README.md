@@ -3,7 +3,7 @@
 ### Minor Programmeren
 
 <img width="200" alt="image" src="https://user-images.githubusercontent.com/47352487/58120398-75876900-7c05-11e9-8a51-82610d15c29d.png">
-[Heuristieken.nl](http://heuristieken.nl/wiki/index.php?title=Heuristieken)
+[Heuristieken.nl](http://heuristieken.nl/wiki/index.php?title=Heuristieken).
 
 #### Casus AmstelHaege
 In een ooit beschermd natuurgebied zal een nieuwe woonwijk worden geplaatst. De wijk, met een afmeting van 160 bij 180m, zal zo optimaal mogelijk worden ingedeeld rekening houdend met verscheidene restricties. De verhoudingen tussen de drie soorten huizen **(eengezinswoning, bungolow en maison)** zijn vastgesteld op 60%, 25% en 15%. Daarnaast hebben de huizen verschillende attributen. Zo zijn de prijzen, oppervlaktes, minimale verplichte vrijstand en prijsverbetering oplopend van eengezinswoning tot maison. In de wijk zullen ook (maximaal 4) sloten worden aangelegd, welke 20% van de wijk in beslag zullen nemen, en waarbij de sloten een uiterlijke verhouding van 1:4 hebben. Om zo veel mogelijk waarde te genereren moet er gekeken worden naar de vrijstand, **des te meer vrijstand, des te hoger de waarde** (niet cumulatief).
