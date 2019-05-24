@@ -61,10 +61,14 @@ class Amstel():
             , prijs, prijvermeerdering, breedte, hoogte). Deze worden
             opgeslagen in de wijk_lijst. Ook water wordt aan deze lijst
             toegevoegd. Elk ander huis en water dat wordt toegevoegd aan de
-            lijst krijgt een eigen id.
+            lijst krijgt een eigen id. Water heeft verder geen minimale minimale vrijstand
+            , prijs, prijvermeerdering.
         """
 
+        # De oppervlakte per sloot is 20% van de wijk gedeeld door
+        # het aantal sloten.
         oppervlakte_per_sloot = int((self.oppervlakte_wijk * 0.2)/self.aantal_sloten)
+
 
         if self.aantal_huizen <= 40:
             self.breedte_sloot = math.sqrt(oppervlakte_per_sloot)
@@ -73,25 +77,28 @@ class Amstel():
             self.hoogte_sloot = math.sqrt(oppervlakte_per_sloot / 4)
             self.breedte_sloot = 4 * self.hoogte_sloot
 
-
+        # De sloten toevoegen aan de wijk met een unieke ID vanaf 1000.
         counter = 1000
         for i in range(self.aantal_sloten):
             huis = Huis(counter, 0, 0, 0, self.breedte_sloot, self.hoogte_sloot)
             counter += 1
             self.wijk_lijst.append(huis)
 
+        # Maisons toevoegen aan de wijk
         counter = 200
         for i in range(self.aantal_maison):
             huis = Huis(counter, 6, 610000, 0.12, 11, 10.5)
             counter += 1
             self.wijk_lijst.append(huis)
 
+        # Bungalows toevoegen aan de wijk
         counter = 100
         for i in range(self.aantal_bungalow):
             huis = Huis(counter, 3, 399000, 0.06, 10, 7.5)
             counter += 1
             self.wijk_lijst.append(huis)
 
+        # Eengezinswoningen toevoegen aan de wijk
         counter = 0
         for i in range(self.aantal_eengezinswoning):
             huis = Huis(counter, 2, 285000, 0.03, 8, 8)
@@ -217,7 +224,7 @@ class Amstel():
 
         for huis in self.wijk_lijst:
             self.plaats_random(huis, plattegrond)
-            
+
 
     def herplaats_huis(self, plattegrond):
         """
