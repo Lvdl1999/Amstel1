@@ -75,8 +75,8 @@ class Huis():
         return math.sqrt(dx**2 + dy**2)
 
 
-    # zoekt de dichtstbijzijnde buurman door met alle huizen te vergelijken uit de huizen_lijst
-    def dichtsbijzijnde_huis(self, huizen_lijst):
+    # zoekt de dichtstbijzijnde buurman door met alle huizen te vergelijken uit de wijk_lijst
+    def dichtsbijzijnde_huis(self, wijk_lijst):
         """
             De functie 'dichtstbijzijnde_huis vergelijkt alle afstanden tussen
             zichzelf en huizen eromheen en returnt het dichtstbijzijnde huis en
@@ -87,7 +87,7 @@ class Huis():
         kortste_afstand = float('inf')
 
         # De afstand van een huis wordt niet met zichzelf berekent.
-        for ander_huis in huizen_lijst:
+        for ander_huis in wijk_lijst:
             if self is ander_huis or ander_huis.id >=1000:
                 continue
             else:

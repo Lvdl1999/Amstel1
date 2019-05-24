@@ -76,11 +76,11 @@ def annealing(amstel, plattegrond, afkoeling, begin_temperatuur):
         elif oude_waarde > nieuwe_waarde:
             if random.random() > acceptatie_kans(nieuwe_waarde, oude_waarde, temperatuur):
                 amstel.plaats_huis(huis, linksboven_oud)
-            elif not plattegrond.grens_check(huis) or plattegrond.overlap_check(huis, amstel.huizen_lijst):
+            elif not plattegrond.grens_check(huis) or plattegrond.overlap_check(huis, amstel.wijk_lijst):
                 amstel.plaats_huis(huis, linksboven_oud)
             else:
                 oude_waarde = nieuwe_waarde
-        elif not plattegrond.grens_check(huis) or plattegrond.overlap_check(huis, amstel.huizen_lijst):
+        elif not plattegrond.grens_check(huis) or plattegrond.overlap_check(huis, amstel.wijk_lijst):
             amstel.plaats_huis(huis, linksboven_oud)
         else:
             oude_waarde = nieuwe_waarde
