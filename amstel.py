@@ -242,7 +242,7 @@ class Amstel():
         huis = random.choice(self.wijk_lijst)
         linksboven = huis.linksboven
         huis.reset()
-        
+
         self.plaats_random(huis, plattegrond)
 
         return huis, linksboven
