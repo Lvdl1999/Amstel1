@@ -1,17 +1,17 @@
 """
 Amstel1
 Heuristieken
-hillclimber.py
-Het hillclimber algoritme.
+schuif_hillclimber.py
+Het schuif_schuif_hillclimber algoritme.
 """
 
 import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 
 
-def hillclimber(amstel, plattegrond):
+def schuif_hillclimber(amstel, plattegrond):
     """
-        De 'hillclimber' kiest een random huis uit de wijk en verschuift het met
+        De 'schuif_hillclimber' kiest een random huis uit de wijk en verschuift het met
         een random waarde tussen de -10 en 10 meter. Vervolgens wordt gekeken of
         dit een betere oplossing genereert. Zo niet, dan wordt het huis
         teruggeplaatst.
@@ -43,7 +43,7 @@ def hillclimber(amstel, plattegrond):
     # amstel.visualisatie()
 
 
-def visualisatie_hillclimber(amstel):
+def visualisatie_schuif_hillclimber(amstel):
     """
         Plot een grafiek om een kijkje in het oplossingslandschap te geven.
     """
@@ -55,7 +55,7 @@ def visualisatie_hillclimber(amstel):
 
     plt.xlabel('Iteratie')
     plt.ylabel('Wijkwaarde ')
-    plt.title('Hillclimber')
+    plt.title('Schuif Hillclimber')
 
     plt.plot(x,y)
     plt.show()

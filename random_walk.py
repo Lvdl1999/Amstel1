@@ -24,12 +24,16 @@ def random_walk(amstel, plattegrond):
     oude_waarde = int(amstel.totale_nieuwe_huiswaarde())
     print(f"Totale wijk waarde is: €{oude_waarde},-")
 
-    amstel.visualisatie()
+    # amstel.visualisatie()
+    nieuwe_waarde = int(amstel.totale_nieuwe_huiswaarde())
 
-    for i in range(1000):
-        amstel.herplaats_huis(plattegrond)
-        amstel.waardes_random.append(int(amstel.totale_nieuwe_huiswaarde()))
-        print(f"Totale wijk waarde is: €{int(amstel.totale_nieuwe_huiswaarde())},-")
+    for i in range(100):
+        for i in range(1000):
+            amstel.herplaats_huis(plattegrond)
+            amstel.waardes_random.append((int(nieuwe_waarde)))
+            amstel.results_random_walk.append(int(nieuwe_waarde))
+
+            print(f"Totale wijk waarde is: €{(int(nieuwe_waarde))},-")
 
     return amstel
 
@@ -40,7 +44,7 @@ def visualisatie_random_walk(amstel):
     """
     fig, ax = plt.subplots()
 
-    x = [i for i in range(1000)]
+    x = [i for i in range(len(amstel.waardes_random))]
     y = amstel.waardes_random
 
     plt.xlabel('Iteratie')

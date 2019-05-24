@@ -1,5 +1,5 @@
-from hillclimber import hillclimber, visualisatie_hillclimber
-from rand_hillclimber import rand_hillclimber, visualisatie_rand_hillclimber
+from schuif_hillclimber import schuif_hillclimber, visualisatie_schuif_hillclimber
+from verplaats_hillclimber import verplaats_hillclimber, visualisatie_verplaats_hillclimber
 from random_walk import random_walk
 from random_walk import visualisatie_random_walk
 from annealing import visualisatie_annealing, annealing, linear_afkoeling, log_afkoeling, exp_afkoeling
@@ -21,14 +21,14 @@ if __name__ == '__main__':
     amstel.plaats_huizen(plattegrond)
 
 while True:
-    antwoord = input("\nWerken met random_hillclimber, hillclimber, random_walk of annealing?:  ")
+    antwoord = input("\nWerken met verplaats_hillclimber, hillclimber, random_walk of annealing?:  ")
     print("______________________________________________________________ \n")
-    if antwoord not in ["random_hillclimber", "hillclimber", "random_walk", "annealing"]:
-        print("Beantwoord vraag met: random_hillclimber, hillclimber, random_walk of annealing")
+    if antwoord not in ["verplaats_hillclimber", "hillclimber", "random_walk", "annealing"]:
+        print("Beantwoord vraag met: verplaats_hillclimber, hillclimber, random_walk of annealing")
         # amstel.visualisatie()
-    elif antwoord == "random_hillclimber":
-        rand_hillclimber(amstel, plattegrond)
-        visualisatie_rand_hillclimber(amstel)
+    elif antwoord == "verplaats_hillclimber":
+        verplaats_hillclimber(amstel, plattegrond)
+        visualisatie_verplaats_hillclimber(amstel)
         break
     elif antwoord == "random_walk":
         random_walk(amstel, plattegrond)

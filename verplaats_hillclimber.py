@@ -1,16 +1,16 @@
 """
 Amstel1
 Heuristieken
-rand_hillclimber.py
-The random hillclimber algorithm.
+verplaats_hillclimber.py
+Het verplaats hillclimber algoritme.
 """
 
 import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 
-def rand_hillclimber(amstel, plattegrond):
+def verplaats_hillclimber(amstel, plattegrond):
     """
-            De 'rand_hillclimber' kiest een random huis uit de wijk en herplaatst
+            De 'verplaats_hillclimber' kiest een random huis uit de wijk en herplaatst
             het op een random plek en kijkt of dit een betere oplossing
             genereert. Zo niet dan wordt het huis weer teruggeplaatst.
     """
@@ -37,7 +37,7 @@ def rand_hillclimber(amstel, plattegrond):
             # amstel.visualisatie()
 
 
-def visualisatie_rand_hillclimber(amstel):
+def visualisatie_verplaats_hillclimber(amstel):
     """
         Plot een grafiek om een kijkje in het oplossingslandschap te geven.
     """
@@ -49,7 +49,7 @@ def visualisatie_rand_hillclimber(amstel):
 
     plt.xlabel('Iteratie')
     plt.ylabel('Wijkwaarde ')
-    plt.title('Random hillclimber')
+    plt.title('Verplaats hillclimber')
 
     plt.plot(x,y)
     plt.show()

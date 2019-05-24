@@ -28,7 +28,7 @@ class Amstel():
         # De wijk kan 20, 40 of 60 huizen bevatten afhankelijk van de
         # gebruikers keuze.
         while True:
-            print("\nGeef aan hoeveel huizen en sloten er in de wijk worden geplaatst.\n")
+            print("\nGeef aan hoeveel huizen (20, 40 of 60) en sloten (tussen 1 en 4) er in de wijk worden geplaatst.\n")
             self.aantal_huizen = int(input("Aantal huizen: "))
             if self.aantal_huizen not in [20, 40, 60]:
                 print("Alleen keuze uit 20, 40 of 60 huizen")
@@ -55,6 +55,12 @@ class Amstel():
         self.waardes_lijst = []
         self.hoogste_waarde= 0
 
+        self.results_random_walk = []
+        self.results_log = []
+        self.results_exp = []
+        self.results_lin = []
+        self.results_schuif_hillclimber = []
+        self.results_verplaats_hillclimber = []
 
         """
             Elk huis heeft een verschillende attributen: (id, minimale vrijstand

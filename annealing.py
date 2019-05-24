@@ -5,7 +5,7 @@ annealing.py
 Het simulated annealing algoritme.
 """
 
-from hillclimber import hillclimber
+from schuif_hillclimber import schuif_hillclimber
 import math
 import random
 import matplotlib.pyplot as plt
@@ -49,7 +49,7 @@ def exp_afkoeling(begin_temperatuur, temperatuur, iteraties, i):
 
 def annealing(amstel, plattegrond, afkoeling, begin_temperatuur):
     """
-        Beginnend met de hillclimber om vervolgens met een bepaalde kans een
+        Beginnend met de schuif_hillclimber om vervolgens met een bepaalde kans een
         verslechtering toe te laten. Bij een verslechtering moet de kans op
         toelating kleiner dan bij een verbetering van de waarde. Bedoeld om
         uit het optimale maximum te komen en een hoger optimaal maximum te
@@ -92,7 +92,7 @@ def annealing(amstel, plattegrond, afkoeling, begin_temperatuur):
         if temperatuur < 1:
             temperatuur = 1
 
-    hillclimber(amstel, plattegrond)
+    schuif_hillclimber(amstel, plattegrond)
 
     # amstel.visualisatie()
 
