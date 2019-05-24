@@ -1,4 +1,4 @@
-#### Algoritmes
+# Algoritmes
 De Code bevat onder anderen alle algoritmes die voor deze case zijn gebruikt.
 Per algoritme wordt verderop een korte samenvatting gegeven.
 
