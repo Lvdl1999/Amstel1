@@ -8,6 +8,9 @@ schuif_hillclimber.py
 verplaats_hillclimber.py
 annealing.py
 
+## Opmerking 60 huizen-variant
+Bij het plaatsen van 60 huizen, in combinatie met de sloten, werkte de random_walk en verplaats_hillclimber algoritmes niet voldoende. Na enkele iteraties liep soms de berekening vast. Dit komt waarschijnlijk doordat er in de wijk niet genoeg ruimte was om het huis random te verplaatsen. 
+De simulated annealing, in combinatie met het schuif_hillclimber algoritme, gaf de voor de 60 huizen variant de meest relevante resultaten. Door, de naar ons inzien, mindere relevantie van random_walk en verplaats_hillclimber hebben wij ervoor gekozen het aantal algoritmes voor 60 huizen aan te passen. De optie van 60 huizen is nu alleen te runnen met simulated annealing in combinatie met het schuif_hillclimber algoritme en het schuif_hillclimber algoritme alleen. Bij de 20 en 40 huizen variant kunnen uiteraard wel alle algoritmes worden gerund.
 
 ## Random walk *(random_walk.py)*
 Door het random_walk algoritme wordt een wijk random geplaatst. Vervolgens wordt random een huis uit de wijk gekozen en ook weer random verschoven. Er wordt hierin niet gekeken naar verbetering en verslechtering. Het huis krijgt een nieuwe x en y coordinaat en wordt daarmee herplaatst. Bij de random walk algoritme wordt een kijkje in het oplossingslandschap weergegeven.
@@ -25,8 +28,6 @@ Beginnend met de schuif_hillclimber om vervolgens met een bepaalde kans een
 verslechtering toe te laten. Bij een verslechtering moet de kans op
 toelating kleiner zijn dan bij een verbetering van de waarde. Dit wordt gebruikt om
 uit een lokaal optimum te komen en een betere oplossing te vinden.
-In onze code zijn er 3 soorten koelschema's mogelijk: lineair, exponentieel en logaritmisch. Bij een lineair koelschema
+In onze code zijn er 3 soorten koelschema's mogelijk: lineair, exponentieel en logaritmisch. 
 
 
-Een exponentieel koelschema:
-Tot slot wordt bij een logaritmisch koelschema :
