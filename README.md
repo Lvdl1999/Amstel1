@@ -20,8 +20,8 @@ pip install -r requirements.txt
 ### Gebruik
 | Stap | Keuze|
 |--------|------------------------------|
-| 0 | Dowlnoad or clone the 'Amstel1' GitHub repository.
-| 1 | `pythonw main.py`
+| 0 | Download of clone the 'Amstel1' GitHub repository.
+| 1 | `pythonw main.py` voor een MacBook en `python main.py` voor Windows laptops.
 | 2 | U kunt een wijk van '20', '40' of '60' huizen kiezen. |
 | 3 | Vervolgens kunt u minimaal '1' en maximaal '4' sloten in de wijk plaatsen.  |
 | 4 | Selecteer vervolgens welk algoritme u wilt runnen. U kunt kiezen tussen `random_hillclimber,    hillclimber, random_walk of annealing`. |
