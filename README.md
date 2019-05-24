@@ -24,21 +24,14 @@ pip install -r requirements.txt
 | 1 | `pythonw main.py` voor een MacBook en `python main.py` voor Windows laptops.
 | 2 | U kunt een wijk van '20', '40' of '60' huizen kiezen. |
 | 3 | Vervolgens kunt u minimaal '1' en maximaal '4' sloten in de wijk plaatsen.  |
-| 4 | Selecteer vervolgens welk algoritme u wilt runnen. U kunt kiezen tussen `random_hillclimber,    hillclimber, random_walk of annealing`. |
-| 5 | Wanneer is gekozen voor simulated annealing heeft u keuze uit verschillende koelsystemen. Voor een lineair afkoelschema dient `linear_afkoeling` te worden ingevoerd. Voor een logaritmisch afkoelschema dient `log_afkoeling` te worden ingevoerd. Voor een exponentieel afkoelschema dient `exp_afkoeling` te worden ingevoerd.
+| 4 | Selecteer vervolgens welk algoritme u wilt runnen. U kunt kiezen tussen `schuif_hillclimber,    verplaats_hillclimber, random_walk of annealing`. |
+| 5 | Wanneer is gekozen voor simulated annealing heeft u keuze uit verschillende koelsystemen. Voor een lineair afkoelschema dient `lineair_afkoeling` te worden ingevoerd. Voor een logaritmisch afkoelschema dient `log_afkoeling` te worden ingevoerd. Voor een exponentieel afkoelschema dient `exp_afkoeling` te worden ingevoerd.
 | 6 | Zodra een algoritme heeft gerund kunt u deze beëindigen door het pop-up figuur van de visualisatie te sluiten. |
 
 
 ### Structuur
 
-Alle Python scripts staan in de folder Code. In de map Data zitten alle input waardes en in de map resultaten worden alle resultaten opgeslagen door de code.
-
-### Test
-Om de code te draaien met de standaardconfiguratie (bv. brute-force en voorbeeld.csv) gebruik de instructie:
-
-```
-pythonw main.py
-```
+Alle Python scripts staan in de folder Code. In de map Data zitten alle input waardes en in de map Resultaten worden alle resultaten opgeslagen door de code.
 
 ### Bounds
 De lowerbound en upperbound zijn beide berekend voor de case AmstelHaege.
@@ -62,7 +55,7 @@ De berekening hiervan in de map Amstel1 te vinden in een file genaamd bounds.py.
 
 | Stap | Keuze|
 |--------|------------------------------|
-| 0 | `pythonw bounds.py`
+| 0 |  `pythonw bounds.py` voor een MacBook en `python bounds.py` voor Windows laptops.
 | 1 | U kunt een wijk van '20', '40' of '60' huizen kiezen. |
 | 2 | Vervolgens kunt u minimaal '1' en maximaal '4' sloten in de wijk plaatsen.  |
 | 3 | In dit commando mag worden meegegeven of u de lowerbound, upperbound of beide wilt berekenen. -Voor de lowerbound dient `lowerbound` te worden ingevoerd. -Voor de upperbound dient `upperbound` te worden ingevoerd. -Om beide te berekenen mag `beide` worden ingevoerd.|
