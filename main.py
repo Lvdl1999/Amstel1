@@ -24,6 +24,8 @@ if __name__ == '__main__':
     amstel.plaats_huizen(plattegrond)
 
 while True:
+    # Enkel de huizen varianten van 20 en 40 kunnen alle algoritmes runnen
+    # Zie 'else' voor mogelijkheden 60 huizen variant
     if amstel.aantal_huizen <= 40:
         antwoord = input("\nWerken met verplaats_hillclimber, schuif_hillclimber, random_walk of annealing?:  ")
         print("______________________________________________________________ \n")

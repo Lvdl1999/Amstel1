@@ -56,26 +56,18 @@ class Amstel():
         self.waardes_lijst = []
         self.hoogste_waarde= 0
 
-        self.resultaten_random_walk = []
-        self.resultaten_log = []
-        self.resultaten_exp = []
-        self.resultaten_lin = []
-        self.resultaten_schuif_hillclimber = []
-        self.resultaten_verplaats_hillclimber = []
-
         """
             Elk huis heeft een verschillende attributen: (id, minimale vrijstand
             , prijs, prijvermeerdering, breedte, hoogte). Deze worden
             opgeslagen in de wijk_lijst. Ook water wordt aan deze lijst
             toegevoegd. Elk ander huis en water dat wordt toegevoegd aan de
-            lijst krijgt een eigen id. Water heeft verder geen minimale minimale vrijstand
-            , prijs, prijvermeerdering.
+            lijst krijgt een eigen id. Water heeft verder geen minimale minimale
+            vrijstand, prijs, prijvermeerdering.
         """
 
         # De oppervlakte per sloot is 20% van de wijk gedeeld door
         # het aantal sloten.
         oppervlakte_per_sloot = int((self.oppervlakte_wijk * 0.2)/self.aantal_sloten)
-
 
         if self.aantal_huizen <= 40:
             self.breedte_sloot = math.sqrt(oppervlakte_per_sloot)
@@ -253,9 +245,9 @@ class Amstel():
     def schuif_huis(self):
         """
             Een huis word verschoven naar een nieuwe plek en het oude
-            linksboven coordinaat word opgeslagen. Wanneer het huis naar een plek
-            wordt verschoven dat niet binnen de grenzen ligt of voor overlap
-            zorgt wordt het terug geplaats.
+            linksboven coordinaat word opgeslagen. Wanneer het huis naar een
+            plek wordt verschoven dat niet binnen de grenzen ligt of voor
+            overlap zorgt wordt het terug geplaats.
         """
 
         huis = random.choice(self.wijk_lijst)

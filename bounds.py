@@ -1,13 +1,13 @@
 """
 Amstel1
 Heuristieken
-sim_annealing.py
+bounds.py
 Calculating the upper- and lowerbound of the case AmstelHaege.
 """
 
-from .amstel import Amstel
-from .huis import Huis
-from .plattegrond import Plattegrond
+from Code.amstel import Amstel
+from Code.huis import Huis
+from Code.plattegrond import Plattegrond
 
 def upperbound_calc():
     """
@@ -17,7 +17,7 @@ def upperbound_calc():
     """
 
     upperbound = 0
-    for huis in amstel.huizen_lijst:
+    for huis in amstel.wijk_lijst:
         oude_huisprijs = float(huis.prijs)
         waardevermeerdering = float(huis.prijsverbetering)
         min_vrijstand = float(huis.min_vrijstand)
@@ -40,7 +40,7 @@ def lowerbound_calc():
     """
 
     lowerbound = 0
-    for huis in amstel.huizen_lijst:
+    for huis in amstel.wijk_lijst:
         prijs = huis.prijs
         lowerbound += prijs
 
@@ -54,8 +54,8 @@ if __name__ == '__main__':
     plattegrond = Plattegrond(160, 180)
 
     while True:
-        antwoord = input("De 'upperbound', 'lowerbound' of 'beide' berekenen?:  ")
-        print("______________________________________________________________ \n")
+        antwoord = input("De upperbound','lowerbound' of 'beide' berekenen?:  ")
+        print("___________________________________________________________ \n")
         if antwoord not in ["upperbound", "lowerbound", "beide"]:
             print("Beantwoord vraag met: 'upperbound', 'lowerbound', 'beide'")
         elif antwoord == "lowerbound":
@@ -65,5 +65,6 @@ if __name__ == '__main__':
             print(f"De upperbound is: {upperbound_calc()} euro.\n")
             break
         else:
-            print(f"De lowerbound is: {lowerbound_calc()} euro & de upperbound is: {upperbound_calc()} euro.\n")
+            print(f"De lowerbound is: €{lowerbound_calc()},-")
+            print(f"De upperbound is: €{upperbound_calc()},-\n")
             break
