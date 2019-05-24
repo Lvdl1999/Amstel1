@@ -5,6 +5,8 @@ from Code.random_walk import visualisatie_random_walk
 from Code.annealing import visualisatie_annealing, annealing, lineair_afkoeling, log_afkoeling, exp_afkoeling
 from Code.amstel import Amstel
 from Code.plattegrond import Plattegrond
+import csv
+import statistics
 
 
 if __name__ == '__main__':
@@ -34,17 +36,17 @@ while True:
         random_walk(amstel, plattegrond)
         visualisatie_random_walk(amstel)
 
-        import csv, statistics
         with open('output.csv', 'a') as f:
             resultaten_writer = csv.writer(f, delimiter=',')
-            resultaten_writer.writerow(amstel.results_random_walk)
+            resultaten_writer.writerow(amstel.resultaten_random_walk)
 
         with open('output.csv', 'r') as results:
             resultaten_reader = csv.reader(results, delimiter=',')
             resultaten_lijst = []
             for resultaten in resultaten_reader:
                 resultaten_lijst.append(resultaten)
-            
+            for i in range(len(resultaten_lijst[0])):
+                statistics.mean(resultaten_lijst[:][i])
         break
     elif antwoord == "annealing":
         soort_afkoeling = input("Welk koelsysteem wilt u gebruiken: lineair_afkoeling, log_afkoeling of exp_afkoeling?:  ")
