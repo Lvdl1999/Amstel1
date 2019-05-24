@@ -20,9 +20,10 @@ def hillclimber(amstel, plattegrond):
     oude_waarde = int(amstel.totale_nieuwe_huiswaarde())
     print(f"Totale wijk waarde is: {oude_waarde} euro")
 
-    # amstel.visualisatie()
+    amstel.visualisatie()
 
-    for i in range(1000):
+    iteraties = 1000
+    for i in range(iteraties):
 
         huis, linksboven_oud = amstel.schuif_huis()
         nieuwe_waarde = int(amstel.totale_nieuwe_huiswaarde())
@@ -38,8 +39,8 @@ def hillclimber(amstel, plattegrond):
             print(f"Totale wijk waarde is: {oude_waarde} euro")
 
         amstel.waardes_lijst.append(oude_waarde)
-
-    # amstel.visualisatie()
+    print(f"____HOOGSTE waarde is: {amstel.hoogste_waarde} met {iteraties} iteraties___")
+    amstel.visualisatie()
 
 
 def visualisatie_hillclimber(amstel):

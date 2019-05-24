@@ -29,7 +29,6 @@ def random_walk(amstel, plattegrond):
     for i in range(1000):
         amstel.herplaats_huis(plattegrond)
         amstel.waardes_random.append(int(amstel.totale_nieuwe_huiswaarde()))
-
         print(f"Totale wijk waarde is: {int(amstel.totale_nieuwe_huiswaarde())} euro")
 
     return amstel

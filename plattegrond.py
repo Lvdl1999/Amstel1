@@ -21,9 +21,9 @@ class Plattegrond():
         De plattegrond berekent met behulp van de 'grens_check' of alle huizen
         binnen de toegekende afmetingen liggen.
         """
-        if huis.linksboven.x < 0 or huis.rechtsboven.x > self.breedte:
+        if huis.linksboven.x < huis.min_vrijstand or huis.rechtsboven.x > self.breedte - huis.min_vrijstand:
             return False
-        if huis.linksonder.y < 0 or huis.rechtsboven.y > self.hoogte:
+        if huis.linksonder.y < huis.min_vrijstand or huis.rechtsboven.y > self.hoogte - huis.min_vrijstand:
             return False
         return True
 
