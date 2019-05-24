@@ -20,17 +20,18 @@ pip install -r requirements.txt
 |--------|------------------------------|
 | 0 | Download of clone de 'Amstel1' GitHub repository.
 | 1 | `pythonw main.py` voor een MacBook en `python main.py` voor Windows laptops.
-| 2 | U kunt een wijk van '20', '40' of '60' huizen kiezen. |
+| 2 | U kunt een wijk van '20', '40' of '60' huizen kiezen.*** |
 | 3 | Vervolgens kunt u minimaal '1' en maximaal '4' sloten in de wijk plaatsen.  |
-| 4 | Selecteer vervolgens welk algoritme u wilt runnen. U kunt kiezen tussen `schuif_hillclimber, verplaats_hillclimber, random_walk of annealing`. |
+| 4 | Selecteer vervolgens welk algoritme u wilt runnen. U kunt kiezen tussen `schuif_hillclimber, verplaats_hillclimber, random_walk of annealing`.*** |
 | 5 | Wanneer is gekozen voor annealing (oftewel simulated annealing) heeft u keuze uit verschillende koelsystemen. Voor een lineair afkoelschema dient `lineair_afkoeling` te worden ingevoerd. Voor een logaritmisch afkoelschema dient `log_afkoeling` te worden ingevoerd. Voor een exponentieel afkoelschema dient `exp_afkoeling` te worden ingevoerd.
 | 6 | Zodra een algoritme heeft gerund kunt u deze beëindigen door het pop-up figuur van de visualisatie te sluiten. |
 
+#### *** Opmerking 60 huizen-variant
+Bij het plaatsen van 60 huizen, in combinatie met de sloten, werkte de random_walk en verplaats_hillclimber algoritmes niet voldoende. Na enkele iteraties liep soms de berekening vast. Dit komt waarschijnlijk doordat er in de wijk niet genoeg ruimte was om het huis random te verplaatsen. 
+De simulated annealing, in combinatie met het schuif_hillclimber algoritme, gaf de voor de 60 huizen variant de meest relevante resultaten. Door, de naar ons inzien, mindere relevantie van random_walk en verplaats_hillclimber hebben wij ervoor gekozen het aantal algoritmes voor 60 huizen aan te passen. De optie van 60 huizen is nu alleen te runnen met simulated annealing in combinatie met het schuif_hillclimber algoritme en het schuif_hillclimber algoritme alleen. Bij de 20 en 40 huizen variant kunnen uiteraard wel alle algoritmes worden gerund.
+
 ### Structuur
-
-Alle Python scripts staan in de folder Code. In de map Data zitten alle input waardes en in de map Resultaten worden alle resultaten opgeslagen door de code.
-
-
+Alle Python scripts staan in de folder Code. 
 
 ### Bounds
 De lowerbound en upperbound zijn beide berekend voor de case AmstelHaege.
@@ -48,7 +49,6 @@ De upperbound geeft aan hoeveel de wijk waard is in de meest optimale situatie. 
 - Voor de 20-huizenvariant is de upperbound: 38702925 euro.
 - Voor de 40-huizenvariant is de upperbound: 77405850 euro.
 - Voor de 60-huizenvariant is de upperbound: 116108775 euro
-
 
 De berekening van de upper- en de lowerbound zijn in de map Amstel1 te vinden in een file genaamd bounds.py. Met het volgende stappen plan kan deze code eventueel worden gerund bij interesse:
 
