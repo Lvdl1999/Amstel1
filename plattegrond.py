@@ -21,18 +21,11 @@ class Plattegrond():
         De plattegrond berekent met behulp van de 'grens_check' of alle huizen
         binnen de toegekende afmetingen liggen.
         """
-        if huis.linksboven.x < huis.min_vrijstand or huis.rechtsboven.x > self.breedte - huis.min_vrijstand:
+        if huis.linksboven.x <= huis.min_vrijstand or huis.rechtsboven.x >= self.breedte - huis.min_vrijstand:
             return False
-        if huis.linksonder.y < huis.min_vrijstand or huis.rechtsboven.y > self.hoogte - huis.min_vrijstand:
+        if huis.linksonder.y <= huis.min_vrijstand or huis.rechtsboven.y >= self.hoogte - huis.min_vrijstand:
             return False
         return True
-
-    # def sloot_verhouding_check(self, coord):
-    #
-    #     if sloot.breedte > 4 * sloot.hoogte:
-    #         return False
-    #     else:
-    #         return True
 
 
     def overlap_check(self, huis, huizen_lijst):
