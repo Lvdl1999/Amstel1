@@ -215,14 +215,9 @@ class Amstel():
             oppervlakte van de wijk weergeeft.
         """
 
-        counter = 0
         for huis in self.wijk_lijst:
-            counter += 1
-            print(counter)
             self.plaats_random(huis, plattegrond)
-
-
-
+            
 
     def herplaats_huis(self, plattegrond):
         """

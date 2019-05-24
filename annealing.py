@@ -63,7 +63,6 @@ def annealing(amstel, plattegrond, afkoeling, begin_temperatuur):
     print(f"Totale wijk waarde is: {oude_waarde} euro")
 
     # amstel.visualisatie()
-    # Beginnen met random_hillclimber
 
     iteraties = 1000
     for i in range(iteraties):
@@ -86,7 +85,7 @@ def annealing(amstel, plattegrond, afkoeling, begin_temperatuur):
             oude_waarde = nieuwe_waarde
             if oude_waarde > amstel.hoogste_waarde:
                 amstel.hoogste_waarde = oude_waarde
-            print(f"Totale wijk waarde is: {oude_waarde} euro, temperatuur: {temperatuur}")
+            print(f"Totale wijk waarde is: €{oude_waarde},-, temperatuur: {temperatuur}")
         # De afkoeling moet doorgeven of het logaritmisch, exponentieel of linear is.
         temperatuur -= afkoeling(begin_temperatuur, temperatuur, iteraties, i)
         amstel.waardes_lijst.append(oude_waarde)

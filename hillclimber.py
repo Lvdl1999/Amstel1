@@ -36,10 +36,10 @@ def hillclimber(amstel, plattegrond):
             oude_waarde = nieuwe_waarde
             if oude_waarde > amstel.hoogste_waarde:
                 amstel.hoogste_waarde = oude_waarde
-            print(f"Totale wijk waarde is: {oude_waarde} euro")
+            print(f"Totale wijk waarde is: €{oude_waarde},-")
 
         amstel.waardes_lijst.append(oude_waarde)
-    print(f"____HOOGSTE waarde is: {amstel.hoogste_waarde} met {iteraties} iteraties___")
+    print(f"____HOOGSTE waarde is: €{amstel.hoogste_waarde},- met {iteraties} iteraties___")
     amstel.visualisatie()
 
 
