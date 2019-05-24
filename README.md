@@ -66,7 +66,7 @@ De berekening van de upper- en de lowerbound zijn in de map Amstel1 te vinden in
 
 ## Dankwoord
 
-Hierbij willen wij graag onze TechAssistent Quinten bedanken voor zijn behulpzaamheid en positiviteit.
-Daarnaast Bram voor de feedback op onze presentaties en Daan van den Berg voor leerzame en vermakelijke colleges. We zijn zeer blij met onze behaalde resultaten en het kiezen van de case AmstelHaege.
-
+* Hierbij willen wij graag onze TechAssistent Quinten bedanken voor zijn behulpzaamheid en positiviteit.
+* Daarnaast Bram voor zijn goede feedback op onze presentaties en Daan van den Berg voor leerzame en vermakelijke colleges. 
+Wij zijn zeer blij met onze behaalde resultaten en het kiezen van de case AmstelHaege.
 * minor programmeren van de UvA
