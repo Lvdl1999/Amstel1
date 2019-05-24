@@ -30,7 +30,7 @@ def hillclimber(amstel, plattegrond):
 
         if oude_waarde > nieuwe_waarde:
             amstel.plaats_huis(huis, linksboven_oud)
-        elif not plattegrond.grens_check(huis) or plattegrond.overlap_check(huis, amstel.huizen_lijst):
+        elif not plattegrond.grens_check(huis) or plattegrond.overlap_check(huis, amstel.wijk_lijst):
             amstel.plaats_huis(huis, linksboven_oud)
         else:
             oude_waarde = nieuwe_waarde

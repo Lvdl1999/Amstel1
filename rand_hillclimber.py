@@ -32,7 +32,7 @@ def rand_hillclimber(amstel, plattegrond):
             oude_waarde = nieuwe_waarde
             print(f"Totale wijk waarde is: {oude_waarde} euro")
 
-        amstel.waardes_lijst.append(oude_waarde)    
+        amstel.waardes_lijst.append(oude_waarde)
 
             # amstel.visualisatie()
 

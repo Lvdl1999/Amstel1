@@ -49,7 +49,7 @@ class Amstel():
             else:
                 break
 
-        self.huizen_lijst = []
+        self.wijk_lijst = []
         self.waardes_random = []
         self.totaalwaarde = 0
         self.waardes_lijst = []
@@ -59,37 +59,46 @@ class Amstel():
         """
             Elk huis heeft een verschillende attributen: (id, minimale vrijstand
             , prijs, prijvermeerdering, breedte, hoogte). Deze worden
-            opgeslagen in de huizen_lijst.
-            Elk ander huis dat wordt toegevoegd aan de lijst krijgt een eigen id.
+            opgeslagen in de wijk_lijst. Ook water wordt aan deze lijst
+            toegevoegd. Elk ander huis en water dat wordt toegevoegd aan de
+            lijst krijgt een eigen id.
         """
 
         oppervlakte_per_sloot = int((self.oppervlakte_wijk * 0.2)/self.aantal_sloten)
-        self.breedte_sloot = math.sqrt(oppervlakte_per_sloot)
-        self.hoogte_sloot = math.sqrt(oppervlakte_per_sloot)
+
+        if self.aantal_huizen <= 40:
+            self.breedte_sloot = math.sqrt(oppervlakte_per_sloot)
+            self.hoogte_sloot = math.sqrt(oppervlakte_per_sloot)
+        else:
+            self.hoogte_sloot = math.sqrt(oppervlakte_per_sloot / 4)
+            self.breedte_sloot = 4 * self.hoogte_sloot
+
 
         counter = 1000
         for i in range(self.aantal_sloten):
             huis = Huis(counter, 0, 0, 0, self.breedte_sloot, self.hoogte_sloot)
             counter += 1
-            self.huizen_lijst.append(huis)
-
-        counter = 0
-        for i in range(self.aantal_eengezinswoning):
-            huis = Huis(counter, 2, 285000, 0.03, 8, 8)
-            counter += 1
-            self.huizen_lijst.append(huis)
-
-        counter = 100
-        for i in range(self.aantal_bungalow):
-            huis = Huis(counter, 3, 399000, 0.06, 10, 7.5)
-            counter += 1
-            self.huizen_lijst.append(huis)
+            self.wijk_lijst.append(huis)
 
         counter = 200
         for i in range(self.aantal_maison):
             huis = Huis(counter, 6, 610000, 0.12, 11, 10.5)
             counter += 1
-            self.huizen_lijst.append(huis)
+            self.wijk_lijst.append(huis)
+
+        counter = 100
+        for i in range(self.aantal_bungalow):
+            huis = Huis(counter, 3, 399000, 0.06, 10, 7.5)
+            counter += 1
+            self.wijk_lijst.append(huis)
+
+        counter = 0
+        for i in range(self.aantal_eengezinswoning):
+            huis = Huis(counter, 2, 285000, 0.03, 8, 8)
+            counter += 1
+            self.wijk_lijst.append(huis)
+
+
 
 
     def huis_check(self, huis, x, y):
@@ -127,7 +136,7 @@ class Amstel():
     def visualisatie(self):
         fig, ax = plt.subplots()
 
-        for huis in self.huizen_lijst:
+        for huis in self.wijk_lijst:
             if huis.id < 300:
                 rect = patches.Rectangle(huis.linksonder.coords(), huis.breedte,
                 huis.hoogte, linewidth=1,edgecolor='black',facecolor='none')
@@ -176,8 +185,8 @@ class Amstel():
 
         self.totaalwaarde = 0
 
-        for huis in self.huizen_lijst:
-            ander, afstand = huis.dichtsbijzijnde_huis(self.huizen_lijst)
+        for huis in self.wijk_lijst:
+            ander, afstand = huis.dichtsbijzijnde_huis(self.wijk_lijst)
             self.totaalwaarde += huis.nieuwe_huiswaarde_calc(afstand)
 
         return self.totaalwaarde
@@ -196,7 +205,7 @@ class Amstel():
             y = random.randint(0, plattegrond.hoogte)
             coordinaat = Coord(x, y)
             self.plaats_huis(huis, coordinaat)
-            if not plattegrond.grens_check(huis) or plattegrond.overlap_check(huis, self.huizen_lijst):
+            if not plattegrond.grens_check(huis) or plattegrond.overlap_check(huis, self.wijk_lijst):
                 huis.reset()
 
     def plaats_huizen(self, plattegrond):
@@ -206,18 +215,23 @@ class Amstel():
             oppervlakte van de wijk weergeeft.
         """
 
-        for huis in self.huizen_lijst:
+        counter = 0
+        for huis in self.wijk_lijst:
+            counter += 1
+            print(counter)
             self.plaats_random(huis, plattegrond)
+
+
 
 
     def herplaats_huis(self, plattegrond):
         """
-            Een random huis word gekozen uit de huizen_lijst om vervolgens op
+            Een random huis word gekozen uit de wijk_lijst om vervolgens op
             een andere random plek te worden geplaatst.
             Het huis met het nieuwe linksboven coordinaat word gereturnd.
         """
 
-        huis = random.choice(self.huizen_lijst)
+        huis = random.choice(self.wijk_lijst)
         linksboven = huis.linksboven
         huis.reset()
         self.plaats_random(huis, plattegrond)
@@ -233,7 +247,7 @@ class Amstel():
             zorgt wordt het terug geplaats.
         """
 
-        huis = random.choice(self.huizen_lijst)
+        huis = random.choice(self.wijk_lijst)
         linksboven_oud = huis.linksboven
 
         schuifx = random.randint(-10, 10)
@@ -254,7 +268,7 @@ class Amstel():
         """
 
         beginwijk_dict = {}
-        for huiscoord in self.huizen_lijst:
+        for huiscoord in self.wijk_lijst:
             beginwijk_dict[huiscoord] = huiscoord.linksboven
         return beginwijk_dict
 
@@ -269,7 +283,7 @@ class Amstel():
 
         for huiscoord in beginwijk_dict.keys():
             linksboven = beginwijk_dict[huiscoord]
-            for huis in self.huizen_lijst:
+            for huis in self.wijk_lijst:
                 self.plaats_huis(huis, linksboven)
-                if not plattegrond.grens_check(huis) or plattegrond.overlap_check(huis, self.huizen_lijst):
+                if not plattegrond.grens_check(huis) or plattegrond.overlap_check(huis, self.wijk_lijst):
                     huis.herplaats_huis()
