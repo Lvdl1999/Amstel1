@@ -31,7 +31,7 @@ Bij het plaatsen van 60 huizen, in combinatie met de sloten, werkte de random_wa
 De simulated annealing, in combinatie met het schuif_hillclimber algoritme, gaf de voor de 60 huizen variant de meest relevante resultaten. Door, de naar ons inzien, mindere relevantie van random_walk en verplaats_hillclimber hebben wij ervoor gekozen het aantal algoritmes voor 60 huizen aan te passen. De optie van 60 huizen is nu alleen te runnen met simulated annealing in combinatie met het schuif_hillclimber algoritme en het schuif_hillclimber algoritme alleen. Bij de 20 en 40 huizen variant kunnen uiteraard wel alle algoritmes worden gerund.
 
 ### Structuur
-Alle Python scripts staan in de folder Code. 
+Alle Python scripts staan in de folder Code. Daarnaast is de main.py om files in het mapje Code te runnen met behulp van de algoritmes(zie toelichting hierboven). De file bounds.py berekent de upperbound en lowerbound voor deze case (zie toelichting hieronder). 
 
 ### Bounds
 De lowerbound en upperbound zijn beide berekend voor de case AmstelHaege.
