@@ -5,7 +5,7 @@ annealing.py
 Het simulated annealing algoritme.
 """
 
-from schuif_hillclimber import schuif_hillclimber
+from .schuif_hillclimber import schuif_hillclimber
 import math
 import random
 import matplotlib.pyplot as plt

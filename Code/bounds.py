@@ -5,9 +5,9 @@ sim_annealing.py
 Calculating the upper- and lowerbound of the case AmstelHaege.
 """
 
-from amstel import Amstel
-from huis import Huis
-from plattegrond import Plattegrond
+from .amstel import Amstel
+from .huis import Huis
+from .plattegrond import Plattegrond
 
 def upperbound_calc():
     """

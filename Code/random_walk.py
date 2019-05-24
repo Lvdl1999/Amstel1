@@ -27,13 +27,13 @@ def random_walk(amstel, plattegrond):
     # amstel.visualisatie()
     nieuwe_waarde = int(amstel.totale_nieuwe_huiswaarde())
 
-    for i in range(100):
-        for i in range(1000):
-            amstel.herplaats_huis(plattegrond)
-            amstel.waardes_random.append((int(nieuwe_waarde)))
-            amstel.results_random_walk.append(int(nieuwe_waarde))
+    for i in range(1000):
+        amstel.herplaats_huis(plattegrond)
+        nieuwe_waarde = int(amstel.totale_nieuwe_huiswaarde())
+        amstel.waardes_random.append((int(nieuwe_waarde)))
+        amstel.results_random_walk.append(int(nieuwe_waarde))
 
-            print(f"Totale wijk waarde is: €{(int(nieuwe_waarde))},-")
+        print(f"Totale wijk waarde is: €{(int(nieuwe_waarde))},-")
 
     return amstel
 

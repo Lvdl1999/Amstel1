@@ -6,7 +6,7 @@ Deze class bevat de instantie van een huis en alle functies die een huis
 voor zichzelf kan uitrekenen.
 """
 
-from coord import Coord
+from .coord import Coord
 import math
 
 

@@ -11,9 +11,9 @@ import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 import math
 
-from coord import Coord
-from huis import Huis
-from plattegrond import Plattegrond
+from .coord import Coord
+from .huis import Huis
+from .plattegrond import Plattegrond
 
 
 class Amstel():
