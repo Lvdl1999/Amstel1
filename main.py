@@ -48,14 +48,14 @@ while True:
             # amstel = annealing(linear_afkoeling, 1000000)
         elif soort_afkoeling == "log_afkoeling":
             for i in range(5):
-                annealing(amstel, plattegrond, log_afkoeling, 1000000)
+                annealing(amstel, plattegrond, log_afkoeling, 100)
                 hillclimber(amstel, plattegrond)
             visualisatie_annealing(amstel)
             break
             # amstel = annealing(log_afkoeling, 1000000)
         elif soort_afkoeling == "exp_afkoeling":
             for i in range(5):
-                annealing(amstel, plattegrond, exp_afkoeling, 1000000)
+                annealing(amstel, plattegrond, exp_afkoeling, 1000000000)
                 hillclimber(amstel, plattegrond)
             visualisatie_annealing(amstel)
             break
