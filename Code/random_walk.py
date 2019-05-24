@@ -14,7 +14,7 @@ import math
 
 def random_walk(amstel, plattegrond):
     """
-        Een wijk word random geplaatst. Vervolgens word een random gekozen huis
+        Een wijk wordt random geplaatst. Vervolgens wordt een random gekozen huis
         ook weer random verschoven. Er wordt hierin niet gekeken naar verbetering
         en verslechtering.
     """
@@ -27,7 +27,8 @@ def random_walk(amstel, plattegrond):
     # amstel.visualisatie()
     nieuwe_waarde = int(amstel.totale_nieuwe_huiswaarde())
 
-    for i in range(1000):
+    iteraties = 1000
+    for i in range(iteraties):
         amstel.herplaats_huis(plattegrond)
         nieuwe_waarde = int(amstel.totale_nieuwe_huiswaarde())
         amstel.waardes_random.append((int(nieuwe_waarde)))

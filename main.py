@@ -9,13 +9,14 @@ import csv
 import statistics
 
 
+
 if __name__ == '__main__':
     """
     De 'main' functie ontvangt input van de gebruiker met betrekking tot welke algoritmes
     zullen worden gebruikt.
     """
 
-    print("\nWelcome to AmstelHaege!\n")
+    print("\nWelkom, dit is AmstelHaege!\n")
     print("______________________________________________________________ \n")
     amstel = Amstel()
     print("______________________________________________________________")
@@ -32,22 +33,12 @@ while True:
         verplaats_hillclimber(amstel, plattegrond)
         visualisatie_verplaats_hillclimber(amstel)
         break
+
     elif antwoord == "random_walk":
         random_walk(amstel, plattegrond)
         visualisatie_random_walk(amstel)
-
-        with open('output.csv', 'a') as f:
-            resultaten_writer = csv.writer(f, delimiter=',')
-            resultaten_writer.writerow(amstel.resultaten_random_walk)
-
-        with open('output.csv', 'r') as results:
-            resultaten_reader = csv.reader(results, delimiter=',')
-            resultaten_lijst = []
-            for resultaten in resultaten_reader:
-                resultaten_lijst.append(resultaten)
-            for i in range(len(resultaten_lijst[0])):
-                statistics.mean(resultaten_lijst[:][i])
         break
+
     elif antwoord == "annealing":
         soort_afkoeling = input("Welk koelsysteem wilt u gebruiken: lineair_afkoeling, log_afkoeling of exp_afkoeling?:  ")
         print("______________________________________________________________ \n")
@@ -59,21 +50,21 @@ while True:
                 schuif_hillclimber(amstel, plattegrond)
             visualisatie_annealing(amstel)
             break
-            # amstel = annealing(lineair_afkoeling, 1000000)
+
         elif soort_afkoeling == "log_afkoeling":
             for i in range(5):
                 annealing(amstel, plattegrond, log_afkoeling, 100)
                 schuif_hillclimber(amstel, plattegrond)
             visualisatie_annealing(amstel)
             break
-            # amstel = annealing(log_afkoeling, 1000000)
+
         elif soort_afkoeling == "exp_afkoeling":
             for i in range(5):
                 annealing(amstel, plattegrond, exp_afkoeling, 1000000000)
                 schuif_hillclimber(amstel, plattegrond)
             visualisatie_annealing(amstel)
             break
-            # amstel = annealing(exp_afkoeling, 1000000)
+
     else:
         schuif_hillclimber(amstel, plattegrond)
         visualisatie_schuif_hillclimber(amstel)

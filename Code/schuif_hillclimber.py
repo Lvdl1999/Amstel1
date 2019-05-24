@@ -2,7 +2,7 @@
 Amstel1
 Heuristieken
 schuif_hillclimber.py
-Het schuif_schuif_hillclimber algoritme.
+Het schuif_hillclimber algoritme.
 """
 
 import matplotlib.pyplot as plt
@@ -11,10 +11,10 @@ import matplotlib.patches as patches
 
 def schuif_hillclimber(amstel, plattegrond):
     """
-        De 'schuif_hillclimber' kiest een random huis uit de wijk en verschuift het met
-        een random waarde tussen de -10 en 10 meter. Vervolgens wordt gekeken of
-        dit een betere oplossing genereert. Zo niet, dan wordt het huis
-        teruggeplaatst.
+        De 'schuif_hillclimber' kiest een random huis uit de wijk en verschuift
+        het met een random waarde tussen de -10 en 10 meter. Vervolgens wordt
+        gekeken of dit een betere oplossing genereert. Zo niet, dan wordt het
+        huis teruggeplaatst.
     """
 
     oude_waarde = int(amstel.totale_nieuwe_huiswaarde())

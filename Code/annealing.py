@@ -13,6 +13,11 @@ import matplotlib.patches as patches
 
 
 def acceptatie_kans(nieuwe, oude, temperatuur):
+    """
+        Binnen de functie 'acceptatie_kans' wordt aan de hand van de temperatuur
+        berekend met hoeveel kans het annealing algoritme een verslechtering
+        toe kan laten.
+    """
 
     acceptatie = (nieuwe - oude)/temperatuur
 
@@ -22,6 +27,10 @@ def acceptatie_kans(nieuwe, oude, temperatuur):
 
 
 def lineair_afkoeling(begin_temperatuur, temperatuur, iteraties, i):
+    """
+        Hierbij neemt de temperatuur gedurende het runnen van simulated
+        annealing lineair af, afhankelijk van de huidige iteratie.
+    """
 
     afname_temp = temperatuur/iteraties
 
@@ -29,14 +38,24 @@ def lineair_afkoeling(begin_temperatuur, temperatuur, iteraties, i):
 
 
 def log_afkoeling(begin_temperatuur, temperatuur, iteraties, i):
+    """
+        Bij een logaritmisch afkoelschema neemt de temperatuur gedurende het
+        runnen van simulated annealing logaritmisch af.
+
+    """
 
     huidige_temperatuur = begin_temperatuur/(math.log(i + 1) + 1)
 
     afname_temp = temperatuur - huidige_temperatuur
+
     return afname_temp
 
 
 def exp_afkoeling(begin_temperatuur, temperatuur, iteraties, i):
+    """
+        Bij een exponentieel afkoelschema neemt de temperatuur gedurende het
+        runnen van simulated annealing exponentieel af met een bepaalde factor.
+    """
 
     eind_temperatuur = 1
 
@@ -51,8 +70,8 @@ def annealing(amstel, plattegrond, afkoeling, begin_temperatuur):
     """
         Beginnend met de schuif_hillclimber om vervolgens met een bepaalde kans een
         verslechtering toe te laten. Bij een verslechtering moet de kans op
-        toelating kleiner dan bij een verbetering van de waarde. Bedoeld om
-        uit het optimale maximum te komen en een hoger optimaal maximum te
+        toelating kleiner zijn dan bij een verbetering van de waarde. Dit is
+        bedoelt om uit het lokaal optimum te komen en een betere oplossing te
         vinden.
     """
 
