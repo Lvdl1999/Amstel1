@@ -81,8 +81,6 @@ def annealing(amstel, plattegrond, afkoeling, begin_temperatuur):
     oude_waarde = int(amstel.totale_nieuwe_huiswaarde())
     print(f"Totale wijk waarde is: {oude_waarde} euro")
 
-    # amstel.visualisatie()
-
     iteraties = 1000
     for i in range(iteraties):
 
@@ -112,9 +110,7 @@ def annealing(amstel, plattegrond, afkoeling, begin_temperatuur):
             temperatuur = 1
 
     schuif_hillclimber(amstel, plattegrond)
-
-    # amstel.visualisatie()
-
+    
     return amstel
 
 
