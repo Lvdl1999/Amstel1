@@ -24,7 +24,6 @@ def random_walk(amstel, plattegrond):
     oude_waarde = int(amstel.totale_nieuwe_huiswaarde())
     print(f"Totale wijk waarde is: €{oude_waarde},-")
 
-    # amstel.visualisatie()
     nieuwe_waarde = int(amstel.totale_nieuwe_huiswaarde())
 
     iteraties = 1000
@@ -36,7 +35,9 @@ def random_walk(amstel, plattegrond):
 
         print(f"Totale wijk waarde is: €{(int(nieuwe_waarde))},-")
 
+    amstel.visualisatie()
     return amstel
+
 
 
 def visualisatie_random_walk(amstel):

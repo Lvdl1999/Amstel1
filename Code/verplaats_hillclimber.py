@@ -20,7 +20,6 @@ def verplaats_hillclimber(amstel, plattegrond):
     oude_waarde = int(amstel.totale_nieuwe_huiswaarde())
     print(f"Totale wijk waarde is: {oude_waarde} euro")
 
-    # amstel.visualisatie()
 
     for i in range(1000):
         huis, linksboven = amstel.herplaats_huis(plattegrond)
@@ -34,7 +33,7 @@ def verplaats_hillclimber(amstel, plattegrond):
 
         amstel.waardes_lijst.append(oude_waarde)
 
-            # amstel.visualisatie()
+    amstel.visualisatie()
 
 
 def visualisatie_verplaats_hillclimber(amstel):

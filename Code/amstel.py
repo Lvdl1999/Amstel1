@@ -269,32 +269,3 @@ class Amstel():
         self.plaats_huis(huis, linksboven_nieuw)
 
         return huis, linksboven_oud
-
-    # 
-    # def opslaan_wijk(self):
-    #     """
-    #         In een dictionary worden alle coordinaten van elk huis dat zich in
-    #         de huidige wijk bevindt opgeslagen.
-    #         Deze dictionary wordt vervolgens gereturnd.
-    #     """
-    #
-    #     beginwijk_dict = {}
-    #     for huiscoord in self.wijk_lijst:
-    #         beginwijk_dict[huiscoord] = huiscoord.linksboven
-    #     return beginwijk_dict
-    #
-    #
-    # def herplaats_wijk(self, beginwijk_dict):
-    #     """
-    #         Met behulp van de opgeslagen beginwijk door 'opslaan_wijk' kan de
-    #         wijk indien nodig herplaatst worden naar die oplossing. De vorige
-    #         linksboven-coordinaat wordt namelijk gebruikt om het huis terug
-    #         te plaatsen.
-    #     """
-    #
-    #     for huiscoord in beginwijk_dict.keys():
-    #         linksboven = beginwijk_dict[huiscoord]
-    #         for huis in self.wijk_lijst:
-    #             self.plaats_huis(huis, linksboven)
-    #             if not plattegrond.grens_check(huis) or plattegrond.overlap_check(huis, self.wijk_lijst):
-    #                 huis.herplaats_huis()
