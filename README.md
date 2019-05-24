@@ -8,9 +8,7 @@ In een ooit beschermd natuurgebied zal een nieuwe woonwijk worden geplaatst. De 
 
 
 ### Vereisten
-
-Deze codebase is volledig geschreven in [Python3.6.3](https://www.python.org/downloads/). In requirements.txt staan alle benodigde packages om de code succesvol te draaien. Deze zijn gemakkelijk te installeren via pip dmv. de volgende instructie:
-
+Deze codebase is volledig geschreven in [Python3.7.1](https://www.python.org/downloads/). In requirements.txt staan alle benodigde packages om de code succesvol te draaien. Deze zijn gemakkelijk te installeren via pip dmv. de volgende instructie:
 ```
 pip install -r requirements.txt
 ```
@@ -18,49 +16,43 @@ pip install -r requirements.txt
 ### Gebruik
 | Stap | Keuze|
 |--------|------------------------------|
-| 0 | Download of clone the 'Amstel1' GitHub repository.
+| 0 | Download of clone de 'Amstel1' GitHub repository.
 | 1 | `pythonw main.py` voor een MacBook en `python main.py` voor Windows laptops.
 | 2 | U kunt een wijk van '20', '40' of '60' huizen kiezen. |
 | 3 | Vervolgens kunt u minimaal '1' en maximaal '4' sloten in de wijk plaatsen.  |
-| 4 | Selecteer vervolgens welk algoritme u wilt runnen. U kunt kiezen tussen `random_hillclimber,    hillclimber, random_walk of annealing`. |
-| 5 | Wanneer is gekozen voor simulated annealing heeft u keuze uit verschillende koelsystemen. Voor een lineair afkoelschema dient `linear_afkoeling` te worden ingevoerd. Voor een logaritmisch afkoelschema dient `log_afkoeling` te worden ingevoerd. Voor een exponentieel afkoelschema dient `exp_afkoeling` te worden ingevoerd.
+| 4 | Selecteer vervolgens welk algoritme u wilt runnen. U kunt kiezen tussen `schuif_hillclimber, verplaats_hillclimber, random_walk of annealing`. |
+| 5 | Wanneer is gekozen voor annealing (oftewel simulated annealing) heeft u keuze uit verschillende koelsystemen. Voor een lineair afkoelschema dient `lineair_afkoeling` te worden ingevoerd. Voor een logaritmisch afkoelschema dient `log_afkoeling` te worden ingevoerd. Voor een exponentieel afkoelschema dient `exp_afkoeling` te worden ingevoerd.
 | 6 | Zodra een algoritme heeft gerund kunt u deze beëindigen door het pop-up figuur van de visualisatie te sluiten. |
-
 
 ### Structuur
 
-Alle Python scripts staan in de folder Code. In de map Data zitten alle input waardes en in de map resultaten worden alle resultaten opgeslagen door de code.
+Alle Python scripts staan in de folder Code. In de map Data zitten alle input waardes en in de map Resultaten worden alle resultaten opgeslagen door de code.
 
-### Test
-Om de code te draaien met de standaardconfiguratie (bv. brute-force en voorbeeld.csv) gebruik de instructie:
 
-```
-pythonw main.py
-```
 
 ### Bounds
 De lowerbound en upperbound zijn beide berekend voor de case AmstelHaege.
 
 #### Lowerbound
-Onder de lowerbound wordt verstaan hoeveel de wijk waard is in de minst optimale situatie. Namelijk dat ieder huis alleen z'n minimale vrijstand in de wijk zou hebben.
+Onder de lowerbound wordt verstaan hoeveel de wijk waard is in de minst optimale situatie. Dat is wanneer ieder huis alleen z'n minimale vrijstand in de wijk heeft, dit is de originele huiswaarde. Voor ieder huis in de wijk worden deze waardes opgeteld.
 
 - Voor de 20-huizenvariant is de lowerbound: 7245000 euro.
 - Voor de 40-huizenvariant is de lowerbound: 14490000 euro.
 - Voor de 60-huizenvariant is de lowerbound: 21735000 euro.     
 
 #### Upperbound
-De upperbound geeft aan hoeveel de wijk waard is in de meest optimale situatie. Namelijk dat ieder huis de maximale vrijstand in de wijk zou hebben.
+De upperbound geeft aan hoeveel de wijk waard is in de meest optimale situatie. Dat is zodra ieder huis in het midden van de wijk wordt geplaatst zonder andere huizen op de plattegrond. Door deze maximale vrijstand zijn de huisprijzen optimaal en zullen deze bij elkaar worden opgeteld.
 
 - Voor de 20-huizenvariant is de upperbound: 38702925 euro.
 - Voor de 40-huizenvariant is de upperbound: 77405850 euro.
 - Voor de 60-huizenvariant is de upperbound: 116108775 euro
 
 
-De berekening hiervan in de map Amstel1 te vinden in een file genaamd bounds.py. Met het volgende stappen plan kan deze code eventueel worden gerund bij interesse:
+De berekening van de upper- en de lowerbound zijn in de map Amstel1 te vinden in een file genaamd bounds.py. Met het volgende stappen plan kan deze code eventueel worden gerund bij interesse:
 
 | Stap | Keuze|
 |--------|------------------------------|
-| 0 | `pythonw bounds.py`
+| 0 |  `pythonw bounds.py` voor een MacBook en `python bounds.py` voor Windows laptops.
 | 1 | U kunt een wijk van '20', '40' of '60' huizen kiezen. |
 | 2 | Vervolgens kunt u minimaal '1' en maximaal '4' sloten in de wijk plaatsen.  |
 | 3 | In dit commando mag worden meegegeven of u de lowerbound, upperbound of beide wilt berekenen. -Voor de lowerbound dient `lowerbound` te worden ingevoerd. -Voor de upperbound dient `upperbound` te worden ingevoerd. -Om beide te berekenen mag `beide` worden ingevoerd.|
