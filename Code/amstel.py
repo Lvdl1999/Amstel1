@@ -42,7 +42,6 @@ class Amstel():
 
         # De wijk kan maximaal 4 sloten bevatten afhankelijk van de gebruikers
         # keuze.
-
         while True:
             self.aantal_sloten = int(input("Aantal sloten:  "))
             if self.aantal_sloten not in [1, 2, 3, 4]:
@@ -106,8 +105,6 @@ class Amstel():
             self.wijk_lijst.append(huis)
 
 
-
-
     def huis_check(self, huis, x, y):
         """
             De functie 'huis_check' zorgt ervoor dat elk huis voldoet aan z'n
@@ -118,6 +115,7 @@ class Amstel():
         if y < 0 or y > huis.hoogte:
             return False
         return True
+
 
     def plaats_huis(self, huis, coord):
         """
@@ -206,7 +204,7 @@ class Amstel():
             De huizen mogen elkaar niet overlappen.
         """
 
-        # Als een huis niet geplaatst is heeft het geen x waarde
+        # Als een huis niet geplaatst is heeft het geen x waarde dus == None
         while huis.linksboven.x == None:
             x = random.randint(0, plattegrond.breedte)
             y = random.randint(0, plattegrond.hoogte)

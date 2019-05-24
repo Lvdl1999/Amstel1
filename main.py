@@ -12,8 +12,8 @@ import statistics
 
 if __name__ == '__main__':
     """
-    De 'main' functie ontvangt input van de gebruiker met betrekking tot welke algoritmes
-    zullen worden gebruikt.
+        De 'main' functie ontvangt input van de gebruiker met betrekking tot welke algoritmes
+        zullen worden gebruikt.
     """
 
     print("\nWelkom, dit is AmstelHaege!\n")

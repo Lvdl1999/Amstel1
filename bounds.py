@@ -59,10 +59,10 @@ if __name__ == '__main__':
         if antwoord not in ["upperbound", "lowerbound", "beide"]:
             print("Beantwoord vraag met: 'upperbound', 'lowerbound', 'beide'")
         elif antwoord == "lowerbound":
-            print(f"De lowerbound is: {lowerbound_calc()} euro.\n")
+            print(f"De lowerbound is: €{lowerbound_calc()},-\n")
             break
         elif antwoord == "upperbound":
-            print(f"De upperbound is: {upperbound_calc()} euro.\n")
+            print(f"De upperbound is: €{upperbound_calc()},-\n")
             break
         else:
             print(f"De lowerbound is: €{lowerbound_calc()},-")

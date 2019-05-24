@@ -10,9 +10,9 @@ import matplotlib.patches as patches
 
 def verplaats_hillclimber(amstel, plattegrond):
     """
-            De 'verplaats_hillclimber' kiest een random huis uit de wijk en herplaatst
-            het op een random plek en kijkt of dit een betere oplossing
-            genereert. Zo niet dan wordt het huis weer teruggeplaatst.
+        De 'verplaats_hillclimber' kiest een random huis uit de wijk en herplaatst
+        het op een random plek en kijkt of dit een betere oplossing
+        genereert. Zo niet dan wordt het huis weer teruggeplaatst.
     """
 
     amstel.plaats_huizen(plattegrond)

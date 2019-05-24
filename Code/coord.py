@@ -2,7 +2,7 @@
 Amstel1
 Heuristieken
 coord.py
-Maakt coordinaten aan
+Maakt coördinaten aan voor een huis en returnt deze met def 'coords'.
 """
 
 class Coord():
