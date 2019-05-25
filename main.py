@@ -41,29 +41,35 @@ while True:
             random_walk(amstel, plattegrond)
             visualisatie_random_walk(amstel)
             iteraties = 1000
-        with open('output.csv', 'a') as f:
-            resultaten_writer = csv.writer(f, delimiter=',')
-            resultaten_writer.writerow(amstel.resultaten_random_walk)
+            with open('output.csv', 'a') as f:
+                resultaten_writer = csv.writer(f, delimiter=',')
+                resultaten_writer.writerow(amstel.resultaten_random_walk)
 
-        with open('output.csv', 'r') as results:
-            resultaten_reader = csv.reader(results, delimiter=',')
-            resultaten_lijst = []
-            gemiddelde_lijst= []
-
-
-            count = 0
-            for i in range(iteraties):
-                gemiddelde_lijst.append(count)
+            with open('output.csv', 'r') as results:
+                resultaten_reader = csv.reader(results, delimiter=',')
+                resultaten_lijst = []
+                gemiddelde_lijst= []
 
 
-            for resultaten in resultaten_reader:
-                resultaten_lijst = list(map(int, resultaten))
-                for element in range(len(resultaten_lijst)):
+                count = 0
+                for i in range(iteraties):
+                    gemiddelde_lijst.append(count)
+
+
+                # resulteaten_reader_list = list(resultaten_reader)
+
+                for resultaten in resultaten_reader:
                     lengte = len(list(resultaten_reader))
-                    print(lengte)
-                    gemiddelde_lijst[element] += resultaten_lijst[element]
-                    gemiddelde_lijst[element]= gemiddelde_lijst[element]/lengte
-                    print(gemiddelde_lijst)
+                    print(f"lengte= {lengte}")
+                    resultaten_lijst = list(map(int, resultaten))
+                    for element in range(len(resultaten_lijst)):
+
+                        print(f" result list ={resultaten_lijst[element]}")
+                        gemiddelde_lijst[element] += resultaten_lijst[element]
+                        print(f" gemiddelde lijst = {gemiddelde_lijst[element]}")
+
+                        # gemiddelde_lijst[element]= gemiddelde_lijst[element]/lengte
+                        # print(gemiddelde_lijst)
 
 
             # for i in range(iteraties):
