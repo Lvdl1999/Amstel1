@@ -40,6 +40,44 @@ while True:
         elif antwoord == "random_walk":
             random_walk(amstel, plattegrond)
             visualisatie_random_walk(amstel)
+            iteraties = 1000
+        with open('output.csv', 'a') as f:
+            resultaten_writer = csv.writer(f, delimiter=',')
+            resultaten_writer.writerow(amstel.resultaten_random_walk)
+
+        with open('output.csv', 'r') as results:
+            resultaten_reader = csv.reader(results, delimiter=',')
+            resultaten_lijst = []
+            gemiddelde_lijst= []
+
+
+            count = 0
+            for i in range(iteraties):
+                gemiddelde_lijst.append(count)
+
+
+            for resultaten in resultaten_reader:
+                resultaten_lijst = list(map(int, resultaten))
+                for element in range(len(resultaten_lijst)):
+                    lengte = len(list(resultaten_reader))
+                    print(lengte)
+                    gemiddelde_lijst[element] += resultaten_lijst[element]
+                    gemiddelde_lijst[element]= gemiddelde_lijst[element]/lengte
+                    print(gemiddelde_lijst)
+
+
+            # for i in range(iteraties):
+            #     for j in range(len(resultaten_lijst[i])):
+            #         iteratie = []
+            #         for resultaat in resultaten_lijst:
+            #             waarde = resultaat[j]
+            #             iteratie.append(waarde)
+            #         gemiddelde = statistics.mean(iteratie)
+            #         gemiddelde_lijst.append(gemiddelde)
+            #
+            # for i in gemiddelde_lijst:
+            #     print(f"Gemiddelde is: €{gemiddelde},- bij {i} iteraties. ")
+            #     # breakpoint()
             break
 
         elif antwoord == "annealing":

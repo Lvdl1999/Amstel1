@@ -55,6 +55,13 @@ class Amstel():
         self.waardes_lijst = []
         self.hoogste_waarde= 0
 
+        self.resultaten_random_walk = []
+        self.resultaten_log = []
+        self.resultaten_exp = []
+        self.resultaten_lin = []
+        self.resultaten_schuif_hillclimber = []
+        self.resultaten_verplaats_hillclimber = []
+
         """
             Elk huis heeft een verschillende attributen: (id, minimale vrijstand
             , prijs, prijvermeerdering, breedte, hoogte). Deze worden
