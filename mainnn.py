@@ -2,7 +2,7 @@ from Code.schuif_hillclimber import schuif_hillclimber, visualisatie_schuif_hill
 from Code.verplaats_hillclimber import verplaats_hillclimber, visualisatie_verplaats_hillclimber
 from Code.random_walk import random_walk
 from Code.random_walk import visualisatie_random_walk
-from Code.annealing import visualisatie_annealing, annealing, lineair_afkoeling, log_afkoeling, exp_afkoeling
+from Code.verplaats_annealing import visualisatie_verplaats_annealing, verplaats_annealing, lineair_afkoeling, log_afkoeling, exp_afkoeling
 from Code.amstel import Amstel
 from Code.plattegrond import Plattegrond
 import csv
@@ -27,10 +27,10 @@ while True:
     # Enkel de huizen varianten van 20 en 40 kunnen alle algoritmes runnen
     # Zie 'else' voor mogelijkheden 60 huizen variant
     if amstel.aantal_huizen <= 40:
-        antwoord = input("\nWerken met verplaats_hillclimber, schuif_hillclimber, random_walk of annealing?:  ")
+        antwoord = input("\nWerken met verplaats_hillclimber, schuif_hillclimber, random_walk of verplaats_annealing?:  ")
         print("______________________________________________________________ \n")
-        if antwoord not in ["verplaats_hillclimber", "schuif_hillclimber", "random_walk", "annealing"]:
-            print("Beantwoord vraag met: verplaats_hillclimber, schuif_hillclimber, random_walk of annealing")
+        if antwoord not in ["verplaats_hillclimber", "schuif_hillclimber", "random_walk", "verplaats_annealing"]:
+            print("Beantwoord vraag met: verplaats_hillclimber, schuif_hillclimber, random_walk of verplaats_annealing")
             # amstel.visualisatie()
         elif antwoord == "verplaats_hillclimber":
             verplaats_hillclimber(amstel, plattegrond)
@@ -86,35 +86,35 @@ while True:
             #     # breakpoint()
             break
 
-        elif antwoord == "annealing":
+        elif antwoord == "verplaats_annealing":
             soort_afkoeling = input("Welk koelsysteem wilt u gebruiken: lineair_afkoeling, log_afkoeling of exp_afkoeling?:  ")
             print("______________________________________________________________ \n")
             if soort_afkoeling not in ["lineair_afkoeling", "log_afkoeling", "exp_afkoeling"]:
                 print("Beantwoord vraag met: lineair_afkoeling, log_afkoeling of exp_afkoeling")
             elif soort_afkoeling == "lineair_afkoeling":
                 for i in range(5):
-                    annealing(amstel, plattegrond, lineair_afkoeling, 1000)
-                    schuif_hillclimber(amstel, plattegrond)
-                visualisatie_annealing(amstel)
+                    verplaats_annealing(amstel, plattegrond, lineair_afkoeling, 1000)
+                    verplaats_hillclimber(amstel, plattegrond)
+                visualisatie_verplaats_annealing(amstel)
                 break
 
             elif soort_afkoeling == "log_afkoeling":
                 for i in range(5):
-                    annealing(amstel, plattegrond, log_afkoeling, 100)
-                    schuif_hillclimber(amstel, plattegrond)
-                visualisatie_annealing(amstel)
+                    verplaats_annealing(amstel, plattegrond, log_afkoeling, 100)
+                    verplaats_hillclimber(amstel, plattegrond)
+                visualisatie_verplaats_annealing(amstel)
                 break
 
             elif soort_afkoeling == "exp_afkoeling":
                 for i in range(5):
-                    annealing(amstel, plattegrond, exp_afkoeling, 100)
-                    schuif_hillclimber(amstel, plattegrond)
-                visualisatie_annealing(amstel)
+                    verplaats_annealing(amstel, plattegrond, exp_afkoeling, 100)
+                    verplaats_hillclimber(amstel, plattegrond)
+                visualisatie_verplaats_annealing(amstel)
                 break
 
         else:
-            schuif_hillclimber(amstel, plattegrond)
-            visualisatie_schuif_hillclimber(amstel)
+            verplaats_hillclimber(amstel, plattegrond)
+            visualisatie_verplaats_hillclimber(amstel)
             break
 
     # 60 huizen-variant (zie Readme voor toelichting)
