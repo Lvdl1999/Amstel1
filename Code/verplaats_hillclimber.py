@@ -33,7 +33,7 @@ def verplaats_hillclimber(amstel, plattegrond):
 
         amstel.waardes_lijst.append(oude_waarde)
 
-    amstel.visualisatie()
+    # amstel.visualisatie()
 
 
 def visualisatie_verplaats_hillclimber(amstel):

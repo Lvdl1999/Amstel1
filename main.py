@@ -34,7 +34,7 @@ while True:
             # amstel.visualisatie()
         elif antwoord == "verplaats_hillclimber":
             verplaats_hillclimber(amstel, plattegrond)
-            visualisatie_verplaats_hillclimber(amstel)
+            # visualisatie_verplaats_hillclimber(amstel)
             break
 
         elif antwoord == "random_walk":
@@ -57,16 +57,16 @@ while True:
 
 
                 # resulteaten_reader_list = list(resultaten_reader)
-
-                for resultaten in resultaten_reader:
-                    lengte = len(list(resultaten_reader))
-                    print(f"lengte= {lengte}")
-                    resultaten_lijst = list(map(int, resultaten))
-                    for element in range(len(resultaten_lijst)):
-
-                        print(f" result list ={resultaten_lijst[element]}")
-                        gemiddelde_lijst[element] += resultaten_lijst[element]
-                        print(f" gemiddelde lijst = {gemiddelde_lijst[element]}")
+                #
+                # for resultaten in resultaten_reader:
+                #     lengte = len(list(resultaten_reader))
+                #     print(f"lengte= {lengte}")
+                #     resultaten_lijst = list(map(int, resultaten))
+                #     for element in range(len(resultaten_lijst)):
+                #
+                #         print(f" result list ={resultaten_lijst[element]}")
+                #         gemiddelde_lijst[element] += resultaten_lijst[element]
+                #         print(f" gemiddelde lijst = {gemiddelde_lijst[element]}")
 
                         # gemiddelde_lijst[element]= gemiddelde_lijst[element]/lengte
                         # print(gemiddelde_lijst)
@@ -93,7 +93,7 @@ while True:
                 print("Beantwoord vraag met: lineair_afkoeling, log_afkoeling of exp_afkoeling")
             elif soort_afkoeling == "lineair_afkoeling":
                 for i in range(5):
-                    annealing(amstel, plattegrond, lineair_afkoeling, 1000000)
+                    annealing(amstel, plattegrond, lineair_afkoeling, 100000000000000)
                     schuif_hillclimber(amstel, plattegrond)
                 visualisatie_annealing(amstel)
                 break

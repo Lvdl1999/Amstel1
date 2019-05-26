@@ -39,7 +39,12 @@ def hillclimber(amstel, plattegrond):
             print(f"Totale wijk waarde is: €{oude_waarde},-")
 
         amstel.waardes_lijst.append(oude_waarde)
+
     print(f"____HOOGSTE waarde is: €{amstel.hoogste_waarde},- met {iteraties} iteraties___")
+    amstel.hoogste_waardes.append(amstel.hoogste_waarde)
+
+    for i in amstel.hoogste_waardes:
+        print(i)
     # amstel.visualisatie()
 
 

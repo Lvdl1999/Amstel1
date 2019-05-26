@@ -103,14 +103,17 @@ def annealing(amstel, plattegrond, afkoeling, begin_temperatuur):
             if oude_waarde > amstel.hoogste_waarde:
                 amstel.hoogste_waarde = oude_waarde
             print(f"Totale wijk waarde is: €{oude_waarde},-, temperatuur: {temperatuur}")
+
         # De afkoeling moet doorgeven of het logaritmisch, exponentieel of lineair is.
         temperatuur -= afkoeling(begin_temperatuur, temperatuur, iteraties, i)
         amstel.waardes_lijst.append(oude_waarde)
         if temperatuur < 1:
             temperatuur = 1
 
+
+
     schuif_hillclimber(amstel, plattegrond)
-    
+
     return amstel
 
 

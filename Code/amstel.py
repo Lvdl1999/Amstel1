@@ -55,6 +55,8 @@ class Amstel():
         self.waardes_lijst = []
         self.hoogste_waarde= 0
 
+        self.hoogste_waardes = []
+
         self.resultaten_random_walk = []
         self.resultaten_log = []
         self.resultaten_exp = []
